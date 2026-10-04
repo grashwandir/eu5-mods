@@ -1,0 +1,11 @@
+﻿{
+	"name":	"Estates Privilege Variations",
+	"id":	"grashwandir.estates_privilege_variations",
+	"version":	"0.1",
+	"supported_game_version":	"1.3.11",
+	"short_description":	"Add some variation to some privileges for more fine grain.",
+	"tags":	["Balance", "Fixes", "Government and Estates"],
+	"relationships":	[],
+	"game_custom_data":	{
+}
+}

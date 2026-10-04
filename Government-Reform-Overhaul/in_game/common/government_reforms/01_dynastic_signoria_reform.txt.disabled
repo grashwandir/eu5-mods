@@ -1,0 +1,48 @@
+﻿REPLACE:dynastic_signoria_reform = {
+	content_priority = 1000
+	major = yes
+	government = republic
+
+	potential = {
+		OR = {
+			court_language = language:north_italian_language
+			court_language = language:south_italian_language
+		}
+	}
+
+	allow = {
+		OR = {
+			"estate_power(estate_type:crown_estate)" > 0.3
+
+			#Starting tags that are already hereditary
+			has_or_had_tag = MLO
+			has_or_had_tag = FER
+			has_or_had_tag = PAD
+			has_or_had_tag = RAV
+			has_or_had_tag = VER
+			has_or_had_tag = RIM
+		}
+	}
+
+	locked = {
+		OR = {
+			has_estate_privilege = estate_privilege:visconti_city_states
+			"estate_power(estate_type:crown_estate)" <= 0.25
+			"estate_power(estate_type:nobles_estate)" >= 0.5
+		}
+	}
+	
+	on_activate = {
+		change_heir_selection = heir_selection:signoria_selection
+	}
+	
+	country_modifier = {
+		government_reform_slots = 1
+		nobles_estate_levy_size = 0.1
+		replace_cabinet_member_cost_modifier = -0.1
+		monthly_prestige = 0.1
+		estate_enrichment = -0.1
+	}
+
+	years = 2
+}

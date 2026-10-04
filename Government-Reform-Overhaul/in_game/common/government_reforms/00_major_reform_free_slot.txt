@@ -1,0 +1,205 @@
+﻿###############################################
+#				COMMON
+###############################################
+
+INJECT:admiralty_regime_reform = {
+	country_modifier = {
+#		monthly_towards_naval = societal_value_large_monthly_move
+#		navy_maintenance_efficiency = 0.15
+#		monthly_navy_tradition = 0.1
+		government_reform_slots = 1
+	}
+}
+
+INJECT:military_regime_reform = {
+	country_modifier = {
+#		monthly_towards_land = societal_value_large_monthly_move
+#		army_maintenance_efficiency = 0.25
+#		monthly_army_tradition = 0.1
+		government_reform_slots = 1
+	}
+}
+
+###############################################
+#				MONARCHY
+###############################################
+
+INJECT:judicate_reform = {
+	country_modifier = {
+#		monthly_towards_centralization = societal_value_monthly_move
+#		monthly_towards_traditionalist = societal_value_monthly_move
+#		country_cabinet_efficiency = 0.05
+		government_reform_slots = 1
+	}
+}
+#
+#revolutionary_empire = {
+#	major = yes
+#	unique = yes
+#	government = monarchy
+#	years = 1
+#	potential = { is_revolutionary = yes }
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = revolutionary_empire
+#		}
+#	}
+#	country_modifier = {
+#		monthly_legitimacy = 0.05
+#		global_crown_estate_power = 0.5
+#		government_reform_slots = 1
+#		government_size = 1
+#	}
+#}
+#
+#feudal_theocracy = {
+#	unique = yes
+#	major = yes
+#	years = 1
+#	government = monarchy
+#	potential = {
+#		religion.group = religion_group:muslim
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = persian_feudal_theocracy
+#		}
+#	}
+#	country_modifier = {
+#		global_pop_conversion_speed_modifier = 0.3
+#		global_clergy_estate_power = 0.2
+#		clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+#		monthly_towards_spiritualist = societal_value_monthly_move
+#	}
+#}
+
+###############################################
+#				REPUBLIC
+###############################################
+
+INJECT:noble_elite = {
+	country_modifier = {
+#		global_nobles_estate_power = 0.1
+#		levy_combat_efficiency_modifier = 0.05
+#		country_cabinet_efficiency = 0.10
+#		monthly_towards_aristocracy = societal_value_monthly_move
+		
+		#Added
+		court_spending_efficiency = -0.05
+		government_reform_slots = 1
+	}
+}
+
+INJECT:merchant_republic = {
+	country_modifier = {
+#		global_merchant_capacity_modifier = 0.50
+#		trade_income = 0.20
+#		global_foreign_build_buildings_efficiency = 1.0
+#
+#		merchant_maintenance_efficiency = 0.50
+#		global_integration_speed_modifier = -0.25
+#		court_language_is_market_language_importance_modifier = 15
+		
+		#Added
+		annexation_speed_modifier = -0.20
+		government_reform_slots = 1
+	}
+}
+
+INJECT:signoria_reform = {
+#	potential = {
+#		OR = {
+#			court_language = language:north_italian_language
+#			court_language = language:south_italian_language
+#		}
+#	}
+#	
+#	on_activate = {
+#		change_heir_selection = heir_selection:podesta_elective
+#	}
+	
+	country_modifier = {
+#		global_crown_estate_power = -0.1
+#		improve_relation_impact = 0.1
+#		replace_cabinet_member_cost_modifier = -0.1
+#		monthly_towards_decentralization = societal_value_monthly_move
+
+		#Added
+		government_reform_slots = 1
+	}
+}
+
+###############################################
+#				THEOCRACY
+###############################################
+
+INJECT:military_order_reform = {
+#	potential = {
+#		religion = religion:catholic
+#		has_policy = monastic_order
+#	}
+#	
+#	locked = {
+#		has_estate_privilege = estate_privilege:clergy_military_orders
+#	}
+	
+	country_modifier = {
+#		allow_military_order_units = yes
+#		clergy_estate_allowed_leading_military = yes
+#		clergy_estate_blocked_from_leading_military = no
+#		monthly_towards_offensive = societal_value_monthly_move
+#		monthly_towards_belligerent = societal_value_monthly_move
+#		clergy_estate_levy_size = 0.25
+#		fort_limit_modifier = 0.25
+#		target_of_military_sponsorships = yes
+#		blocked_from_conversion = yes
+#		levy_combat_efficiency_modifier = 0.1
+#		crown_estate_cannot_marry = yes
+		
+		government_reform_slots = 1
+	}
+}
+
+INJECT:abbey_reform = {
+	country_modifier = {
+#		monthly_towards_conciliatory = societal_value_monthly_move
+#		research_speed_modifier = 0.025
+#		blocked_from_conversion = yes
+		government_reform_slots = 1
+	}
+}
+
+INJECT:prince_bishopric_reform = {
+	country_modifier = {
+#		monthly_towards_conciliatory = societal_value_monthly_move
+#		monthly_towards_spiritualist = societal_value_monthly_move
+#		research_speed_modifier = 0.025
+#		diplomatic_capacity = 0.5
+		government_reform_slots = 1
+	}
+}
+
+INJECT:guru_leadership_reform = {
+	country_modifier = {
+#		monthly_towards_conciliatory = societal_value_monthly_move
+#		monthly_towards_spiritualist = societal_value_monthly_move
+#		research_speed_modifier = 0.1
+#		blocked_from_conversion = yes
+		government_reform_slots = 1
+	}
+}
+
+###############################################
+#				TRIBES
+###############################################
+
+INJECT:legacy_of_genghis = {
+	country_modifier = {
+#		army_light_cavalry_maintenance_cost_modifier = -0.1
+#		court_spending_efficiency = 0.4
+#		monthly_towards_aristocracy = societal_value_monthly_move
+		government_reform_slots = 1
+	}
+}

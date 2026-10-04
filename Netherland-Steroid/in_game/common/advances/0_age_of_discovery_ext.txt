@@ -1,0 +1,6 @@
+﻿#####################################
+# Public Health (always-available free tree)
+#####################################
+INJECT:surgery_advance = {
+	allow_dutch_parliament = yes
+}

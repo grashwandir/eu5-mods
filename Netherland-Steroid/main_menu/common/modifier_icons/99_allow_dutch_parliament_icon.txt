@@ -1,0 +1,3 @@
+﻿allow_dutch_parliament = {
+	positive = "gfx/interface/icons/modifier_types/allow_dutch_parliament.dds" 
+}

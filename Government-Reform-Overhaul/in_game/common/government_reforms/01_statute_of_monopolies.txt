@@ -1,0 +1,17 @@
+﻿REPLACE:statute_of_monopolies = {
+	age = age_4_reformation
+	societal_values = {
+		mercantilism_focus
+	}
+	country_modifier = {
+		global_trade_protection_factor = 0.1
+		global_production_efficiency = small_production_efficiency_bonus
+		export_impact_on_demand = 0.05
+		
+		monthly_towards_mercantilism = societal_value_monthly_move
+		monthly_towards_plutocracy = societal_value_monthly_move
+		
+	}
+
+	years = 2
+}

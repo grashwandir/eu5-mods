@@ -1,0 +1,75 @@
+﻿#Magdeburg Rights North Germany
+REPLACE:magdeburg_rights_town_rights = {
+	kept_at_conquest = no
+
+	location_modifier = {
+		local_migration_attraction = 0.2
+		local_merchant_capacity_modifier = 0.25
+
+		local_pop_assimilation_speed_modifier = -0.5
+	}
+	
+	country_modifier = {
+		legislative_efficiency = -0.05
+	}
+
+	potential = {
+		capital ?= {
+			OR = {
+				region = region:north_german_region
+				region = region:south_german_region
+				region = region:italy_region
+			}
+		}
+		modifier:allow_magdeburg_rights_town_rights = yes
+	}
+
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:nuremberg_rights_town_rights
+				has_town_rights = town_rights_type:kulm_town_rights
+			}
+		}
+	}
+
+	color = rgb { 189 115 99 } # tag MAG
+}
+
+#Magdeburg Rights South Germany
+REPLACE:nuremberg_rights_town_rights = {
+	kept_at_conquest = no
+
+	location_modifier = {
+		local_migration_attraction = 0.2
+		local_production_efficiency = small_production_efficiency_bonus
+
+		local_pop_assimilation_speed_modifier = -0.5
+	}
+	
+	country_modifier = {
+		legislative_efficiency = -0.05
+	}
+
+	potential = {
+		capital ?= {
+			OR = {
+				region = region:north_german_region
+				region = region:south_german_region
+				region = region:italy_region
+			}
+		}
+		modifier:allow_nuremberg_rights_town_rights = yes
+	}
+
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:magdeburg_rights_town_rights
+				has_town_rights = town_rights_type:kulm_town_rights
+			}
+		}
+	}
+
+	color = rgb { 243 112 15 } # tag NUR
+}

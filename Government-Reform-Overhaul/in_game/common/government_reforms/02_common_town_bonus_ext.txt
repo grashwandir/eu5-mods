@@ -1,0 +1,83 @@
+﻿REPLACE:town_specialization = {
+	age = age_3_discovery
+	
+	potential = {
+		num_of_non_rural > 0 
+	}
+	
+	allow = {
+		NOT = {	has_reform = government_reform:urban_focus }
+	}
+	
+	societal_values = {
+		land_focus
+	}
+
+	country_modifier = {
+		global_burghers_pop_growth = 0.25
+		monthly_towards_land = societal_value_large_monthly_move
+		global_non_rural_monthly_development = 0.002
+	}
+
+	years = 2
+}
+
+
+REPLACE:capitalistic_cities = {
+	age = age_4_reformation
+	
+	potential = {
+		num_of_non_rural > 0 
+	}
+	
+	allow = {
+		NOT = {	has_reform = government_reform:urban_focus }
+	}
+	
+	societal_values = {
+		capital_economy_focus
+	}
+
+	country_modifier = {
+		global_laborers_pop_growth = 0.1
+		global_burghers_pop_growth = 0.1
+		global_non_rural_monthly_prosperity = 0.002
+	}
+
+	years = 2
+}
+
+urban_focus = {
+	age = age_4_reformation
+	
+	icon = town_specialization
+	
+	potential = {
+		num_of_non_rural > 0 
+	}
+	
+	societal_values = {
+		capital_economy_focus
+		land_focus
+	}
+	
+	allow = {
+		NOT = {	has_reform = government_reform:town_specialization }
+		NOT = {	has_reform = government_reform:capitalistic_cities }
+	}
+	
+	country_modifier = {
+#		global_burghers_pop_growth = 0.25
+		global_burghers_pop_growth = 0.35
+		monthly_towards_land = societal_value_large_monthly_move
+		global_non_rural_monthly_development = 0.002
+		
+		global_laborers_pop_growth = 0.1
+#		global_burghers_pop_growth = 0.1
+		global_non_rural_monthly_prosperity = 0.002
+		
+		monthly_towards_capital_economy = societal_value_monthly_move
+	}
+	
+	years = 3
+}

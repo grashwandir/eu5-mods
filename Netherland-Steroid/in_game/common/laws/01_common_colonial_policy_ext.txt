@@ -1,0 +1,127 @@
+﻿#colonial_policy = {
+#	law_category = socioeconomic
+#	potential = {
+#	}
+#
+#	settled_colonies = {
+#		country_modifier = {
+#			colonial_migration_size_modifier = 1.0
+#			colonial_maintenance_efficiency = 0.20
+#			monthly_towards_outward = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			peasants_estate
+#		}
+#		years = 2
+#	}
+#	
+#	trade_colonies = {
+#		country_modifier = {
+#			global_foreign_build_buildings_efficiency = 0.5
+#			colonial_range_modifier = 0.20
+#			monthly_towards_individualism = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			burghers_estate
+#		}
+#		years = 2
+#	}
+#
+#	encomienda_system_policy = { #unlocked by flavor_cas.1300
+#		unique = yes
+#		potential = {
+#			culture = culture:castilian
+#			has_unlocked_policy_trigger = { type = encomienda_system_policy }
+#		}
+#		country_modifier = {
+#			monthly_towards_serfdom = societal_value_large_monthly_move
+#			monthly_towards_traditional_economy = societal_value_large_monthly_move
+#			create_colonial_charter_cost_modifier = -0.2
+#		}
+#		estate_preferences = {
+#			nobles_estate
+#		}
+#		years = 2
+#	}
+#
+#	valladolid_sepulveda = { #unlocked by flavor_cas.1302
+#		unique = yes
+#		potential = {
+#			has_unlocked_policy_trigger = { type = valladolid_sepulveda }
+#		}
+#		country_modifier = {
+#			global_pop_conversion_speed_modifier = 0.2
+#			colonial_migration_size_modifier = 0.5
+#		}
+#		estate_preferences = {
+#			nobles_estate
+#		}
+#		years = 2
+#	}
+#
+#	valladolid_las_casas = { #unlocked by flavor_cas.1302
+#		unique = yes
+#		potential = {
+#			has_unlocked_policy_trigger = { type = valladolid_las_casas }
+#		}
+#		country_modifier = {
+#			global_pop_conversion_speed_modifier = -0.2
+#			colonial_migration_size_modifier = 0.25
+#			tolerance_heathen = 1
+#		}
+#		estate_preferences = {
+#			clergy_estate
+#		}
+#		years = 2
+#	}
+#	portuguese_colonial_captains = { #unlocked with por_the_bandeirantes
+#		unique = yes
+#		potential = {
+#			culture = culture:portuguese
+#		}
+#		allow = {
+#			has_advance = por_the_bandeirantes
+#		}
+#		country_modifier = {
+#			colonial_migration_size_modifier = 0.5
+#			subject_pays_colonial_cost_modifier = -0.20
+#			colonial_maintenance_efficiency = 0.40
+#			monthly_towards_aristocracy = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			nobles_estate
+#			burghers_estate
+#		}
+#		years = 2
+#	}
+#	portuguese_governorate_general = { #unlocked with flavor_por.8
+#		unique = yes
+#		potential = {
+#			culture = culture:portuguese
+#			has_unlocked_policy_trigger = { type = portuguese_governorate_general }
+#		}
+#		country_modifier = {
+#			monthly_towards_centralization = societal_value_minor_monthly_move
+#			subject_pays_colonial_cost_modifier = 0.50
+#			colonial_migration_size_modifier = 0.50
+#		}
+#		estate_preferences = {
+#			crown_estate
+#		}
+#		years = 2
+#	}
+#}
+
+INJECT:colonial_policy = {
+	no_colonial_policy = {
+		country_modifier = {
+			monthly_towards_humanist = societal_value_minor_monthly_move
+			monthly_towards_inward = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+			peasants_estate
+		}
+		years = 2
+	}
+}

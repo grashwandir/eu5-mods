@@ -1,0 +1,16 @@
+﻿wg_claim_province = {
+	type = take_province
+	
+	attacker = {
+		conquer_cost = 1.25
+		subjugate_cost = 1.25
+		
+#		subjugate_cost = 0.5
+#		antagonism = 0.5
+	}
+	
+	defender = {
+	}
+			
+	ticking_war_score = 0.5
+}

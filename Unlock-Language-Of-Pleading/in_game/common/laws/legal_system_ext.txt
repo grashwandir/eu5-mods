@@ -1,0 +1,70 @@
+﻿#INJECT:language_of_pleading = {
+#	potential = {
+#		has_embraced_institution = institution:legalism
+#		OR = {
+#			NOT = { court_language = culture.language }
+#			has_unlocked_policy_trigger = { type = multi_lingual_court }
+#			# modification
+#			has_advance = formalized_relations
+#		}
+#	}
+#}
+
+REPLACE:language_of_pleading = {
+	law_category = socioeconomic
+
+	potential = {
+		has_embraced_institution = institution:legalism
+		OR = {
+			NOT = { court_language = culture.language }
+			has_unlocked_policy_trigger = { type = multi_lingual_court }
+			# modification
+			has_advance = formalized_relations
+		}
+	}
+
+	language_of_pleading_court = {
+		country_modifier = {
+			nobles_estate_target_satisfaction = small_permanent_target_satisfaction
+			cultural_influence_modifier = 0.1
+			monthly_towards_serfdom = societal_value_monthly_move
+		}
+		estate_preferences = {
+			nobles_estate
+		}
+		years = 2
+	}
+	
+	language_of_pleading_common = {
+		country_modifier = {
+			peasants_estate_target_satisfaction = small_permanent_target_satisfaction
+			cultural_tradition_modifier = 0.1
+			monthly_towards_free_subjects = societal_value_monthly_move
+		}
+		estate_preferences = {
+			peasants_estate
+		}
+		years = 2
+	}
+
+	multi_lingual_court = {
+		unique = yes
+		potential = {
+			has_unlocked_policy_trigger = { type = multi_lingual_court }
+			OR = {
+				culture = { is_defined_from_culture = culture:kannadiga }
+				culture = { is_defined_from_culture = culture:telugu }
+				culture = { is_defined_from_culture = culture:tamil }
+			}
+		}
+		country_modifier = {
+			cultures_capacity = 3
+			global_monthly_control = 0.001
+			monthly_towards_communalism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			crown_estate
+		}
+		years = 2
+	}
+}

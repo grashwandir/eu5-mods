@@ -1,0 +1,10 @@
+﻿l_english:
+ republican_assembly_maintenance_dup: "$republican_assembly_maintenance$"
+ republican_assembly_maintenance_dup_desc: "$republican_assembly_maintenance_desc$"
+ colonial_governor: "Colonial Governor"
+ colonial_governor_desc: "Colonial Governor"
+ colonial_governor_maintenance: "Colonial Governor Maintenance"
+ town_smelters: "Town Smelters"
+ town_smelters_desc: "Town Smelters"
+ town_smelters_maintenance: "Town Smelters Maintenance"
+ town_smelters_maintenance_desc: "Town Smelters Maintenance"

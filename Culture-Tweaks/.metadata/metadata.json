@@ -1,0 +1,11 @@
+﻿{
+	"name":	"Culture Tweaks",
+	"id":	"grashwandir.culture_tweak",
+	"version":	"0.1",
+	"supported_game_version":	"1.3.11",
+	"short_description":	"Culture tweaks (slower assimilation of kindred cultures)",
+	"tags":	["Balance", "Culture & Art"],
+	"relationships":	[],
+	"game_custom_data":	{
+}
+}

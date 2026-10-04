@@ -1,0 +1,7 @@
+﻿l_english:
+ cb_claim_province: "Claim Province"
+ cb_claim_province_desc: "Claim Province"
+ cb_claim_province_PROV: "Claim [PROVINCE.GetName]"
+ war_goal_wg_claim_province: "Take [PROVINCE.GetNameWithNoTooltip]"
+ war_goal_wg_claim_province_desc: "Take [PROVINCE.GetNameWithNoTooltip]"
+ war_goal_wg_claim_province_PROV: "[war_goal|e] is to take [PROVINCE.GetNameWithNoTooltip]."

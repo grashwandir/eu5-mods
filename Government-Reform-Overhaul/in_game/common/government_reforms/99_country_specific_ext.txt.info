@@ -1,0 +1,979 @@
+﻿#celtic_traditions_reform = {
+#	major = yes
+#	age = age_1_traditions
+#	potential = {
+#		OR = {
+#			culture = { has_culture_group = culture_group:celtic_group }
+#
+#			any_neighbor_country = {
+#				has_reform = government_reform:celtic_traditions_reform
+#			}
+#			AND = {
+#				overlord ?= { has_reform = government_reform:celtic_traditions_reform }
+#			}
+#		}
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#		OR = {
+#			court_language = language:brythonic_language
+#			court_language = language:gaelic_language
+#		}
+#	}
+#	locked = {
+#		is_member_of_international_organization_of_type = { type = high_kingship }
+#	}
+#	country_modifier = {
+#		cultural_tradition = 0.5
+#		monthly_towards_decentralization = societal_value_tiny_monthly_move
+#		monthly_towards_traditional_economy = societal_value_tiny_monthly_move
+#		can_be_member_of_a_high_kingship = yes
+#		court_language_is_common_language_importance_modifier = 3.0
+#	}
+#	years = 2
+#}
+#
+#irish_earldom_reform = {
+#	age = age_1_traditions
+#	government = monarchy
+#	major = yes
+#	potential = {
+#		OR = {
+#			capital.region = region:ireland_region
+#			culture = culture:anglo_irish
+#		}
+#		country_rank = country_rank:rank_county
+#	}
+#	allow = {
+#		culture.language = language:english_language
+#		government_type = government_type:monarchy
+#	}
+#	country_modifier = {
+#		fort_maintenance_efficiency = 0.50
+#		global_crown_estate_power = 0.1
+#		monthly_towards_aristocracy = societal_value_monthly_move
+#		block_from_change_to_duchy_rank = yes
+#	}
+#	years = 2
+#}
+#
+#prussian_monarchy = {
+#	major = yes
+#	unique = yes
+#	age = age_5_absolutism
+#	potential = {
+#		has_or_had_tag = PRU
+#	}
+#	#unlocked from advance
+#
+#	country_modifier = {
+#		global_crown_estate_power = 0.20
+#		monthly_towards_quality = societal_value_monthly_move
+#		monthly_towards_offensive = societal_value_monthly_move
+#		pure_tooltip_entry = unlock_militarize_country_cabinet_action_tt
+#	}
+#	years = 2
+#}
+#
+#diarchy_republic = {
+#	major = yes
+#	unique = yes
+#	government = republic
+#
+#	potential = {
+#		has_or_had_tag = GEN
+#	}
+#
+#	allow = {
+#	}
+#
+#	country_modifier = {
+#		stability_decay = 0.002
+#		global_merchant_capacity_modifier = 0.25
+#		country_cabinet_efficiency = 0.10
+#		crown_estate_power_from_cabinet = 0.25
+#		monthly_towards_plutocracy = societal_value_monthly_move
+#	}
+#
+#	years = 2
+#}
+#
+#joint_ruling_monarchy = {
+#	major = yes
+#	government = monarchy
+#
+#	potential = {
+#		#All Germans
+#		culture = { has_culture_group = culture_group:german_group }
+#		#Blocked for Fiefdoms
+#		NOT = {is_subject_type = fiefdom}
+#	}
+#	block_for_rebel = yes
+#
+#	allow = {
+#		#All Germans
+#		culture = { has_culture_group = culture_group:german_group }
+#
+#		#If the ruler has any brothers that can rule with him
+#		custom_tooltip = {
+#			text = joint_ruling_monarchy.tt
+#			ruler ?= {
+#				father ?= {
+#					any_child = {
+#						not = {this = root.ruler}
+#						is_alive = yes
+#						is_legally_male = yes
+#						is_adult = yes
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	on_activate = {
+#		if = {
+#			limit = {
+#				not = {has_variable = year_of_start_of_joint_rule}
+#			}
+#			set_variable = {
+#				name = year_of_start_of_joint_rule
+#				value = current_year
+#				days = 3000 #Giving it a expiring date to avoid shenanigans
+#			}
+#		}
+#	}
+#
+#	on_deactivate = {
+#		#Deactivating the law does not remove the variable "year_of_start_of_joint_rule"
+#		#to avoid the player resetting it at will
+#	}
+#	country_modifier = {
+#		potential_trigger = {
+#			custom_tooltip = {
+#				text = joint_ruling_monarchy.tt2
+#			}
+#		}
+#		stability_decay = 0.0025
+#		monthly_towards_conciliatory = societal_value_monthly_move
+#		monthly_towards_decentralization = societal_value_large_monthly_move
+#		set_cabinet_member_cost_modifier = -0.2
+#		replace_cabinet_member_cost_modifier = -0.2
+#		government_reform_slots = 1
+#	}
+#	years = 2
+#}
+#
+#conquistador_country = {
+#	major = yes
+#
+#	potential = {
+#		country_type = army
+#		religion = religion:catholic
+#		capital ?= { continent = continent:america }
+#	}
+#	allow = {
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = conquistador_country
+#		}
+#	}
+#	country_modifier = {
+#		auto_conquer_different_religion_at_war = yes
+#		blocked_from_peace = yes
+#		parliament_abolished = yes
+#	}
+#	years = 2
+#}
+#
+#banking_country = {
+#	major = yes
+#
+#	potential = {
+#		country_type = building
+#		NOT = { has_reform = government_reform:japanese_clan }
+#		NOT = { is_subject_type = trade_company }
+#	}
+#	allow = {
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = banking_country
+#		}
+#	}
+#	country_modifier = {
+#		bank_interest = -0.01
+#		monthly_loan_capacity_investment = 10.0
+#		monthly_diplomats = 0.4
+#		max_diplomats = 4
+#	}
+#	years = 2
+#}
+#
+#byzantine_court_in_italy = {
+#	major = yes
+#	age = age_1_traditions
+#	potential = {
+#		has_unlocked_government_reform_trigger = {
+#			type = byzantine_court_in_italy
+#		}
+#		religion = religion:orthodox
+#		culture = culture:greek_culture
+#	}
+#	locked = {
+#		religion = religion:orthodox
+#		culture = culture:greek_culture
+#	}
+#	country_modifier = {
+#		government_reform_slots = 1
+#	}
+#	country_modifier = {
+#		scale = {	# Scales from -1 to 1 based on culture group percentage
+#			value = "culture_group_percentage_in_country(culture_group:greek_group)"
+#			multiply = 2
+#			add =  -1
+#		}
+#		global_pop_assimilation_speed_modifier = 0.5
+#		monthly_prestige = 0.2
+#		diplomatic_reputation = 2
+#	}
+#	country_modifier = {
+#		scale = {	# Scales from -1 to 1 based on religion percentage
+#			value = "religion_percentage_in_country(religion:orthodox)"
+#			multiply = 2
+#			add =  -1
+#		}
+#		global_pop_conversion_speed_modifier = 0.5
+#		religious_icon_power_modifier = 0.75
+#		monthly_legitimacy = 0.1
+#	}
+#
+#	years = 0
+#}
+#
+#ottoman_malikane_tax_reform = {
+#	unique = yes
+#	major = yes
+#	potential = {
+#		has_or_had_tag = TUR
+#		has_variable = tur_malikane
+#	}
+#	country_modifier = {
+#		global_monthly_development = 0.001
+#		global_production_efficiency = small_production_efficiency_bonus
+#		stability_investment = tiny_stability_investment
+#		monthly_towards_free_subjects = societal_value_monthly_move
+#	}
+#	years = 2
+#}
+#
+#ottoman_coffee_house_espionage = {
+#	unique = yes
+#	major = yes
+#
+#	potential = {
+#		has_or_had_tag = TUR
+#		has_variable = tur_coffee_house_paranoia
+#	}
+#
+#	country_modifier = {
+#		spy_network_construction = 0.2
+#		counter_espionage = 0.1
+#		global_burghers_estate_power = -0.1
+#	}
+#
+#	years = 2
+#}
+#
+#ottoman_new_order_army = {
+#	unique = yes
+#	major = yes
+#
+#	potential = {
+#		has_or_had_tag = TUR
+#		has_variable = tur_new_order_army
+#	}
+#
+#	allow = {
+#		custom_tooltip = {
+#			text = tur_new_order_army_disbanded
+#			NOT = { has_variable = tur_new_order_army_disbanded }
+#		}
+#	}
+#
+#	country_modifier = {
+#		military_tactics = 0.1
+#		army_artillery_power = 0.15
+#		monthly_towards_outward = societal_value_large_monthly_move
+#	}
+#
+#	years = 2
+#}
+#
+#manden_kurufa_reform = {
+#	major = yes
+#	unique = yes
+#	age = age_1_traditions
+#	potential = {
+#		has_advance = kouroukan_fouga_advance
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = manden_kurufa_reform
+#		}
+#	}
+#	country_modifier = {
+#		cultural_tradition = 0.5
+#		monthly_towards_decentralization = societal_value_minor_monthly_move
+#		stability_decay = -0.00025
+#		global_crown_estate_power = 0.05
+#	}
+#	years = 2
+#}
+#
+#andean_monarchy = {
+#	major = yes
+#	potential = {
+#		culture = { has_culture_group = culture_group:andean_group }
+#	}
+#	government = monarchy
+#	allow = {
+#		religion.group = religion_group:folk_peruvian_group
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = andean_monarchy
+#		}
+#	}
+#	country_modifier = {
+#		has_panaqas = yes
+#		can_use_nustas_marriages = yes
+#		can_use_aclla_distribution = yes
+#		global_monthly_development = 0.001
+#	}
+#}
+#
+#tawantinsuyu_monarchy = {
+#	major = yes
+#	potential = {
+#		culture.language = language:quechuan_language
+#		has_reform = government_reform:tawantinsuyu_monarchy
+#	}
+#	government = monarchy
+#	allow = {
+#		religion.group = religion_group:folk_peruvian_group
+#		NOT = { has_reform = government_reform:reformed_tawantinsuyu_government }
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = tawantinsuyu_monarchy
+#		}
+#	}
+#	country_modifier = {
+#		has_panaqas = yes
+#		can_use_nustas_marriages = yes
+#		can_use_aclla_distribution = yes
+#		global_monthly_development = 0.001
+#		legislative_efficiency = 0.05
+#		government_reform_slots = 1
+#	}
+#}
+#
+#japanese_imperial_family = {
+#	major = yes
+#	potential = {
+#		culture = {
+#			has_culture_group = culture_group:japanese_group
+#		}
+#	}
+#	allow = {
+#		OR = {
+#			ruler_or_heir_if_regent ?= { dynasty ?= dynasty:yamato_dynasty }
+#			has_or_had_tag = YMT
+#		}
+#		NOT = { has_reform = government_reform:daimyo }
+#		NOT = { has_reform = government_reform:japanese_clan }
+#		NOT = { has_reform = government_reform:shogunate }
+#	}
+#	locked = {
+#		OR = {
+#			AND = {
+#				has_regent = yes
+#				heir ?= { dynasty = dynasty:yamato_dynasty}
+#			}
+#			ruler ?= { dynasty = dynasty:yamato_dynasty }
+#		}
+#	}
+#	country_modifier = {
+#		diplomatic_reputation = diplomatic_reputation_severe_bonus
+#		nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+#		global_crown_estate_power = 0.2
+#		nobles_estate_max_tax = 0.3
+#	}
+#	on_deactivate = {
+#		hidden_effect = {
+#			if = {
+#				limit = { country_type = building }
+#				add_reform = government_reform:japanese_clan
+#			}
+#			if = {
+#				limit = { country_type = location }
+#				add_reform = government_reform:daimyo
+#			}
+#		}
+#	}
+#	years = 2
+#}
+#
+#japanese_clan = {
+#	major = yes
+#	potential = {
+#		culture = {
+#			has_culture_group = culture_group:japanese_group
+#		}
+#	}
+#	allow = {
+#		country_type = building
+#		NOT = { has_reform = government_reform:daimyo }
+#		NOT = { has_reform = government_reform:japanese_imperial_family }
+#		NOT = { has_reform = government_reform:shogunate }
+#		capital ?= { region = region:japan_region }
+#	}
+#	locked = {
+#		country_type = building
+#	}
+#	country_modifier = {
+#		nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+#		government_reform_slots = 1
+#		monthly_army_tradition = 0.1
+#		nobles_estate_max_tax = 0.3
+#	}
+#	years = 2
+#}
+#
+#daimyo = {
+#	major = yes
+#	potential = {
+#		culture = {
+#			has_culture_group = culture_group:japanese_group
+#		}
+#	}
+#	allow = {
+#		country_type = location
+#		NOT = { has_reform = government_reform:japanese_clan }
+#		NOT = { has_reform = government_reform:japanese_imperial_family }
+#		NOT = { has_reform = government_reform:shogunate }
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = daimyo
+#		}
+#	}
+#	country_modifier = {
+#		nobles_estate_target_satisfaction = medium_permanent_target_satisfaction
+#		nobles_estate_levy_size = 1.0
+#		monthly_army_tradition = 0.1
+#		government_reform_slots = 1
+#	}
+#	years = 2
+#}
+#
+#shogunate = {
+#	major = yes
+#	unique = yes
+#	potential = {
+#		culture = {
+#			has_culture_group = culture_group:japanese_group
+#		}
+#	}
+#
+#	block_for_rebel = yes
+# 
+#	allow = {
+#		NOT = { has_reform = government_reform:daimyo }
+#		NOT = { has_reform = government_reform:japanese_imperial_family }
+#		NOT = { has_reform = government_reform:japanese_clan }
+#		is_leader_of_international_organization = international_organization:japanese_shogunate
+#	}
+#	locked = {
+#		is_leader_of_international_organization = international_organization:japanese_shogunate
+#	}
+#	country_modifier = {
+#		court_spending_efficiency = 0.1
+#		appease_nobles_estate_from_shogun_court_cost_modifier = -0.3
+#		cultural_influence_modifier = 0.2
+#		government_reform_slots = 1
+#	}
+#	years = 2
+#}
+#
+#legacy_of_kublai_khan = {
+#	unique = yes
+#	major = yes
+#	potential = {
+#		has_or_had_tag = CHI
+#		culture = culture:mongolian_culture
+#		is_leader_of_international_organization = international_organization:middle_kingdom
+#	}
+#	allow = {
+#		has_or_had_tag = CHI
+#		culture = culture:mongolian_culture
+#		is_leader_of_international_organization = international_organization:middle_kingdom
+#	}
+#	country_modifier = {
+#		cultures_capacity = 3
+#	}
+#}
+#
+#son_in_law_rule = {
+#	age = age_1_traditions
+#	major = yes
+#	potential = {
+#		has_reform = government_reform:son_in_law_rule
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = son_in_law_rule
+#		}
+#	}
+#	allow = {
+#		or = {
+#			at_war = yes
+#			and = {
+#				is_subject = yes
+#				or = {
+#					is_subject = no
+#					overlord ?= {
+#						has_or_had_tag = CHI
+#						culture = culture:mongolian_culture
+#					}
+#				}
+#			}
+#		}
+#	}
+#	country_modifier = {
+#		government_reform_slots = 1
+#		can_marry_only_overlord_dynasty_characters = yes
+#		forbid_marrying_lowborn = yes
+#	}
+#
+#	country_modifier = {
+#		potential_trigger = {
+#			custom_tooltip = {
+#				text = has_upgraded_son_in_law
+#				has_variable = kor_upgraded_son_in_law
+#			}
+#		}
+#		nobles_estate_max_tax = 0.2
+#		loyalty_to_overlord = 50
+#	}
+#
+#	country_modifier = {
+#		potential_trigger = {
+#			custom_tooltip = {
+#				text = not_has_upgraded_son_in_law
+#				NOT = {
+#					has_variable = kor_upgraded_son_in_law
+#				}
+#			}
+#		}
+#		legislative_efficiency = -0.2
+#		monthly_diplomats = -0.1
+#		global_nobles_estate_power = 0.5
+#	}
+#}
+#
+#kor_sadae_reform = {
+#	age = age_1_traditions
+#	major = yes
+#	potential = {
+#		has_unlocked_government_reform_trigger = {
+#			type = kor_sadae_reform
+#		}
+#	}
+#	allow = {
+#		is_subject_of = international_organization:middle_kingdom.leader_country
+#		is_subject_type = tributary
+#	}
+#	country_modifier = {
+#		selling_efficiency = medium_trade_efficiency_bonus
+#		monthly_legitimacy = 0.25
+#		scale = { # goes from -0.5 to 0.5
+#			value = -0.5
+#			add = {
+#				value = root.subject_loyalty
+#				divide = 100
+#			}
+#		}
+#	}
+#	country_modifier = {
+#		government_reform_slots = 1
+#	}
+#}
+#
+#altepetl = {
+#	age = age_1_traditions
+#
+#	major = yes
+#
+#	potential = {
+#		culture = culture:nahua_culture
+#		NOT = { has_variable = reformed_nahuatl_society_variable }
+#	}
+#
+#	country_modifier = {
+#		auto_slave_raid = yes
+#		diplomatic_capacity = 1
+#		monthly_towards_centralization = societal_value_monthly_move
+#		may_not_take_land_in_peace_treaties = yes
+#		subjugation_preference_modifier = 0.25
+#	}
+#
+#	locked = {
+#		has_reform = government_reform:altepetl
+#	}
+#
+#	years = 2
+#}
+#
+#rule_of_the_sejm = {
+#	major = yes
+#	unique = yes
+#	potential = {
+#		OR = {
+#			has_variable = had_sejm_event_variable
+#			has_variable = rise_of_szlachta_szlachta_outcome_variable
+#		}
+#	}
+#
+#	locked = {
+#		OR = {
+#			custom_tooltip = {
+#				text = has_had_struggle_for_royal_power_disaster_tt
+#				NOT = { has_variable = rise_of_szlachta_szlachta_outcome_variable }
+#			}
+#			"estate_power(estate_type:crown_estate)" < 0.5
+#		}
+#	}
+#
+#	country_modifier = {
+#		nobles_estate_agenda_impact = 0.25
+#		cannot_declare_no_cb_wars = yes
+#		global_nobles_estate_power = 0.2
+#	}
+#}
+#
+#dutch_republic_reform = {
+#	major = yes
+#	unique = yes
+#	potential = {
+#		has_or_had_tag = NED
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#		government_type = government_type:republic
+#	}
+#	country_modifier = {
+#		export_efficiency = small_trade_efficiency_bonus
+#		navy_heavy_ship_power = 0.05
+#		subject_loyalty = 10
+#		monthly_towards_plutocracy = societal_value_monthly_move
+#		monthly_towards_free_trade = societal_value_minor_monthly_move
+#		global_burghers_estate_power = 0.1
+#		trade_sea_efficiency = medium_trade_sea_efficiency_bonus
+#	}
+#	years = 2
+#}
+#
+#crown_castile_reform = {
+#	major = yes
+#	unique = yes
+#	content_priority = 800
+#	age = age_1_traditions
+#	government = monarchy
+#	potential = {
+#		OR = {
+#			has_or_had_tag = CAS
+#			AND = {
+#				has_or_had_tag = SPA
+#				culture = culture:castilian
+#			}
+#		}
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = crown_castile_reform
+#		}
+#	}
+#	country_modifier = {
+#		monthly_towards_aristocracy = societal_value_monthly_move
+#		change_policy_cost_modifier = -0.25
+#		global_manpower_modifier = 0.10
+#		monthly_legitimacy = 0.05
+#	}
+#	years = 2
+#}
+#
+#crown_aragon_reform = {
+#	major = yes
+#	unique = yes
+#	content_priority = 900
+#	age = age_1_traditions
+#	government = monarchy
+#	potential = {
+#		OR = {
+#			has_or_had_tag = ARA
+#			AND = {
+#				has_or_had_tag = SPA
+#				OR = {
+#					culture = culture:aragonese
+#					culture = culture:catalan
+#				}
+#			}
+#		}
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = crown_aragon_reform
+#		}
+#	}
+#	country_modifier = {
+#		monthly_towards_plutocracy = societal_value_monthly_move
+#		global_sailors_modifier = 0.15
+#		global_merchant_capacity_modifier = 0.10
+#	}
+#	years = 2
+#}
+#
+#school_of_first_letters_reform = {
+#	major = yes
+#	unique = yes
+#	age = age_4_reformation
+#	potential = {
+#		culture = { has_culture_group = culture_group:iberian_group }
+#	}
+#	allow = {
+#		has_embraced_institution = institution:confessionalism
+#	}
+#	country_modifier = {
+#		global_max_literacy = 10
+#		global_monthly_literacy = 0.01
+#		research_speed_modifier = 0.05
+#	}
+#	years = 2
+#}
+#
+#sons_of_the_oak_reform = {
+#	major = yes
+#	unique = yes
+#	age = age_1_traditions
+#	government = monarchy
+#	potential = {
+#		OR = {
+#			has_or_had_tag = NAV
+#			culture = culture:basque
+#			AND = {
+#				has_or_had_tag = SPA
+#				culture = culture:basque
+#			}
+#		}
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = sons_of_the_oak_reform
+#		}
+#	}
+#	country_modifier = {
+#		country_child_education = 0.1
+#		global_hostile_attrition = 0.5
+#		global_pop_assimilation_speed_modifier = 0.1
+#	}
+#	years = 2
+#}
+#
+#the_jewel_of_alandalus_reform = {
+#	major = yes
+#	unique = yes
+#	age = age_1_traditions
+#	government = monarchy
+#	potential = {
+#		has_or_had_tag = GRA
+#	}
+#	allow = {
+#		has_embraced_institution = institution:legalism
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = the_jewel_of_alandalus_reform
+#		}
+#	}
+#	country_modifier = {
+#		diplomatic_reputation = diplomatic_reputation_mild_bonus
+#		global_manpower_modifier = 0.10
+#		war_score_vs_other_religion_efficiency = 0.1
+#	}
+#	years = 2
+#}
+#
+#mamluk_government = {
+#	unique = yes
+#	major = yes
+#	content_priority = 1100
+#	potential = {
+#		has_or_had_tag = MAM
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = mamluk_government
+#		}
+#	}
+#	country_modifier = {
+#		can_promote_mamluks = yes
+#		can_build_mamluk_barracks = yes
+#		monthly_army_tradition = 0.1
+#		court_spending_efficiency = -0.1
+#	}
+#	years = 2
+#}
+#
+#autonomous_swiss_cantons_reform = {
+#	unique = yes
+#	major = yes
+#	potential = {
+#		has_unlocked_government_reform_trigger = { type = autonomous_swiss_cantons_reform }
+#	}
+#	country_modifier = {
+#		monthly_towards_decentralization = societal_value_tiny_monthly_move
+#		diplomatic_reputation = 1
+#		stability_decay = -0.00025
+#		parliament_base_support = 0.25
+#	}
+#}
+#
+#dan_the_kings_law = {
+#	unique = yes
+#	major = yes
+#	potential = {
+#		has_unlocked_government_reform_trigger = { type = dan_the_kings_law }
+#	}
+#	country_modifier = {
+#		global_crown_estate_power = 0.25
+#		monthly_towards_centralization = societal_value_monthly_move
+#	}
+#	years = 2
+#}
+#
+#mandala_system = {
+#	major = yes
+#	potential = {
+#		capital.sub_continent = sub_continent:south_east_asia
+#		OR = {
+#			religion.group = religion_group:dharmic
+#			religion = religion:theravada
+#			religion = religion:mahayana
+#			religion = religion:satsana_phi
+#		}
+#	}
+#	allow = {
+#	}
+#
+#	country_modifier = {
+#		cultures_capacity = 3
+#		monthly_towards_decentralization = societal_value_minor_monthly_move
+#		allow_tributary_subject = yes
+#	}
+#
+#	years = 4
+#}
+#
+#lit_grand_duchy_of_lithuania_reform = {
+#	unique = yes
+#	major = yes
+#	content_priority = 1100
+#
+#	potential = {
+#		country_rank_level = 2
+#		government_type = government_type:monarchy
+#		has_unlocked_government_reform_trigger = {
+#			type = lit_grand_duchy_of_lithuania_reform
+#		}
+#	}
+#
+#	country_modifier = {
+#		monthly_prestige = 0.1
+#		cultures_capacity_modifier = 0.2
+#		monthly_towards_decentralization = societal_value_monthly_move
+#	}
+#
+#	years = 2
+#}
+#
+#cossacks_reform = {
+#	major = yes
+#
+#	potential = {
+#		culture = culture:cossack_culture
+#		country_type = army
+#	}
+#
+#	locked = {
+#		culture = culture:cossack_culture
+#		country_type = army
+#	}
+#
+#	country_modifier = {
+#		amount_looted_modifier = 0.25
+#		monthly_towards_land = societal_value_large_monthly_move
+#		army_light_cavalry_power = 0.1
+#	}
+#}
+#
+#lat_restored_rule_of_the_latins = {
+#	major = yes
+#	unique = yes
+#	content_priority = 200
+#	potential = { tag = LAT }
+#	allow = { 
+#		tag = LAT
+#		has_unlocked_government_reform_trigger = { type = lat_restored_rule_of_the_latins }
+#	}
+#	locked = {
+#		is_locked_mechanic = {
+#			mechanic = government_reform
+#			type = lat_restored_rule_of_the_latins
+#		}
+#	}
+#	country_modifier = {
+#		global_crown_estate_power = 0.25
+#		tax_income_efficiency = large_tax_income_efficiency_bonus
+#		cultures_capacity = 3
+#		government_reform_slots = 1
+#		government_size = 1
+#		tolerance_own = 1
+#		monthly_towards_quality = societal_value_monthly_move
+#		lat_access_to_latin_reintegration_cabinet = yes
+#		lat_access_to_reconquest_cb = yes
+#	}
+#	years = 1
+#}

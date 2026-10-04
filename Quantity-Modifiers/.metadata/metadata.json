@@ -1,0 +1,10 @@
+﻿{
+	"name":	"Quantity Modifiers",
+	"id":	"grashwandir.quantity_modifiers",
+	"version":	"0.1",
+	"supported_game_version":	"1.3.11",
+	"short_description":	"Add some modifiers to push quantity value.",
+	"tags":	["Balance", "Laws"],
+	"relationships":	[],
+	"game_custom_data":	{}
+}

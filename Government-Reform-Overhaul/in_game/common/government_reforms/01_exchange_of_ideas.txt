@@ -1,0 +1,19 @@
+﻿REPLACE:exchange_of_ideas = {
+	age = age_2_renaissance
+
+	societal_values = {
+		innovative_focus
+		humanist_focus
+	}
+
+	country_modifier = {
+		global_institution_growth_modifier = 0.1
+		research_speed_modifier = 0.05
+		monthly_towards_innovative = societal_value_monthly_move
+		
+		# addition
+		monthly_towards_humanist = societal_value_monthly_move
+	}
+
+	years = 2
+}

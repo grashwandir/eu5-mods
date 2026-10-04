@@ -1,0 +1,5 @@
+﻿l_english:
+ state_ministry_bureaucracy: "State Ministry"
+ state_ministry_bureaucracy_desc: "State Ministry"
+ MODIFIER_TYPE_NAME_state_ministry_bureaucracy_impact_modifier: "State ministry bureaucracy impact modifier"
+ MODIFIER_TYPE_DESC_state_ministry_bureaucracy_impact_modifier: "State ministry bureaucracy impact modifier"

@@ -1,0 +1,9 @@
+﻿#example = {
+#	positive = "gfx/interface/icons/modifier_types/example_positive.dds" # Will be used if >= 0 or if `negative` isn't set
+#	negative = "gfx/interface/icons/modifier_types/example_negative.dds" # Will be used if < 0 (optional)
+#	default = yes # The first one in the file with this flag will be used as default
+#}
+
+state_ministry_bureaucracy_impact_modifier = {
+	positive = "gfx/interface/icons/modifier_types/global_max_bureaucracy_slots.dds"
+}

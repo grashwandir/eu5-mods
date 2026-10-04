@@ -1,0 +1,11 @@
+﻿# Impact modifier type definitions for generic 1600-1836 and Chinese bureaucracies
+# Format mirrors 01_byz.txt — one entry per bureaucracy type, percent=yes, category=country
+
+# ADM
+
+state_ministry_bureaucracy_impact_modifier = {
+	percent=yes
+	game_data={
+		category=country
+	}
+}

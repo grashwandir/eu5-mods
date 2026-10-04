@@ -1,0 +1,54 @@
+﻿#peasants_represented_in_parliament = {
+#	estate = peasants_estate
+#
+#	potential = {
+#		modifier:has_a_parliamentary_system = yes
+#	}
+#	allow = {
+#		OR = {
+#			parliament_type = parliament_type:estate_parliament
+#			parliament_type = parliament_type:autocratic_parliament
+#			parliament_type = parliament_type:constitutional_parliament
+#		}
+#	}
+#	
+#	can_revoke = {
+#		NOT = { has_estate_privilege = estate_privilege:land_owning_farmers }
+#	}
+#	
+#	country_modifier = {
+#		peasants_estate_can_participate_in_parliament = yes
+#		peasants_estate_target_satisfaction = medium_privilege_target_satisfaction
+#		global_peasants_estate_power = 0.5
+#		global_peasant_enfranchisment = 0.05
+#		monthly_towards_free_subjects = societal_value_monthly_move
+#	}
+#}
+
+REPLACE:peasants_represented_in_parliament = {
+	estate = peasants_estate
+
+	potential = {
+		modifier:has_a_parliamentary_system = yes
+	}
+	allow = {
+		OR = {
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:common_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+		}
+	}
+	
+	can_revoke = {
+		NOT = { has_estate_privilege = estate_privilege:land_owning_farmers }
+	}
+	
+	country_modifier = {
+		peasants_estate_can_participate_in_parliament = yes
+		peasants_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_peasants_estate_power = 0.5
+		global_peasant_enfranchisment = 0.05
+		monthly_towards_free_subjects = societal_value_monthly_move
+	}
+}

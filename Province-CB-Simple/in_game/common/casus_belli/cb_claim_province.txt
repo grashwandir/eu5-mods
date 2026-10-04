@@ -1,0 +1,39 @@
+﻿cb_claim_province = {
+	years = 10
+	
+    create_visible = {
+        always = no
+#        exists = international_organization:hre
+#        is_member_of_international_organization = international_organization:hre
+    }
+
+	create_enabled = {
+		NOT = {
+			has_truce_with = scope:target
+		}
+		OR = {
+			is_neighbor_of = scope:target
+			any_neighbor_country = {
+				is_subject_of = root
+				is_neighbor_of = scope:target
+			}
+		}
+	}
+	
+	province = {
+		any_location_in_province = {
+			always = yes
+		}
+	}
+
+	war_goal_type = wg_claim_province
+	
+	custom_tags = { religious_casus_belli }
+	
+	ai_will_do = {
+		add = {
+			desc = "BASE"
+			value = -1
+		}
+	}
+}

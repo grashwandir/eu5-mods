@@ -1,0 +1,64 @@
+﻿INJECT:republican_assembly = {
+	capital_country_modifier = {
+		monthly_republican_tradition = 0.1
+	}
+}
+
+#REPLACE:republican_assembly = {
+#	audio_tier = 3
+#	is_foreign = no
+#	pop_type = nobles
+#	max_levels = 1
+#	
+#	category = government_category
+#	
+#	employment_size = large_noble_employment
+#	
+#	town = yes
+#	city = yes
+#	megalopolis = yes
+#	
+#	expensive = yes
+#	build_time = large_capital_build_time
+#	
+#	location_potential = {
+#		is_capital = yes
+#	}
+#
+#	country_potential = {
+#		government_type ?= government_type:republic
+#	}
+#	
+#	capital_modifier = {
+#	}
+#	
+#	remove_if = {
+#		OR = {
+#			is_no_longer_capital = yes
+#			location.owner ?= { government_type != government_type:republic }
+#		}
+#	}
+#	
+#	capital_country_modifier = {
+#		monthly_republican_tradition = 0.2
+#		country_cabinet_efficiency = 0.05
+#	}
+#	
+#	unique_production_methods = {
+#		republican_assembly_maintenance = {
+#			furniture = 0.1
+#			tools = 0.1
+#			glass = 0.5
+#			fine_cloth = 0.5
+#			books = 0.1
+#			goods_gold = 0.1
+#			marble = 0.1
+#				
+#			category = building_maintenance
+#		}
+#	}
+#	
+#	graphical_tags = { palace }
+#
+#	construction_demand = early_capital_building_construction
+#}

@@ -1,0 +1,45 @@
+﻿#native_policy = {
+#	law_category = socioeconomic
+#	potential = {
+#	}
+#
+#	native_trade = {
+#		country_modifier = {
+#			pop_countries_opinions = 25
+#			colonial_maintenance_efficiency = 0.40
+#			monthly_towards_free_trade = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			burghers_estate
+#		}
+#		years = 2
+#	}
+#
+#	native_subjugation = {
+#		country_modifier = {
+#			pop_countries_opinions = -33
+#			allow_native_subjugation_cb = yes
+#			enslave_tribals = yes
+#			monthly_towards_serfdom = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			nobles_estate
+#			peasants_estate
+#		}
+#		years = 2
+#	}
+#
+#	native_integration = {
+#		country_modifier = {
+#			pop_countries_opinions = -20
+#			building_missionary_effort_modifier = 0.5
+#			make_tribals_peasants = yes
+#			monthly_towards_humanist = societal_value_minor_monthly_move
+#		}
+#		estate_preferences = {
+#			clergy_estate
+#		}
+#		years = 2
+#	}
+#
+#}

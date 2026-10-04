@@ -1,0 +1,71 @@
+﻿INJECT:joint_ruling_monarchy = {
+	country_modifier = {
+		monthly_legitimacy = 0.5
+		government_size = 1
+	}
+}
+
+#joint_ruling_monarchy = {
+#	major = yes
+#	government = monarchy
+#
+#	potential = {
+#		#All Germans
+#		culture = { has_culture_group = culture_group:german_group }
+#		#Blocked for Fiefdoms
+#		NOT = {is_subject_type = fiefdom}
+#	}
+#	block_for_rebel = yes
+#
+#	allow = {
+#		#All Germans
+#		culture = { has_culture_group = culture_group:german_group }
+#
+#		#If the ruler has any brothers that can rule with him
+#		custom_tooltip = {
+#			text = joint_ruling_monarchy.tt
+#			ruler ?= {
+#				father ?= {
+#					any_child = {
+#						not = {this = root.ruler}
+#						is_alive = yes
+#						is_legally_male = yes
+#						is_adult = yes
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	on_activate = {
+#		if = {
+#			limit = {
+#				not = {has_variable = year_of_start_of_joint_rule}
+#			}
+#			set_variable = {
+#				name = year_of_start_of_joint_rule
+#				value = current_year
+#				days = 3000 #Giving it a expiring date to avoid shenanigans
+#			}
+#		}
+#	}
+#
+#	on_deactivate = {
+#		#Deactivating the law does not remove the variable "year_of_start_of_joint_rule"
+#		#to avoid the player resetting it at will
+#	}
+#	country_modifier = {
+#		potential_trigger = {
+#			custom_tooltip = {
+#				text = joint_ruling_monarchy.tt2
+#			}
+#		}
+#		stability_decay = 0.0025
+#		monthly_towards_conciliatory = societal_value_monthly_move
+#		monthly_towards_decentralization = societal_value_large_monthly_move
+#		set_cabinet_member_cost_modifier = -0.2
+#		replace_cabinet_member_cost_modifier = -0.2
+#		government_reform_slots = 1
+#	}
+#	years = 2
+#}

@@ -1,0 +1,52 @@
+﻿religious_privileges = {
+	
+	potential = {
+		capital ?= {
+			OR = {
+				sub_continent = sub_continent:western_europe
+				sub_continent = sub_continent:eastern_europe
+			}
+		}
+	}
+	
+	allow = {
+		scope:target = {
+			custom_tooltip = {
+				text = studium_privileges_rank_tt
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+				NOT = { has_town_rights = town_rights_type:studium_privileges }
+			}
+		}
+	}
+	
+	country_modifier = {
+		legislative_efficiency = -0.05
+	}
+	
+	location_modifier = {
+#		local_monthly_literacy = 0.05
+#		local_pop_promotion_speed_modifier = 0.2
+#		local_institution_growth_modifier = 0.2
+		
+		local_monthly_literacy = 0.01
+		local_pop_promotion_speed_modifier = 0.1
+		local_institution_growth_modifier = 0.2
+		
+		local_pop_conversion_speed_modifier = 0.1
+		
+#		local_production_efficiency = town_right_efficiency_penalty
+		
+		local_clergy_estate_power = 0.50
+		local_nobles_estate_power = -0.25
+		local_burghers_estate_power = -0.25
+#		local_crown_estate_power = -0.10
+		
+#		local_clergy_desired_pop = 0.2
+		local_clergy_desired_pop_scaled = 0.025
+	}
+
+	color = hsv { 0.60 0.31 0.87 }
+}

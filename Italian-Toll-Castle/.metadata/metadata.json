@@ -1,0 +1,10 @@
+﻿{
+	"name":	"Italian Toll Castle",
+	"id":	"grashwandir.italian_toll_castle",
+	"version": "0.1",
+	"supported_game_version": "1.3.11",
+	"short_description": "Give Mountain Toll Castle and River Toll Castle to Italian",
+	"tags":	["Advancements", "Balance"],
+	"relationships": [],
+	"game_custom_data":	{}
+}

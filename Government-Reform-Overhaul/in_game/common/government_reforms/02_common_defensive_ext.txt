@@ -1,0 +1,74 @@
+﻿REPLACE:asymmetrical_warfare_tactics = {
+	age = age_3_discovery
+	
+	allow = {
+		NOT = {	has_reform = government_reform:fortress_country }
+	}
+	
+	country_modifier = {
+		monthly_towards_defensive = societal_value_monthly_move
+		global_hostile_attrition = 1
+	}
+
+	years = 2
+}
+
+REPLACE:garrison_system = {
+	age = age_2_renaissance
+	
+	allow = {
+		NOT = {	has_reform = government_reform:fortress_country }
+	}
+	
+	country_modifier = {
+		monthly_towards_defensive = societal_value_minor_monthly_move
+		global_garrison_size_modifier = 0.25
+		fort_maintenance_efficiency = 0.2
+		monthly_towards_land = societal_value_minor_monthly_move
+	}
+
+	years = 2
+}
+
+#INJECT:asymmetrical_warfare_tactics = {
+#	allow = {
+#		NOT = {	has_reform = government_reform:fortress_country }
+#	}
+#}
+#
+#INJECT:garrison_system = {
+#	allow = {
+#		NOT = {	has_reform = government_reform:fortress_country }
+#	}
+#}
+
+fortress_country = {
+	# TODO: age 3 or 4 ?
+	# age = age_4_reformation
+	age = age_3_discovery
+	
+	icon = fortress_country
+	
+	societal_values = {
+		defensive_focus
+	}
+	
+	allow = {
+		NOT = {	has_reform = government_reform:asymmetrical_warfare_tactics }
+		NOT = {	has_reform = government_reform:garrison_system }
+	}
+	
+	country_modifier = {
+		monthly_towards_defensive = societal_value_large_monthly_move
+		
+		# asymetric warfare
+		global_hostile_attrition = 1
+		
+		# garrison system
+		global_garrison_size_modifier = 0.25
+		fort_maintenance_efficiency = 0.2
+		monthly_towards_land = societal_value_minor_monthly_move
+	}
+
+	years = 2
+}

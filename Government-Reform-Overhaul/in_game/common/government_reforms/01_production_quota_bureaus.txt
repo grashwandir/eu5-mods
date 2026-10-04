@@ -1,0 +1,10 @@
+﻿REPLACE:production_quota_bureaus = {
+	age = age_2_renaissance
+
+	country_modifier = {
+		monthly_towards_traditional_economy = 0.20
+		global_raw_material_output = 0.1
+	}
+
+	years = 2
+}

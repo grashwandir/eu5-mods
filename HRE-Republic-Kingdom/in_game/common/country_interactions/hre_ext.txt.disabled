@@ -1,0 +1,274 @@
+﻿# Grant Kingdom title
+#bestow_kingdom_title = {
+#	type = diplomacy
+#	category = CATEGORY_HRE_ACTIONS
+#	ai_limit_per_check = 1
+#	potential = {
+#		scope:actor = {
+#			is_emperor = yes
+#		}
+#	}
+#	allow = {
+#		has_gold_org_country_trigger = {
+#			international_organization = international_organization:hre
+#			country = scope:actor
+#			value = bestow_kingdom_title_cost
+#		}
+#	}
+#	select_trigger = {
+#		looking_for_a = country
+#		target_flag = recipient
+#		name = "choose_country"
+#		column = {
+#			data = name
+#		}
+#		visible = {
+#			is_member_of_international_organization = international_organization:hre
+#			country_rank_level = 2
+#			government_type = government_type:monarchy
+#			is_subject = no
+#			OR = {
+#				NOT = { has_global_variable_map = hre_kingdoms_map }
+#				NOT = { is_value_in_global_variable_map = { name = hre_kingdoms_map target = root } }
+#			}
+#		}
+#        enabled = {
+#		}
+#	}
+#	select_trigger = {
+#		looking_for_a = scripted_geography
+#		interaction_source_list = {
+#			scripted_geography:kingdom_of_italy_geography = { add_to_list = source }
+#			scripted_geography:kingdom_of_lotharingia_geography = { add_to_list = source }
+#			scripted_geography:kingdom_of_burgundy_geography = { add_to_list = source }
+#			scripted_geography:kingdom_of_bohemia_geography = { add_to_list = source }
+#		}
+#		target_flag = target
+#		name = "request_kingdom_title_select_title"
+#		none_available_msg_key = "no_available_kingdom_title"
+#		column = {
+#			data = name
+#		}
+#		visible = {
+#			OR = {
+#				NOT = { has_global_variable_map = hre_kingdoms_map }
+#				NOT = { is_key_in_global_variable_map = { name = hre_kingdoms_map target = root } }
+#			}
+#			scope:recipient.capital = { is_in_scripted_geography = root }
+#		}
+#		enabled = {
+#			any_location_in_scripted_geography = {
+#				OR = {
+#					is_ownable = no
+#					owner = scope:recipient
+#				}
+#				percent >= 0.5
+#			}
+#		}
+#	}
+#	effect = {
+#		scope:recipient = {
+#			trigger_event_non_silently = hre.20
+#			add_opinion = { target = scope:actor modifier = opinion_granted_kingdom_title }
+#		}
+#	}
+#	ai_will_do = {
+#		add = {
+#			desc = "ACTOR_ACCEPTANCE"
+#			value = "scope:actor.reverse_country_interaction_acceptance(country_interaction:request_kingdom_title|scope:recipient)"
+#		}
+#	}
+#}
+
+REPLACE:request_kingdom_title = {
+	type = diplomacy
+	category = CATEGORY_HRE_ACTIONS
+	ai_limit_per_check = 1
+	potential = {
+		scope:actor = {
+			is_member_of_international_organization = international_organization:hre
+			country_rank_level = 2
+#			government_type = government_type:monarchy
+			is_subject = no
+			OR = {
+				NOT = { has_global_variable_map = hre_kingdoms_map }
+				NOT = { is_value_in_global_variable_map = { name = hre_kingdoms_map target = scope:actor } }
+			}
+		}
+	}
+	allow = {
+		scope:actor = {
+			gold >= {
+				value = bestow_kingdom_title_cost
+				multiply = 4
+			}
+		}
+	}
+	select_trigger = {
+		looking_for_a = country
+		target_flag = recipient
+		name = "choose_country"
+		column = {
+			data = name
+		}
+		visible = {
+			is_emperor = yes
+		}
+        enabled = {
+		}
+	}
+	select_trigger = {
+		looking_for_a = scripted_geography
+		interaction_source_list = {
+			scripted_geography:kingdom_of_italy_geography = { add_to_list = source }
+			scripted_geography:kingdom_of_lotharingia_geography = { add_to_list = source }
+			scripted_geography:kingdom_of_burgundy_geography = { add_to_list = source }
+			scripted_geography:kingdom_of_bohemia_geography = { add_to_list = source }
+		}
+		cache_interaction_source_list = yes
+		target_flag = target
+		name = "request_kingdom_title_select_title"
+		none_available_msg_key = "no_available_kingdom_title"
+		column = {
+			data = name
+		}
+		visible = {
+			OR = {
+				NOT = { has_global_variable_map = hre_kingdoms_map }
+				NOT = { is_key_in_global_variable_map = { name = hre_kingdoms_map target = root } }
+			}
+			OR = {
+				scope:actor.capital = { is_in_scripted_geography = root }
+				scope:actor.government_type = government_type:republic
+			}
+		}
+		enabled = {
+			OR = {
+				any_location_in_scripted_geography = {
+					OR = {
+						is_ownable = no
+						owner = scope:actor
+					}
+					percent >= 0.5
+				}
+				AND = {
+					custom_tooltip = {
+						text = gag_ghibellines_winner_may_request_kingdom_of_italy_title_tt
+						scope:actor = {
+							has_variable = gag_ghibellines_winner_may_request_kingdom_of_italy_title
+						}
+					}
+					scope:target ?= {
+						this = scripted_geography:kingdom_of_italy_geography
+					}
+					any_location_in_scripted_geography = {
+						OR = {
+							is_ownable = no
+							owner = scope:actor
+						}
+						percent >= 0.1
+					}
+				}
+				scope:actor = {
+					government_type = government_type:republic
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+			}
+			hidden_effect = {
+				add_to_global_variable_map = {
+					name = hre_kingdoms_map
+					key = scope:target
+					value = scope:recipient
+				}
+			}
+		}
+		scope:actor = {
+			transfer_gold_to_org_country_effect = {
+				international_organization = international_organization:hre
+				country = scope:recipient
+				value = bestow_kingdom_title_cost
+			}
+			set_country_rank_effect = { rank = country_rank:rank_kingdom }
+			add_opinion = {
+				target = scope:recipient
+				modifier = opinion_granted_kingdom_title
+			}
+		}
+	}
+	ai_will_do = {
+		add = {
+			desc = "TARGET_ACCEPTANCE"
+			value = "scope:actor.country_interaction_acceptance(country_interaction:request_kingdom_title|scope:recipient)"
+		}
+	}	
+	accept = {
+		subtract = {
+			desc = "VOTE_BASE_VALUE"
+			value = 100
+		}
+		if = {
+			limit = { scope:actor = { is_allied_with = { target = scope:recipient } } }
+			add = {
+				desc = "game_concept_alliance"
+				value = 20
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					is_rival_of = scope:actor
+				}
+			}
+			add = {
+				desc = "game_concept_rival"
+				value = -1000
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					is_enemy_of = scope:actor
+				}
+			}
+			add = {
+				desc = "game_concept_enemy"
+				value = -100
+			}
+		}
+		add = {
+			desc = "DIPLOMATIC_REPUTATION"
+			value = {
+				value = scope:actor.modifier:diplomatic_reputation
+				multiply = 3
+			}
+		}
+		add = {
+			desc = "OUR_OPINION_TOOLTIP"
+			value = "scope:actor.opinion(scope:actor)"
+		}
+		add = {
+			desc = "THEIR_OPINION_TOOLTIP"
+			value = "scope:actor.opinion(scope:recipient)"
+		}
+		if = {
+			limit = { scope:actor.culture.language = scope:recipient.culture.language }
+			add = {
+				desc = "UPKEEP_SAME_LANGUAGE"
+				value = 25
+			}
+		}
+		add = {
+			desc = "game_concept_trust"
+			scope:actor = {
+				value = "trust(scope:recipient)"
+				divide = 5
+			}
+		}
+	}
+}
