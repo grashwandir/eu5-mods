@@ -57,20 +57,20 @@ REPLACE:crusading_knights = {
 	requires = res_publica_christiana
 }
 
-REPLACE:catholic_pilgrimages = {
-	age = age_1_traditions
-	 
-	potential = {
-		OR = {
-			religion = religion:catholic
-			is_protestant = yes
-		}
-	}
-	
-	monthly_religious_influence = 0.1
-	
-	requires = roman_orthodoxy
-}
+#REPLACE:catholic_pilgrimages = {
+#	age = age_1_traditions
+#	 
+#	potential = {
+#		OR = {
+#			religion = religion:catholic
+#			is_protestant = yes
+#		}
+#	}
+#	
+#	monthly_religious_influence = 0.1
+#	
+#	requires = roman_orthodoxy
+#}
 
 ##Age 2 Renaissance
 #inquisition_advance = {
@@ -209,16 +209,36 @@ REPLACE:reform_church_music = {
 #	requires = regulate_court_procedures
 #}
 
+#REPLACE:mendicant_orders = {
+#	age = age_3_discovery
+#	
+#	potential = {
+#		OR = {
+#			religion = religion:catholic
+#			is_protestant = yes
+#		}
+#	}
+#	
+#	global_monthly_prosperity = 0.001
+#
+#	requires = diplomatic_training
+#}
+
+# 1.4.1
 REPLACE:mendicant_orders = {
 	age = age_3_discovery
-	
+
 	potential = {
 		OR = {
 			religion = religion:catholic
 			is_protestant = yes
 		}
 	}
+
+	global_pop_conversion_speed_modifier = 0.1
+	invite_religious_order_price_cost_modifier = -0.05
 	
+	# Added
 	global_monthly_prosperity = 0.001
 
 	requires = diplomatic_training

@@ -102,12 +102,15 @@ REPLACE:lutheran = {
 	ai_wants_convert = yes
 	
 	definition_modifier = {
+	
 		clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
 		tax_income_efficiency = medium_tax_income_efficiency_bonus
-		
-		discipline = 0.05
-				
+
 		monthly_religious_influence = 0.1
+		
+#		global_max_literacy = 5
+		discipline = 0.05
+
 		maximum_religious_influence = 400
 	}
 	
