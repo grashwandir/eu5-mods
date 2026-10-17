@@ -1,0 +1,67 @@
+﻿# REPLACE of vanilla 1.4.1 in_game/common/generic_actions/government_conversions.txt (lines 73-150)
+REPLACE:monarchy_to_republic = {
+	type = owncountry
+	show_message = no
+    price = price:change_government_type_price
+
+	cooldown = {
+		type = transition_government
+		years = 20
+	}
+	
+	potential = {
+		scope:actor = {
+			government_type = government_type:monarchy
+			NOR = {
+				tag = CHI
+				tag = PAP
+				international_organization:hre ?= {
+					leader_country ?= prev
+				}
+			}
+		}
+	}
+	allow = {
+		scope:actor = {		
+			at_war = no
+			has_any_active_disaster = no
+			is_during_bankruptcy = no
+            country_has_estate = estate_type:burghers_estate
+            
+			trigger_if = {
+				limit = {
+					custom_tooltip = {
+						text = variable_rise_of_szlachta_burghers_outcome_variable_tt
+						has_variable = rise_of_szlachta_burghers_outcome_variable
+					}
+				}
+				"estate_power(estate_type:burghers_estate)" > {
+					value = "estate_power(estate_type:nobles_estate)"
+					multiply = 0.5
+				}
+				societal_value:aristocracy_vs_plutocracy >= 50
+				legitimacy > 50
+			}
+			trigger_else = {
+				"estate_power(estate_type:burghers_estate)" > "estate_power(estate_type:nobles_estate)"
+				societal_value:aristocracy_vs_plutocracy >= 95
+				legitimacy > 80
+			}
+			stability > 0
+			custom_tooltip = {
+				text = not_in_union_tt
+				NOT = { exists = union }
+			}
+		}
+	}
+	effect = {
+		scope:actor = { 
+			change_government_type = government_type:republic
+			add_estate_satisfaction = { type = estate_type:burghers_estate value = estate_satisfaction_extreme_bonus }
+		}
+
+		custom_tooltip = warn_about_loss_of_content_tt
+	}
+
+    ai_will_do = { value = -1000 }  #Let's avoid this
+}

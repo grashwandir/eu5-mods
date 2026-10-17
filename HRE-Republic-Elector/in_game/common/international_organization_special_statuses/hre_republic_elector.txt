@@ -1,0 +1,87 @@
+﻿# REPLACE of vanilla 1.4.1 in_game/common/international_organization_special_statuses/hre.txt (lines 40-115)
+REPLACE:elector = {
+	max_countries = {
+		if = {
+			limit = { modifier:hre_max_elector <= 0  }
+			value = 4
+		}
+		else = {
+			value = modifier:hre_max_elector
+		}
+	}
+	priority = 10
+
+	modifier = {
+		is_hre_elector = yes
+	}
+
+	can_bestow_trigger = {
+		is_subject = no
+		is_member_of_international_organization = scope:recipient
+		OR = {
+			government_type = government_type:monarchy
+			government_type = government_type:republic
+		}
+		NOT = { has_reform = government_reform:peasant_republic_reform }
+		NOT = { has_reform = government_reform:frisian_freedom_reform }
+		scope:recipient = {
+			NOT = {
+				country_has_special_status = { type = special_status:elector country = root }
+			}
+		}
+		hre_country_fulfills_imperial_religion_requirement = { type = electorship }
+	}
+
+	auto_bestowal_trigger = {
+	}
+
+	auto_rescind_trigger = {
+		OR = {
+			NOR = {
+				government_type = government_type:monarchy
+				government_type = government_type:republic
+			}
+			has_reform = government_reform:peasant_republic_reform
+			has_reform = government_reform:frisian_freedom_reform
+			NOT = { is_member_of_international_organization = scope:recipient }
+		}
+	}
+	
+	on_bestowed_effect = {
+		scope:recipient = {
+			international_organization_remove_special_status = {
+				type = scope:source
+				country = root
+			}
+		}
+	}
+	
+	on_rescinded_effect = {
+	}
+	elector = yes
+	special_status_power = {
+		value = 75
+		if = {
+			limit = { 
+				OR = {
+					scope:recipient = { international_organization_has_policy = policy:no_imperial_diet_policy } 
+					scope:recipient = { international_organization_has_policy = policy:no_golden_bull_policy } 
+				}
+			}
+			multiply = 1.5
+		}
+		else_if = {
+			limit = { scope:recipient = { international_organization_has_policy = policy:hre_early_imperial_diet_policy } }
+			multiply = 1.5
+		}
+		else_if = {
+			limit = { scope:recipient = { international_organization_has_policy = policy:hre_bi_camerial_imperial_diet_policy } }
+			multiply = 1.25		
+		}
+		else_if = {
+			limit = { scope:recipient = { international_organization_has_policy = policy:hre_tri_camerial_imperial_diet_policy } }
+			multiply = 1.0			
+		}
+	}
+	map_color = define:NMapColors|HRE_ELECTOR_COLOR
+}

@@ -1,0 +1,10 @@
+﻿{
+	"name":	"HRE Republic Elector",
+	"id":	"grashwandir.republic_elector",
+	"version":	"0.1",
+	"supported_game_version":	"1.4",
+	"short_description":	"Republics (except peasant republics) can hold the HRE Prince-Elector status and keep it when a monarchy elector turns republic.",
+	"tags":	["Gameplay", "International Organizations"],
+	"relationships":	[],
+	"game_custom_data":	{}
+}

@@ -1,0 +1,2 @@
+﻿l_english:
+ elector_desc: "The $elector$ is a [special_status|e] of the [GetUniqueInternationalOrganization('hre').GetName]. Electors are capable of voting for the next [GetUniqueInternationalOrganization('hre').GetLeaderTitle]. Only a state with the [ShowGovernmentTypeName('monarchy')] or [ShowGovernmentTypeName('republic')] [government_type|e] can assume this [special_status]."
