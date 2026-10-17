@@ -13,3 +13,11 @@ allow_italy_frontier_city_town_rights = {
 		category = country
 	}
 }
+
+# Granted by TUS advance porto_franco, checked by town right italy_mercanzia_rights
+allow_italy_mercanzia_rights_town_rights = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}

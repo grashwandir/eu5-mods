@@ -1,15 +1,17 @@
 ﻿italy_mining_city = {
-	is_specialization = yes
+	
 	kept_at_conquest = no
+	
+	potential = {
+		has_advance = italy_mining_city_advance
+	}
 
 	location_modifier = {
 		local_max_rgo_size_modifier = 1.0
 		local_migration_attraction = 0.1
-
-		local_raw_material_output = 0.05
+		local_peasant_enfranchisment = 0.05
 
 		local_rgo_build_time = 0.5
-#		local_peasant_enfranchisment = -0.2
 	}
 
 	country_modifier = {
@@ -38,7 +40,7 @@
 		}
 	}
 
-	color = goods_iron
+	color = rgb { 0.15 0.15 0.15 }	# goods_iron (0.2) darkened
 }
 
 REPLACE:mining_charter = {

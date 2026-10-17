@@ -22,6 +22,8 @@ italy_clergy_humanist_learning = {
 		global_clergy_estate_power = 0.25
 		
 		#TODO: add bonus?
+		tolerance_heretic = 0.2
+		tolerance_heathen = 0.2
 
 		monthly_towards_humanist = societal_value_monthly_move
 	}

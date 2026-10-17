@@ -1,5 +1,7 @@
 ﻿italy_studium_theologiae = {
-
+	
+	kept_at_conquest = no
+	
 	potential = {
 		capital ?= {
 			region ?= region:italy_region

@@ -15,16 +15,16 @@ noble_fortification_management = {
 	}
 
 	country_modifier = {
-		allow_nobility_fortifications = yes
+#		allow_nobility_fortifications = yes
 		allow_italy_frontier_city_town_rights = yes
-		global_nobles_estate_power = 0.75
+		global_nobles_estate_power = 0.5
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
 		
 		monthly_towards_land = societal_value_minor_monthly_move
 		monthly_towards_defensive = societal_value_monthly_move
 		
 		fort_limit_modifier = -0.2
-		fort_maintenance_efficiency = 0.25
+		fort_maintenance_efficiency = 0.1
 		global_defensive = 0.1
 		global_hostile_attrition = 1
 	}

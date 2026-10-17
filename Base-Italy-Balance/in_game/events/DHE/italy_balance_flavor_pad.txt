@@ -39,12 +39,25 @@ italy_balance_pad.1 = {
 
 	immediate = {
 		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		# Saved here, not in the option, so the option tooltip can show Venice's event
+		save_scope_as = ibb_padua_buyer
 	}
 
 	option = {
 		name = italy_balance_pad.1.a
 		custom_tooltip = italy_balance_pad.1.a.tt
-		save_scope_as = ibb_padua_buyer
+		# Remove the truces between us and Ferrara, both ways
+		if = {
+			limit = { country_exists = c:FER }
+			if = {
+				limit = { has_truce_with = c:FER }
+				remove_truce_with = c:FER
+			}
+			if = {
+				limit = { c:FER = { has_truce_with = root } }
+				c:FER = { remove_truce_with = root }
+			}
+		}
 		c:VEN = {
 			trigger_event_non_silently = italy_balance_pad.2
 		}
@@ -111,25 +124,25 @@ italy_balance_pad.2 = {
 		}
 		scope:ibb_padua_buyer = {
 			transfer_yearly_gold = {
-				value = 3
+				value = 1.5
 				target = root
 			}
 			trigger_event_non_silently = italy_balance_pad.3
 		}
 		ai_chance = {
-			base = 80
+			base = 90
 		}
 	}
 
 	# Refuse
 	option = {
 		name = italy_balance_pad.2.b
-		add_stability = stability_radical_penalty
+		add_stability = stability_extreme_penalty
 		scope:ibb_padua_buyer = {
 			trigger_event_non_silently = italy_balance_pad.4
 		}
 		ai_chance = {
-			base = 20
+			base = 10
 		}
 	}
 }
@@ -351,5 +364,177 @@ italy_balance_pad.7 = {
 			value = monthly_income_trade_and_tax
 			multiply = 120 # ~10 years of trade and tax income
 		}
+	}
+}
+
+# Padua in the first months of the game: the city celebrates its glory.
+italy_balance_pad.8 = {
+	type = country_event
+	title = italy_balance_pad.8.title
+	desc = italy_balance_pad.8.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1339.1.1
+		monthly_chance = 50 # ~2 months on average
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.8.a
+		add_country_modifier = {
+			modifier = glory_to_padua
+			years = 30
+		}
+		# Positive = toward conciliatory (right side)
+		change_societal_value = {
+			type = belligerent_vs_conciliatory
+			value = 30
+		}
+		add_gold = 1000
+	}
+}
+
+# Padua owns Cividale and Aquileia owns Pieve, at peace before 1350: offer Aquileia to swap them.
+italy_balance_pad.9 = {
+	type = country_event
+	title = italy_balance_pad.9.title
+	desc = italy_balance_pad.9.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1350.1.1
+		monthly_chance = 20
+	}
+
+	trigger = {
+		country_exists = c:AQU
+		NOT = { is_at_war_with = c:AQU }
+		location:cividale = { owner = root }
+		location:pieve = { owner ?= c:AQU }
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:clergy_estate }
+		save_scope_as = ibb_padua_exchanger
+	}
+
+	option = {
+		name = italy_balance_pad.9.a
+		custom_tooltip = italy_balance_pad.9.a.tt
+		c:AQU = {
+			trigger_event_non_silently = italy_balance_pad.10
+		}
+	}
+}
+
+# Aquileia answers Padua's offer to swap Pieve for Cividale.
+italy_balance_pad.10 = {
+	type = country_event
+	title = italy_balance_pad.10.title
+	desc = italy_balance_pad.10.desc
+	outcome = neutral
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	# Accept: Pieve goes to Padua, Cividale comes back to us
+	option = {
+		name = italy_balance_pad.10.a
+		trigger = {
+			location:pieve = { owner = root }
+			location:cividale = { owner = scope:ibb_padua_exchanger }
+		}
+		location:pieve = {
+			change_location_owner = scope:ibb_padua_exchanger
+		}
+		location:cividale = {
+			change_location_owner = root
+		}
+		scope:ibb_padua_exchanger = {
+			trigger_event_non_silently = italy_balance_pad.11
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	# Refuse
+	option = {
+		name = italy_balance_pad.10.b
+		add_prestige = prestige_weak_penalty
+		scope:ibb_padua_exchanger = {
+			trigger_event_non_silently = italy_balance_pad.12
+		}
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+# Feedback for Padua: Aquileia accepted the exchange.
+italy_balance_pad.11 = {
+	type = country_event
+	title = italy_balance_pad.11.title
+	desc = italy_balance_pad.11.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.11.a
+	}
+}
+
+# Feedback for Padua: Aquileia refused the exchange.
+italy_balance_pad.12 = {
+	type = country_event
+	title = italy_balance_pad.12.title
+	desc = italy_balance_pad.12.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.12.a
 	}
 }

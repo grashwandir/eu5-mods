@@ -1,0 +1,43 @@
+﻿REPLACE:venetian_palaces = {
+	audio_tier = 4
+	is_special = yes
+	is_foreign = no
+	pop_type = nobles
+	employment_size = huge_noble_employment
+	max_levels = venetian_palaces_max_level
+	category = cultural_category
+	town = yes
+	city = yes
+	megalopolis = yes
+	location_potential = {
+		counts_as_capital = yes
+	}
+	allow = {
+		is_capital = yes
+		country_has_no_other_copy_of_building = { type = venetian_palaces }
+	}
+	expensive = yes
+
+	build_time = cultural_building_time
+	
+	modifier = {
+		local_cultural_tradition = 0.25
+		local_cultural_influence = 0.1
+		local_crown_estate_power = 0.1
+	}
+	
+	unique_production_methods = {
+		venetian_palaces_maintenance = {
+			icon_type = building_type
+			icon = venetian_palaces
+			cloth = 0.2
+			jewelry = 0.05
+			paper = 0.25
+			marble = 0.1
+			fine_cloth = 0.1
+			
+			category = building_maintenance
+		}
+	}
+	construction_demand = venetian_palaces_construction
+}

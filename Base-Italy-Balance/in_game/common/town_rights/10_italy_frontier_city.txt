@@ -1,4 +1,6 @@
 ﻿italy_frontier_city = {
+	
+	kept_at_conquest = no
 
 	potential = {
 		capital ?= {

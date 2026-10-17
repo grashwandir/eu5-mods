@@ -15,3 +15,8 @@
  noble_fortification_management_desc: "Rather than let every lord raise a castle at will, the [ShowEstateTypeName('nobles_estate')] are entrusted with the upkeep and command of the realm's strongholds. Fewer forts are built, but those that stand are better maintained, and fortified frontier cities guard the passes."
  MODIFIER_TYPE_NAME_allow_italy_frontier_city_town_rights: "Allows [ShowTownRightsName('italy_frontier_city')]"
  MODIFIER_TYPE_DESC_allow_italy_frontier_city_town_rights: "This allows us to grant the [ShowTownRightsName('italy_frontier_city')] [town_rights|e] to our [locations|e]."
+
+ italy_mercanzia_rights: "Mercanzia Charter"
+ italy_mercanzia_rights_desc: "This [location|e] has its own Mercanzia, a court of merchants that settles disputes quickly and fairly, even for foreigners. Traders of every nation come to do business here and stay on in their own communities, though the court answers to the guilds rather than to our lawmakers."
+ MODIFIER_TYPE_NAME_allow_italy_mercanzia_rights_town_rights: "Allows [ShowTownRightsName('italy_mercanzia_rights')]"
+ MODIFIER_TYPE_DESC_allow_italy_mercanzia_rights_town_rights: "This allows us to grant the [ShowTownRightsName('italy_mercanzia_rights')] [town_rights|e] to our [locations|e]."

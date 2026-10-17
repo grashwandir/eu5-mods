@@ -26,6 +26,7 @@ REPLACE:pad_the_bo = {
 
 	# added
 	unlock_building = italy_loggia_del_consiglio
+	unlock_policy_effect = { type = multi_lingual_court }
 
 	requires = renaissance_thought
 }

@@ -1,5 +1,4 @@
 ﻿council_selective = {
-	icon = oligarchic_elective
 	use_election = yes
 	term_duration = 0	#0 = until ruler death
 	max_possible_candidates = 3

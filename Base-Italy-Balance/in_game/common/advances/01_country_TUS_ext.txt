@@ -1,7 +1,7 @@
 ﻿INJECT:tus_il_contado = {
 	monthly_republican_tradition = 0.05
 }
-#
+
 REPLACE:tus_il_catasto = {
 	age = age_2_renaissance
 	
@@ -18,6 +18,10 @@ REPLACE:tus_il_catasto = {
 	government_reform_slots = 1
 	
 	requires = banking_advance
+}
+
+INJECT:porto_franco = {
+	allow_italy_mercanzia_rights_town_rights = yes
 }
 
 REPLACE:tuscan_uffizi = {

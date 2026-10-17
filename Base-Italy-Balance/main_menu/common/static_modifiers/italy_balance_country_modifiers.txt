@@ -14,3 +14,17 @@ italian_conquest_momentum = {
 	}
 	global_integration_speed_modifier = 0.4
 }
+
+glory_to_padua = {
+	game_data = {
+		category = country
+	}
+	global_crown_estate_power = 0.2
+	diplomatic_reputation = 2.0
+	monthly_prestige = 1.0
+	legislative_efficiency = 0.5
+	country_cabinet_efficiency = 0.2
+	stability_investment = 0.5 # same type as the Stabilize Country cabinet action (0.05)
+	monthly_political_influence = 0.5
+	monthly_political_influence_gain_modifier = 0.2
+}

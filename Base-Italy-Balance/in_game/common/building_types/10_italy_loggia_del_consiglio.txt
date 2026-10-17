@@ -1,5 +1,6 @@
 ﻿italy_loggia_del_consiglio = {
 	audio_tier = 3
+	is_special = yes
 	is_foreign = no
 	pop_type = nobles
 	max_levels = 1

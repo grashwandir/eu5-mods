@@ -5,7 +5,9 @@
 	potential = {
 		culture = { has_culture_group = culture_group:italian_group }
 	}
-
+	
+	global_iron_output_modifier = 0.1
+	global_copper_output_modifier = 0.1
 	unlock_town_rights = italy_mining_city
 
 	requires = rgo_size_advance_renaissance
