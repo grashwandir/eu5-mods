@@ -9,3 +9,10 @@ state_ministry_bureaucracy_impact_modifier = {
 		category=country
 	}
 }
+
+rural_councils_bureaucracy_impact_modifier = {
+	percent=yes
+	game_data={
+		category=country
+	}
+}

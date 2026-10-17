@@ -1,5 +1,9 @@
 ﻿l_english:
  state_ministry_bureaucracy: "State Ministry"
  state_ministry_bureaucracy_desc: "State Ministry"
- MODIFIER_TYPE_NAME_state_ministry_bureaucracy_impact_modifier: "State ministry bureaucracy impact modifier"
- MODIFIER_TYPE_DESC_state_ministry_bureaucracy_impact_modifier: "State ministry bureaucracy impact modifier"
+ MODIFIER_TYPE_NAME_state_ministry_bureaucracy_impact_modifier: "State ministry impact modifier"
+ MODIFIER_TYPE_DESC_state_ministry_bureaucracy_impact_modifier: "State ministry impact modifier"
+ rural_councils_bureaucracy: "Rural Councils"
+ rural_councils_bureaucracy_desc: "Rural Councils"
+ MODIFIER_TYPE_NAME_rural_councils_bureaucracy_impact_modifier: "Rural Councils impact modifier"
+ MODIFIER_TYPE_DESC_rural_councils_bureaucracy_impact_modifier: "Rural Councils impact modifier"

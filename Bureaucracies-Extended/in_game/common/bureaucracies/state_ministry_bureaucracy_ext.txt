@@ -17,7 +17,7 @@ state_ministry_bureaucracy = {
 	}
 
 	potential = {
-		has_embraced_institution = institution:confessionalism
+		religion = religion:lutheran
 	}
 
 	estates_that_like = {
@@ -32,12 +32,14 @@ state_ministry_bureaucracy = {
 	#neutral
 	neutral_modifier = {
 		government_reform_slots = 1
+#		global_max_control = 0.05
 	}
 
 	#positive
 	positive_modifier = {
 		scale = { value = scope:maintenance }
-		global_crown_estate_power = 0.2
+		global_crown_estate_power = 0.15
+		monthly_towards_centralization = societal_value_monthly_move
 	}
 
 	#negative

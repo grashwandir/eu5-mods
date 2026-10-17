@@ -1,0 +1,45 @@
+﻿rural_councils_bureaucracy = {
+
+	implementation_price = price:implement_bureaucracy_price
+	maintenance_price = price:maintain_bureaucracy_price
+	removal_price = price:remove_bureaucracy_price
+	
+	maintenance_price_modifier = {
+		value = country_economical_base
+		multiply = 0.004
+	}
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	estates_that_like = {
+		crown_estate
+		peasants_estate
+	}
+	
+	estates_that_dislike = {
+		burghers_estate
+	}
+
+	#neutral
+	neutral_modifier = {
+		global_monthly_food_modifier = monthly_food_productivity_extreme_bonus
+	}
+
+	#positive
+	positive_modifier = {
+		scale = { value = scope:maintenance }
+		global_raw_material_output = 0.075
+		monthly_towards_traditional_economy = 0.15
+	}
+
+	#negative
+	negative_modifier = {
+		scale = {
+			value = 1
+			subtract = scope:maintenance
+		}
+		peasants_estate_target_satisfaction = -0.2
+	}
+}
