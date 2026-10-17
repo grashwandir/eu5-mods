@@ -18,6 +18,7 @@ REPLACE:language_of_pleading = {
 		OR = {
 			NOT = { court_language = culture.language }
 			has_unlocked_policy_trigger = { type = multi_lingual_court }
+			
 			# modification
 			has_advance = formalized_relations
 		}
