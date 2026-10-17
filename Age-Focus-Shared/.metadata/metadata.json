@@ -1,8 +1,8 @@
 ﻿{
 	"name":	"Age Focus Shared",
 	"id":	"grashwandir.age_focus_shared",
-	"version":	"0.2",
-	"supported_game_version":	"1.4",
+	"version":	"0.3",
+	"supported_game_version":	"1.4.*",
 	"short_description":	"Make some focus advances 'public' : available for all",
 	"tags":	["Advancements", "Balance", "Fixes"],
 	"relationships":	[],
