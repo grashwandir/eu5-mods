@@ -1,3 +1,0 @@
-﻿INJECT:gov_reform_discovery_a = {
-	allow_common_parliament = yes
-}

@@ -1,0 +1,35 @@
+﻿common_parliament = {
+	type = country
+	
+	potential = {
+		modifier:allow_common_parliament = yes
+	}
+	
+	allow = {
+		NOT = { has_country_modifier = supreme_authority_modifier }
+		OR = {
+			parliament_type = parliament_type:common_parliament
+			AND = {
+				"estate_power(estate_type:burghers_estate)" >= 0.18
+				modifier:peasants_estate_can_participate_in_parliament = yes
+				NOT = { parliament_type = parliament_type:assembly } # assembly grants the modifier itself
+				societal_value:serfdom_vs_free_subjects >= 50
+			}
+		}
+	}
+	
+	modifier = {
+		has_a_parliamentary_system = yes
+		
+		burghers_estate_can_participate_in_parliament = yes
+		clergy_estate_can_participate_in_parliament = yes
+		global_estate_target_satisfaction = small_permanent_target_satisfaction
+		
+		nobles_estate_agenda_impact = 0.10
+		clergy_estate_agenda_impact = 0.10
+		peasants_estate_agenda_impact = 0.10
+		burghers_estate_agenda_impact = 0.10
+		
+		parliament_request_issue_support_needed = -0.05 # -0.10
+	}
+}

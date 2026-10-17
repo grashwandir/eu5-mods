@@ -1,0 +1,28 @@
+﻿namespace = common_parliament
+
+# The Commons Walk Out: fires while the auto modifier common_parliament_serfdom (Disenfranchised Commons) is active
+common_parliament.1 = {
+	type = country_event
+	title = common_parliament.1.title
+	desc = common_parliament.1.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = angry
+		10 = exterior
+	}
+
+	trigger = {
+		common_parliament_disenfranchised = yes # Disenfranchised Commons is active
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:peasants_estate background = estate_type:peasants_estate }
+	}
+
+	option = {
+		name = common_parliament.1.a
+
+		add_stability = -10
+	}
+}

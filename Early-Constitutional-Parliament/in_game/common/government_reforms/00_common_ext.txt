@@ -1,0 +1,23 @@
+﻿# REPLACE copies of vanilla 1.4.1 common.txt.
+# Only change: common_parliament accepted wherever constitutional_parliament is (lines marked # ECP).
+
+REPLACE:national_assemblies = {
+	age = age_2_renaissance
+	allow = {
+		OR = {
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+		}
+		OR = {
+			has_reform = government_reform:peasant_republic_reform
+			has_estate_privilege = estate_privilege:peasants_represented_in_parliament
+		}
+	}
+	country_modifier = {
+		parliament_request_issue_support_needed = -0.05
+		change_policy_cost_modifier = -0.1
+		monthly_towards_free_subjects = societal_value_monthly_move
+		monthly_towards_innovative = societal_value_monthly_move
+	}
+}

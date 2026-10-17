@@ -1,0 +1,19 @@
+﻿common_parliament_serfdom = {
+	
+	potential_trigger = {
+#		parliament_type = parliament_type:common_parliament
+		common_parliament_disenfranchised = yes
+	}
+
+	alert = yes
+
+	scales_with = { # 0 at 50 free subjects, full at -50
+		value = 50
+		subtract = societal_value:serfdom_vs_free_subjects
+		multiply = 0.01
+	}
+
+	global_estate_target_satisfaction = large_permanent_target_satisfaction_penalty
+	parliament_request_issue_support_needed = 0.25
+	stability_cost_efficiency = -0.5
+}

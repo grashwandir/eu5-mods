@@ -1,0 +1,5 @@
+﻿# Disenfranchised Commons: shared by auto modifier common_parliament_serfdom and event common_parliament.1
+common_parliament_disenfranchised = {
+	parliament_type = parliament_type:common_parliament
+	societal_value:serfdom_vs_free_subjects < 50
+}

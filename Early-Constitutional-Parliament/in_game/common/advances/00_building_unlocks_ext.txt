@@ -1,0 +1,3 @@
+﻿INJECT:supreme_court_advance = {
+	allow_common_parliament = yes
+}

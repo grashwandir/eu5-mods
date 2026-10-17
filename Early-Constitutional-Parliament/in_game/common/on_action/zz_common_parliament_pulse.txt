@@ -1,0 +1,14 @@
+﻿# zz_ so this file loads after vanilla country_yearly.txt
+yearly_country_pulse = {
+	on_actions = {
+		yearly_common_parliament_pulse
+	}
+}
+
+yearly_common_parliament_pulse = {
+	trigger = { parliament_type = parliament_type:common_parliament }
+	random_events = {
+		chance_to_happen = 10
+		100 = common_parliament.1 # The Commons Walk Out
+	}
+}

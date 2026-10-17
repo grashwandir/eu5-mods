@@ -1,5 +1,10 @@
 ﻿l_english:
  common_parliament: "Common Parliament"
- common_parliament_desc: "Common Parliament"
+ common_parliament_desc: "Rather than gathering apart, the Estates now sit together in one common assembly. Their representatives debate the affairs of the realm as a single body, an early step towards a government bound by law rather than by the will of the ruler alone."
  MODIFIER_TYPE_NAME_allow_common_parliament: "Allow Common Parliament"
- MODIFIER_TYPE_DESC_allow_common_parliament: "Allow Common Parliament"
+ MODIFIER_TYPE_DESC_allow_common_parliament: "Unlocks the Common Parliament Type"
+ AUTO_MODIFIER_NAME_common_parliament_serfdom: "Disenfranchised Commons"
+ AUTO_MODIFIER_DESC_common_parliament_serfdom: "Our Common Parliament claims to speak for free subjects, yet our society is drifting back towards serfdom. The further we fall below #Y 50#! Free Subjects, the less this assembly is worth."
+ common_parliament.1.title: "The Commons Walk Out"
+ common_parliament.1.desc: "Representatives of the common folk have walked out of our Common Parliament in protest. They were promised a voice for free subjects, yet across [ROOT.GetCountry.GetName] the old bonds of serfdom are tightening once more. Unrest is spreading through the towns and the countryside."
+ common_parliament.1.a: "They will return once tempers have cooled."

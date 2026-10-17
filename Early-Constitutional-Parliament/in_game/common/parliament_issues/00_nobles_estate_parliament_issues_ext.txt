@@ -1,0 +1,506 @@
+﻿# REPLACE copies of vanilla 1.4.1 03_nobles_estate_parliament_issues.txt.
+# Only change: common_parliament accepted wherever estate_parliament AND constitutional_parliament are (lines marked # ECP).
+
+REPLACE:sponsor_a_opera_house = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+			cultural_tradition_modifier = 0.33
+			monthly_towards_aristocracy = societal_value_huge_monthly_move #moves value by 3 over the duration
+	}
+
+	allow = {
+		num_locations > 0
+		OR = {
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+		has_advance = opera_house_advance
+		any_owned_location = {
+			NOT = { has_building = building_type:opera_house }
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+		NOT = {
+			has_policy = strict_censorship
+		}
+	}
+
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					total_effective_building_levels:opera_house < 1
+				}
+				value = 2
+			}
+		}
+		
+		add = {
+			if = {
+				limit = {
+					has_policy = limited_censorship
+				}
+				value = 1
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					has_policy = no_censorship
+				}
+				value = 2
+			}
+		}
+		multiply = {
+			if = {
+				limit = {
+					culture = {
+						cultural_tradition < 20
+					}
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		ordered_owned_location = {
+			order_by = {
+				value = population
+				if = {
+					limit = { OR = { location_rank = location_rank:city  location_rank = location_rank:megalopolis } }
+					multiply = 5
+				}
+			}
+			max = 1
+			limit = {
+				NOT = { has_building = building_type:opera_house }
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+			}
+			construct_building = {
+				building_type = building_type:opera_house
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_parliament_issue"
+			}
+			
+		}
+	}
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+REPLACE:promote_integration = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+		global_integration_speed_modifier = 0.2
+	}
+
+	allow = {
+		OR = {
+			parliament_type = parliament_type:council
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+		any_owned_location = {
+			integration_level = conquered
+			integration_progress > 0
+			integration_progress <= 60
+		}
+	}
+
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					at_war = no
+				}
+				value = 2
+			}
+		}
+		every_province = {
+			limit = { province_average_integration < 1 }
+			add = 1
+		}
+		
+		multiply = {
+			if = {
+				limit = {
+					at_war = yes
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		ordered_province = {
+			limit = { province_average_integration < 1 }
+			order_by = population
+			max = 1
+			check_range_bounds = no
+			every_location_in_province = {
+				limit = { integration_level = conquered }
+				change_integration_progress = 20
+			}
+		}
+	}
+	
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+REPLACE:finance_the_armory = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+		global_manpower_modifier = 0.5
+	}
+
+	allow = {
+		num_locations > 0
+		OR = {
+			parliament_type = parliament_type:council
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+		has_advance = armory_advance
+		NOT = {
+			has_advance = barracks_advance
+		}
+		any_owned_non_rural_location = {
+			owner = { has_primary_or_accepted_culture = prev.dominant_culture }
+			NOR = {
+				has_building = building_type:armory
+				has_building = building_type:barracks
+				has_building = building_type:conscription_center
+			}
+		}
+	}
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					total_effective_building_levels:armory < 6
+				}
+				value = 5
+			}
+		}
+		
+		add = {
+			if = {
+				limit = {
+					max_manpower > 0.5
+					manpower_percentage < 0.5
+				}
+				add = 2
+			}
+		}
+		multiply = {
+			if = {
+				limit = {
+					max_manpower > 0.5
+					manpower_percentage >= 0.8
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		ordered_owned_location = {
+			order_by = population
+			max = {
+				value = num_provinces
+				multiply = 0.1
+				add = 1
+			}
+			check_range_bounds = no
+			limit = {
+				owner = { has_primary_or_accepted_culture = prev.dominant_culture }
+				NOR = {
+					has_building = building_type:armory
+					has_building = building_type:barracks
+					has_building = building_type:conscription_center
+				}
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+			}
+			construct_building = {
+				building_type = building_type:armory
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_parliament_issue"
+			}
+		}
+		change_societal_value = { type = land_vs_naval value = societal_value_tiny_move_to_left }
+	}
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+REPLACE:expand_barracks = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+		global_manpower_modifier = 0.5
+	}
+
+	allow = {
+		num_locations > 0
+		OR = {
+			parliament_type = parliament_type:council
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+		has_advance = barracks_advance
+		NOT = { has_advance = conscription_center_advance }
+		any_owned_non_rural_location = {
+			owner = { has_primary_or_accepted_culture = prev.dominant_culture }
+			NOR = {
+				has_building = building_type:barracks
+				has_building = building_type:conscription_center
+			}
+		}
+	}
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					total_effective_building_levels:barracks < 6
+				}
+				value = 5
+			}
+		}
+		add = {
+			if = {
+				limit = {
+					max_manpower > 0.5
+					manpower_percentage < 0.5
+				}
+				add = 2
+			}
+		}
+		multiply = {
+			if = {
+				limit = {
+					max_manpower > 0.5
+					manpower_percentage >= 0.8
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		ordered_owned_location = {
+			order_by = population
+			max = {
+				value = num_provinces
+				multiply = 0.1
+				add = 1
+			}
+			check_range_bounds = no
+			limit = {
+				owner = { has_primary_or_accepted_culture = prev.dominant_culture }
+				NOR = {
+					has_building = building_type:barracks
+					has_building = building_type:conscription_center
+				}
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+			}
+			construct_building = {
+				building_type = building_type:barracks
+				cost_multiplier = 0.5
+				cost_multiplier_reason = "game_concept_parliament_issue"
+			}
+		}
+		change_societal_value = { type = land_vs_naval value = societal_value_tiny_move_to_left }
+	}
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+REPLACE:host_army_excercises = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+		army_tradition_decay = -0.001
+	}
+
+	allow = {
+		at_war = no
+		OR = {
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+	}
+
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					has_advance = military_drill
+				}
+				value = 2
+			}
+		}
+		
+		multiply = {
+			if = {
+				limit = {
+					NOT = {
+						has_embraced_institution = institution:professional_armies
+					}
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		add_army_tradition = army_tradition_extreme_bonus
+		
+	}
+	
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}
+
+REPLACE:support_noble_cabinet = {
+	estate = nobles_estate
+
+	modifier_when_in_debate = {
+		country_cabinet_efficiency = 0.2
+		set_cabinet_member_cost_modifier = -0.5
+	}
+
+	allow = {
+		OR = {
+			parliament_type = parliament_type:council
+			parliament_type = parliament_type:estate_parliament
+			parliament_type = parliament_type:dutch_parliament
+			parliament_type = parliament_type:plc_parliament
+			parliament_type = parliament_type:autocratic_parliament
+			parliament_type = parliament_type:constitutional_parliament
+			parliament_type = parliament_type:common_parliament # ECP
+			parliament_type = parliament_type:majlis_ammi_said_council
+		}
+		any_character = {
+			in_cabinet = yes
+			has_estate = estate_type:nobles_estate
+		}
+		NOR = {
+			current_age = age_4_reformation
+			current_age = age_5_absolutism
+			current_age = age_6_revolutions
+		}
+	}
+
+	chance = {
+		add = 1
+		add = {
+			if = {
+				limit = {
+					has_advance = government_size_renaissance
+				}
+				value = 2
+			}
+		}
+		
+		multiply = {
+			if = {
+				limit = {
+					societal_value:aristocracy_vs_plutocracy > 0
+				}
+				value = 0.5
+			}
+			else = {
+				value = 1	#We need that else or otherwise the whole chance is multiplied with 0
+			}
+		}
+	}
+	
+	on_debate_passed = {
+		random_cabinet_character = {
+			limit = {
+				has_estate = estate_type:nobles_estate
+			}
+			add_adm = 5
+			add_dip = 5
+			add_mil = 5
+		}
+		change_societal_value = {
+			type = aristocracy_vs_plutocracy
+			value = societal_value_move_to_left
+		}
+		
+	}
+	on_debate_failed = {
+		parliament_debate_failed_effect = yes
+	}
+}

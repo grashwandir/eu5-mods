@@ -1,0 +1,78 @@
+﻿# REPLACE copies of vanilla 1.4.1 character_title.txt.
+# Only change: common_parliament accepted wherever constitutional_parliament is (lines marked # ECP).
+
+REPLACE:character_title_suffix = {
+	type = character
+
+	text = {
+		localization_key = character_title_shinno
+
+		trigger = {
+			is_ruler = no
+			exists = culture
+			exists = culture.language
+			culture.language = language:japanese_language
+			dynasty ?= dynasty:yamato_dynasty
+			owner ?= {
+				OR = {
+					AND = {
+						exists = culture
+						exists = culture.language
+						culture.language = language:japanese_language
+					}
+					court_language ?= language:japanese_language
+				}
+			}
+		}
+	}
+
+	text = {
+		localization_key = character_title_minister_of_parliament
+
+		trigger = {
+			in_cabinet = yes
+			is_ruler = no
+
+			owner ?= {
+				OR = { # ECP
+					parliament_type = parliament_type:constitutional_parliament
+					parliament_type = parliament_type:common_parliament
+				}
+				OR = {
+					culture.language = language:english_language
+					court_language ?= language:english_language
+				}
+			}
+		}
+	}
+
+	text = {
+		localization_key = character_title_burgher_esquire
+
+		trigger = {
+			is_adult = yes
+			is_female = no
+			is_ruler = no
+			has_estate = estate_type:burghers_estate
+			adm > 75
+
+			OR = {
+				AND = {
+					exists = culture
+					exists = culture.language
+					culture.language = language:english_language
+				}
+				owner ?= {
+					OR = {
+						AND = {
+							exists = culture
+							exists = culture.language
+							culture.language = language:english_language
+						}
+						court_language ?= language:english_language
+					}
+				}
+			}
+		}
+	}
+}
