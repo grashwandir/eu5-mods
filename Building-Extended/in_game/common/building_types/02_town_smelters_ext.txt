@@ -10,7 +10,7 @@
 	category = rgo_building_category
 	
 	rural_settlement = no
-	town = yes
+	town = no
 	city = yes
 	megalopolis = yes
 
