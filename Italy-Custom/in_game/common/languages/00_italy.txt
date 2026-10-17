@@ -286,9 +286,7 @@ south_italian_language = {
 		sicilian_dialect = {}
 		neapolitan_dialect = {}
 		median_dialect = {}
-		emilian_dialect = {
-			fallback = tuscan_dialect
-		}
+		emilian_dialect = {}
 		dalmatian_dialect = {
 			patronym_prefix_son = "patronym_prefix_de_son"
 			patronym_prefix_daughter = "patronym_prefix_de_daughter"

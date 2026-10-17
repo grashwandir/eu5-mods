@@ -1,7 +1,21 @@
 ﻿INJECT:tus_il_contado = {
-	global_war_score_efficiency = 0.75
+	monthly_republican_tradition = 0.05
 }
-
+#
+#tus_il_contado = {
+#	age = age_1_traditions
+#	icon = laws
+#
+#	potential = {
+#		has_or_had_tag = TUS
+#	}
+#
+#	global_crown_estate_power = 0.1
+#	monthly_legitimacy = 0.05
+#
+#	requires = feudalism_advance
+#}
+#
 #tus_il_catasto = {
 #	age = age_2_renaissance
 #	icon = bank_of_the_medici
@@ -18,7 +32,7 @@
 #
 #porto_franco = {
 #	age = age_3_discovery
-#	icon = maritime_advance_age_4
+#	icon = porto_franco
 #
 #	potential = {
 #		has_or_had_tag = TUS

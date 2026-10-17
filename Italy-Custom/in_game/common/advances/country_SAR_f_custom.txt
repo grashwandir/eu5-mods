@@ -5,11 +5,14 @@
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 
 	stability_cost_efficiency = 0.2
+	
+	# Added
+	global_max_bureaucracy_slots = 1
 
 	requires = library_advance
 }
@@ -21,7 +24,7 @@ REPLACE:tws_ensure_loyal_families = {
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 
@@ -40,7 +43,7 @@ REPLACE:tws_revitalize_the_lands = {
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 
@@ -57,7 +60,7 @@ REPLACE:tws_oversea_ambitions = {
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 
@@ -74,7 +77,7 @@ REPLACE:tws_capable_vicars = {
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 
@@ -91,7 +94,7 @@ REPLACE:tws_protect_the_coastline = {
 	potential = {
 		OR = {
 			has_or_had_tag = TWS
-			has_or_had_tag = SAR_piedmont
+			has_or_had_tag = SRP
 		}
 	}
 

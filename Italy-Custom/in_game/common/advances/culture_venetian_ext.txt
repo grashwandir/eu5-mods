@@ -6,13 +6,30 @@
 	}
 
 #	global_burghers_max_literacy = 10
-	
 	global_max_literacy = 5
+	
 	research_speed_modifier = 0.05
 	
 	requires = renaissance_thought
 }
 
+#REPLACE:pad_carraresi_dynasty = {
+#	age = age_1_traditions
+#	icon = smooth_administration
+#
+#	potential = {
+#		has_or_had_tag = PAD
+#	}
+#
+#	global_monthly_development = 0.001
+#	stability_cost_efficiency = 0.1
+#	
+##	national_malaria_resistance_modifier = 0.15
+##	monthly_political_influence_gain_modifier = 0.1
+#
+#	requires = agriculture_advance
+#}
+#
 #ven_venetian_palaces = {
 #	content_priority = 300
 #	age = age_1_traditions
@@ -62,20 +79,6 @@
 #	ai_weight = { add = 10 }
 #
 #	requires = feudalism_advance
-#}
-#
-#pad_carraresi_dynasty = {
-#	age = age_1_traditions
-#	icon = smooth_administration
-#
-#	potential = {
-#		has_or_had_tag = PAD
-#	}
-#
-#	global_monthly_development = 0.001
-#	stability_cost_efficiency = 0.1
-#
-#	requires = agriculture_advance
 #}
 #
 #ven_state_inquisition = {
