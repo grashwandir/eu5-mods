@@ -1,0 +1,7 @@
+﻿estate_management_advance = {
+	age = age_3_discovery
+	icon = laws
+	requires = town_rights_enable
+		
+	unlock_law = estate_management_law
+}
