@@ -12,5 +12,5 @@
 	defender = {
 	}
 			
-	ticking_war_score = 0.5
+	ticking_war_score = 1.0
 }

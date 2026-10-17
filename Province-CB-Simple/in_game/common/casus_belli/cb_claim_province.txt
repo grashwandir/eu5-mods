@@ -2,20 +2,25 @@
 	years = 10
 	
     create_visible = {
-        always = no
-#        exists = international_organization:hre
-#        is_member_of_international_organization = international_organization:hre
+		# replace by date or age limit : only useful at the beginning of a game
+		always = no
+#		exists = international_organization:hre
+#		is_member_of_international_organization = international_organization:hre
+#		capital ?= {
+#			region ?= region:italy_region
+#		}
     }
 
 	create_enabled = {
-		NOT = {
-			has_truce_with = scope:target
-		}
+#		NOT = {
+#			has_truce_with = scope:target
+#		}
 		OR = {
 			is_neighbor_of = scope:target
-			any_neighbor_country = {
-				is_subject_of = root
-				is_neighbor_of = scope:target
+			scope:target = {
+				any_neighbor_country = {
+					is_subject_of = root
+				}
 			}
 		}
 	}
@@ -33,7 +38,7 @@
 	ai_will_do = {
 		add = {
 			desc = "BASE"
-			value = -1
+			value = 1
 		}
 	}
 }

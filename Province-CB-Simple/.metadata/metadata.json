@@ -1,8 +1,8 @@
 ﻿{
 	"name":	"Province CB Simple",
 	"id":	"grashwandir.province_cb_simple",
-	"version":	"0.1",
-	"supported_game_version":	"1.3.11",
+	"version":	"0.2",
+	"supported_game_version":	"1.4",
 	"short_description":	"EU4 Style Claim Province Casus Belli",
 	"tags":	["Diplomacy", "Military"],
 	"relationships":	[],
