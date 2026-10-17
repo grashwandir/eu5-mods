@@ -9,6 +9,8 @@
 	
 	potential = {
 #		has_reform = government_reform:merchant_republic
+#		capital.continent = continent:europe
+		capital.region = region:italy_region
 	}
 	
 	calc = {
