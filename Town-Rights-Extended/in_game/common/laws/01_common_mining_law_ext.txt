@@ -14,7 +14,7 @@
 			town_upgrade_cost_modifier = -0.2
 			pure_tooltip_entry = unlock_bergregal_rights_tt
 			
-			# burghers_mining_law
+			# Added
 			expand_rgo_mining_cost_modifier = -0.1
 			monthly_towards_capital_economy = societal_value_minor_monthly_move
 			monthly_towards_plutocracy = societal_value_monthly_move
@@ -29,7 +29,10 @@
 	zimbabwe_mining_law = {
 		unique = yes
 		potential = {
-			culture = culture:shona_culture
+			OR = {
+				culture = culture:shona_culture
+				has_or_had_tag = ZMW
+			}
 		}
 		country_modifier = {
 			expand_rgo_mining_cost_modifier = -0.2
