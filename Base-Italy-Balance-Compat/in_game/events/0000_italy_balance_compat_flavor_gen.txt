@@ -1,7 +1,7 @@
 ﻿# Overrides of vanilla in_game/events/DHE/flavor_GEN.txt (1.4.x) events .3 .25 .26 .37.
 # Method: wiki Event_modding - copy the events into a file loaded earlier; the first
 # definition of an event id wins. error.log then shows one harmless
-# "Duplicated event ID" line per event; its Previous Location must be this file.
+# "Duplicated event ID" line per event; its New Location must be this file.
 # Re-check these copies against vanilla after each game update.
 
 namespace = flavor_gen
