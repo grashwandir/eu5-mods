@@ -3,26 +3,26 @@
 #	- Tooltips will also be generated
 #	- The AI will also understand them
 
-REPLACE:high_republican_tradition = {
-	potential_trigger = {
-		uses_government_power = republican_tradition
-	}
-	limit = {
-		republican_tradition > 50
-	}
-	scales_with = {
-		value = republican_tradition
-		multiply = 0.01
-	}
-
-	legislative_efficiency = 0.10
-	pop_leave_rebels_threshold = -0.05
-	
-	# I don't like this modifier
-	# monthly_towards_liberalism = societal_value_monthly_move
-	
-	# political influence modifier: moved to high_republican_tradition_political_influence below
-}
+#REPLACE:high_republican_tradition = {
+#	potential_trigger = {
+#		uses_government_power = republican_tradition
+#	}
+#	limit = {
+#		republican_tradition > 50
+#	}
+#	scales_with = {
+#		value = republican_tradition
+#		multiply = 0.01
+#	}
+#
+#	legislative_efficiency = 0.10
+#	pop_leave_rebels_threshold = -0.05
+#	
+#	# I don't like this modifier
+#	# monthly_towards_liberalism = societal_value_monthly_move
+#	
+#	# political influence modifier: moved to high_republican_tradition_political_influence below
+#}
 
 # political influence modifier: 0 at 50 republican tradition, full value at 100 (pattern of vanilla high_righteousness)
 high_republican_tradition_political_influence = {
@@ -41,26 +41,26 @@ high_republican_tradition_political_influence = {
 	monthly_political_influence = 0.5
 }
 
-REPLACE:low_republican_tradition = {
-	potential_trigger = {
-		uses_government_power = republican_tradition
-	}
-	limit = {
-		republican_tradition < 50
-	}
-	scales_with = {
-		value = republican_tradition
-		multiply = -0.01
-		add = 1
-	}
-
-	stability_cost_efficiency = -2
-	legislative_efficiency = -0.05
-	global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
-	global_max_control = -0.2
-	
-	# political influence modifier: moved to low_republican_tradition_political_influence below
-}
+#REPLACE:low_republican_tradition = {
+#	potential_trigger = {
+#		uses_government_power = republican_tradition
+#	}
+#	limit = {
+#		republican_tradition < 50
+#	}
+#	scales_with = {
+#		value = republican_tradition
+#		multiply = -0.01
+#		add = 1
+#	}
+#
+#	stability_cost_efficiency = -2
+#	legislative_efficiency = -0.05
+#	global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+#	global_max_control = -0.2
+#	
+#	# political influence modifier: moved to low_republican_tradition_political_influence below
+#}
 
 # political influence modifier: 0 at 50 republican tradition, full value at 0 (pattern of vanilla low_righteousness)
 low_republican_tradition_political_influence = {

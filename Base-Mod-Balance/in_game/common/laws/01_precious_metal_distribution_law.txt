@@ -21,7 +21,7 @@
 			minting_income_factor = 0.33
 			
 #			monthly_towards_mercantilism = societal_value_tiny_monthly_move
-			monthly_towards_mercantilism = societal_value_small_monthly_move
+			monthly_towards_mercantilism = societal_value_minor_monthly_move
 			
 			export_impact_on_demand = 0.05
 		}
@@ -52,7 +52,7 @@
 			minting_income_factor = -0.33
 			
 #			monthly_towards_free_trade = societal_value_tiny_monthly_move
-			monthly_towards_free_trade = societal_value_small_monthly_move
+			monthly_towards_free_trade = societal_value_minor_monthly_move
 		}
 		estate_preferences = {
 			burghers_estate

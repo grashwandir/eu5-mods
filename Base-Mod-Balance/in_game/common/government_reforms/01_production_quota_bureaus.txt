@@ -1,7 +1,9 @@
 ﻿REPLACE:production_quota_bureaus = {
+#	age = age_5_absolutism
 	age = age_3_discovery
 
 	country_modifier = {
+#		monthly_towards_traditional_economy = societal_value_monthly_move
 		monthly_towards_traditional_economy = societal_value_large_monthly_move
 		global_raw_material_output = 0.1
 	}
