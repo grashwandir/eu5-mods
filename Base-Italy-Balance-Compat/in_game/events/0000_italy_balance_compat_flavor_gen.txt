@@ -1,0 +1,314 @@
+﻿# Overrides of vanilla in_game/events/DHE/flavor_GEN.txt (1.4.x) events .3 .25 .26 .37.
+# Method: wiki Event_modding - copy the events into a file loaded earlier; the first
+# definition of an event id wins. error.log then shows one harmless
+# "Duplicated event ID" line per event; its Previous Location must be this file.
+# Re-check these copies against vanilla after each game update.
+
+namespace = flavor_gen
+
+flavor_gen.3 = {
+	type = country_event
+	title = flavor_gen.3.title
+	desc = flavor_gen.3.desc
+	outcome = neutral
+	
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1300.1.1
+		to = 1550.1.1
+		monthly_chance = 5
+	}
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+		set_variable = {
+			name = gen_had_fall_of_constantinople
+			value = 1
+		}
+	}
+	
+	
+	trigger = {
+		# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+		OR = {
+			has_reform = government_reform:merchant_republic
+			has_reform = government_reform:italian_merchant_republic
+		}
+		country_exists = c:TUR
+		location:constantinople = {
+			owner = c:TUR
+		}
+		
+		any_market_with_merchants = {
+			location.area = area:crimea_area
+		}
+		
+		NOT = {
+			capital.area = area:crimea_area
+		}
+	}
+
+	option = {
+		name = flavor_gen.3.a
+		historical_option = yes
+		custom_tooltip = flavor_gen.3.a.tt
+
+		c:TUR = {
+			trigger_event_silently = { id = flavor_gen.4 days = 23 }
+		}
+	}
+	option = {
+		name = flavor_gen.3.b
+		add_prestige = prestige_extreme_penalty
+	}
+}
+
+flavor_gen.25 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.25.title
+	desc = flavor_gen.25.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1340.1.1
+		to = 1380.1.1
+		monthly_chance = 10
+	}
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		country_exists = c:VEN
+		owns = location:chios
+		NOT = { is_allied_with = { target = c:VEN } }
+		# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+		OR = {
+			has_reform = government_reform:merchant_republic
+			has_reform = government_reform:italian_merchant_republic
+		}
+		c:VEN = {
+			# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+			OR = {
+				has_reform = government_reform:merchant_republic
+				has_reform = government_reform:italian_merchant_republic
+			}
+		}
+		any_owned_location = {
+			OR = {
+				region = region:anatolia_region
+				region = region:steppes_region
+			}
+		}
+	}
+	#To arms!
+	option = {
+		name = flavor_gen.25.a
+		historical_option = yes
+		add_casus_belli = {
+			target = c:VEN
+			type = casus_belli:cb_maritime_dominance
+		}
+		c:VEN = {
+			add_casus_belli = {
+				target = root
+				type = casus_belli:cb_maritime_dominance
+			}
+		}
+		hidden_effect = {
+			set_variable = {
+				name = gen_war_of_straits
+				value = 1
+			}
+		}
+	}
+	#Maybe this time peace can be secured.
+	option = {
+		name = flavor_gen.25.b
+		add_prestige = prestige_mild_bonus
+	}
+}
+
+flavor_gen.26 = {
+	type = country_event
+	fire_only_once = yes
+	title = flavor_gen.26.title
+	desc = flavor_gen.26.desc
+	outcome = neutral
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1370.1.1
+		to = 1410.1.1
+		monthly_chance = 20
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+	trigger = {
+		custom_tooltip = {
+			text = variable_gen_war_of_straits_tt
+			has_variable = gen_war_of_straits
+		}
+		country_exists = c:VEN
+		NOT = { is_allied_with = { target = c:VEN } }
+		# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+		OR = {
+			has_reform = government_reform:merchant_republic
+			has_reform = government_reform:italian_merchant_republic
+		}
+		c:VEN = {
+			# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+			OR = {
+				has_reform = government_reform:merchant_republic
+				has_reform = government_reform:italian_merchant_republic
+			}
+		}
+		OR = {
+			is_rival_of = c:VEN
+			is_enemy_of = c:VEN
+		}
+		OR = {
+			location:cape_lecton = {
+				location_maritime_presence_power = {
+					country = c:VEN
+					value >= 50
+				}
+			}
+			location:dardanelles = {
+				location_maritime_presence_power = {
+					country = c:VEN
+					value >= 50
+				}
+			}
+			location:gulf_izmit = {
+				location_maritime_presence_power = {
+					country = c:VEN
+					value >= 50
+				}
+			}
+			location:bosphorus = {
+				location_maritime_presence_power = {
+					country = c:VEN
+					value >= 50
+				}
+			}
+		}
+		any_owned_location = {
+			OR = {
+				region = region:anatolia_region
+				region = region:steppes_region
+			}
+		}
+	}
+	#Fortune favors the bold!
+	option = {
+		name = flavor_gen.26.a
+		historical_option = yes
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }
+		add_casus_belli = {
+			target = c:VEN
+			type = casus_belli:cb_maritime_dominance
+		}
+		c:VEN = {
+			add_casus_belli = {
+				target = root
+				type = casus_belli:cb_maritime_dominance
+			}
+		}
+	}
+	#It might be too risky to keep this conflict open.
+	option = {
+		name = flavor_gen.26.b
+		change_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }
+	}
+	after = {
+		remove_variable = gen_war_of_straits
+	}
+}
+
+flavor_gen.37 = {
+	hide_portraits = yes
+	type = country_event
+	title = flavor_gen.37.title
+	desc = flavor_gen.37.desc
+	outcome = neutral
+
+
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = GEN
+		from = 1339.1.1
+		to = 1363.3.14
+		monthly_chance = 10
+	}
+
+	trigger = {
+		owns = location:genoa
+		# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+		OR = {
+			has_reform = government_reform:merchant_republic
+			has_reform = government_reform:italian_merchant_republic
+		}
+		# Base-Italy-Balance-Compat: the Italian reform locks council_selective instead of doge_election
+		OR = {
+			succession_law = heir_selection:doge_election
+			succession_law = heir_selection:council_selective
+		}
+		any_artist = {
+			artist_type = architect
+		}
+		has_ruler = yes
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		random_artist = {
+			limit = {
+				artist_type = architect
+			}
+			save_scope_as = target_artist
+		}
+		ruler = { save_scope_as = target_ruler }
+	}
+
+	#Our Doge deserves a palace!
+	option = {
+		name = flavor_gen.37.a
+		culture = {
+			add_cultural_influence = cultural_influence_mild_bonus
+		}
+		add_prestige = legitimacy_weak_bonus
+		location:genoa = {
+			create_art = {
+				quality = 60
+				type = work_of_art_type:palace
+				key = doges_palace_genoa
+				artist = scope:target_artist
+			}
+		}
+	}
+
+	#The Doge shall not be over the traditions of the Republic!
+	option = {
+		name = flavor_gen.37.b
+		culture = {
+			add_cultural_tradition = cultural_tradition_mild_bonus
+		}
+		add_government_power = government_power_mild_bonus
+	}
+}

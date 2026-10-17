@@ -1,0 +1,20 @@
+﻿{
+	"name": "Base Italy Balance Compat",
+	"id": "grashwandir.base_italy_balance_compat",
+	"version": "0.1",
+	"supported_game_version": "1.4.*",
+	"short_description": "Lets vanilla merchant-republic checks accept Base Italy Balance's Italian Merchant Republic.",
+	"tags": [
+		"Fixes"
+	],
+	"relationships": [
+		{
+			"rel_type": "dependency",
+			"id": "grashwandir.base_italy_balance",
+			"display_name": "Base Italy Balance",
+			"resource_type": "mod",
+			"version": "0.*"
+		}
+	],
+	"game_custom_data": {}
+}

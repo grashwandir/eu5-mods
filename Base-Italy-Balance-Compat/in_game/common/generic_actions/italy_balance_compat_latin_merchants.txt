@@ -1,0 +1,127 @@
+﻿# Vanilla in_game/common/generic_actions/D008_fate_of_the_phoenix_actions.txt (1.4.x) with the merchant_republic checks widened.
+# Re-check against vanilla after each game update.
+
+REPLACE:grant_latin_merchants_privileges = {
+	type = disaster
+
+	potential = { 
+		custom_tooltip = {
+			text = grant_latin_merchants_privileges_tooltip
+			region:italy_region = {
+				any_country_with_capital_in_geography = {
+					# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+					OR = {
+						has_reform = government_reform:merchant_republic
+						has_reform = government_reform:italian_merchant_republic
+					}
+					NOR = {
+						is_rival_of = scope:actor
+						is_enemy_of = scope:actor
+						is_subject = yes
+						hidden_trigger = {
+							scope:actor = { is_subject_of = prev }
+						}
+					}
+				}
+			}
+		}
+	}
+
+	allow = {
+		
+		location:constantinople = {
+			owner = scope:actor
+			is_capital = yes
+		}
+
+		scope:actor = {
+			at_war = no
+			is_during_bankruptcy = no
+		}
+	}
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+	price = price:fate_of_phoenix_actions_price
+
+	cooldown = {
+		type = grant_latin_merchants_privileges
+		years = 10
+	}
+	
+	select_trigger = {
+		looking_for_a = disaster
+		name = "choose_disaster"
+		target_flag = recipient
+		column = {
+			data = name
+		}
+		visible = {
+			disaster_type = disaster_type:fate_of_the_phoenix
+			disaster_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = country
+		interaction_source_list = {
+			region:italy_region = {
+				every_country_with_capital_in_geography = {
+					limit = {
+						# Base-Italy-Balance-Compat: also accept italian_merchant_republic
+						OR = {
+							has_reform = government_reform:merchant_republic
+							has_reform = government_reform:italian_merchant_republic
+						}
+					}
+
+					add_to_list = source
+				}
+			}
+		}
+		cache_targets = yes
+		target_flag = target_country
+		name = "choose_country"
+		column = { data = name }
+		column = { data = great_power_score }
+        enabled = {
+			NOT = { is_rival_of = scope:actor }
+			NOT = { is_enemy_of = scope:actor }
+			OR = {
+				is_subject = no
+				is_subject_of = scope:actor
+			}
+			NOT = { is_embargoed_by = scope:actor }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = { exists = scope:target_country }
+			scope:target_country = { trigger_event_non_silently = fate_of_the_phoenix.17 }
+		}
+
+		set_variable = grant_latin_merchants_privileges_variable
+
+		custom_tooltip = selected_republic_may_donate_ships_to_our_cause_tt
+	}
+
+	ai_will_do = {
+		if = {
+			limit = { 
+				scope:actor.government_power > 90
+			}
+
+			add = {
+				value = { 1 50 }
+				desc = "high government power"
+			}
+		}
+		else = {
+			subtract = {
+				value = 1
+				desc = "low government power"
+			}
+		}
+	}
+}
