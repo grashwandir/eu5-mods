@@ -1,4 +1,4 @@
-﻿REPLACE:everyone_serves_reform = {
+﻿civil_service_reform = {
 	age = age_1_traditions
 		
 	societal_values = {
@@ -11,7 +11,7 @@
 		global_population_capacity_modifier = 0.15
 		pure_tooltip_entry = everyone_serves_reform_building_unlock_tt
 		
-		# addition
+		# change
 		monthly_towards_free_subjects = societal_value_monthly_move
 	}
 

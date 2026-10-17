@@ -1,0 +1,23 @@
+﻿REPLACE:ven_magistrato_alla_sanita = {
+	unique = yes
+	government = republic
+	age = age_3_discovery
+
+	potential = {
+		OR = {
+			has_or_had_tag = VEN
+			has_or_had_tag = ITA
+		}
+	}
+
+	country_modifier = {
+		global_disease_resistance = 0.1
+		global_life_expectancy = 3
+		global_population_growth = 0.00025
+		
+		# added
+		government_reform_slots = 1
+	}
+
+	years = 2
+}

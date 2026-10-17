@@ -2,7 +2,7 @@
 	age = age_2_renaissance
 
 	country_modifier = {
-		monthly_towards_traditional_economy = 0.20
+		monthly_towards_traditional_economy = societal_value_large_monthly_move
 		global_raw_material_output = 0.1
 	}
 

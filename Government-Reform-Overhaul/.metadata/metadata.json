@@ -1,11 +1,10 @@
 ﻿{
 	"name":	"Government Reform Overhaul",
 	"id":	"grashwandir.government_reform_overhaul",
-	"version":	"0.1",
-	"supported_game_version":	"1.3.11",
-	"short_description":	"bla",
+	"version":	"0.2",
+	"supported_game_version":	"1.4",
+	"short_description":	"Government Reform Overhaul",
 	"tags":	["Balance", "Government and Estates", "Overhaul"],
 	"relationships":	[],
-	"game_custom_data":	{
-}
+	"game_custom_data":	{}
 }

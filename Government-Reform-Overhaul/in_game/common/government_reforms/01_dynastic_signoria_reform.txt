@@ -14,6 +14,8 @@
 		OR = {
 			"estate_power(estate_type:crown_estate)" > 0.3
 
+			has_or_had_tag = FLO
+
 			#Starting tags that are already hereditary
 			has_or_had_tag = MLO
 			has_or_had_tag = FER
@@ -27,8 +29,8 @@
 	locked = {
 		OR = {
 			has_estate_privilege = estate_privilege:visconti_city_states
-			"estate_power(estate_type:crown_estate)" <= 0.25
-			"estate_power(estate_type:nobles_estate)" >= 0.5
+			"estate_power(estate_type:crown_estate)" <= 0.3
+			"estate_power(estate_type:nobles_estate)" >= 0.5 
 		}
 	}
 	
