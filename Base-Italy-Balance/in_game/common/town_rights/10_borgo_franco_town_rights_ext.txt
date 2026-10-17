@@ -1,0 +1,174 @@
+﻿REPLACE:borgo_franco_town_rights = {
+	
+	kept_at_conquest = no
+	
+	location_modifier = {
+		local_marketplace_building_levels = 5
+		local_market_upgrade_building_levels = 5
+		
+		local_trades_per_burgher = 0.25
+		
+		# local_peasant_enfranchisment = 0.1
+		
+		local_migration_attraction = 0.1
+		local_merchant_capacity_modifier = 0.1
+
+		local_pop_assimilation_speed_modifier = -0.25
+		local_burghers_estate_power = 0.25
+#		local_production_efficiency = town_right_efficiency_penalty
+	}
+	
+	country_modifier = {
+		legislative_efficiency = -0.05
+	}
+
+	potential = {
+		culture = {
+			has_culture_group = culture_group:italian_group
+		}
+	}
+	
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:staple_port
+				has_town_rights = town_rights_type:royal_staple_rights
+				
+				has_town_rights = town_rights_type:market_charter
+				has_town_rights = town_rights_type:royal_market_rights
+				
+				has_town_rights = town_rights_type:free_town_charter
+			}
+		}
+	}
+
+	color = map_ITA
+}
+
+######################################################################
+# Reverse exclusivity: vanilla market/staple rights also block borgo_franco.
+# Each block is the vanilla 1.4.x 00_traditions.txt definition + one has_town_rights line.
+# A trigger block cannot be INJECTed into an object that already has one (wiki Mod_compatibility),
+# so REPLACE is the only way; MEIOU-and-Taxes does the same for its town rights.
+# Re-check these copies against vanilla after each game update.
+######################################################################
+
+REPLACE:royal_market_rights = {
+	location_modifier = {
+		local_marketplace_building_levels = 5
+		local_market_upgrade_building_levels = 5
+		local_trades_per_burgher = 0.4
+		local_market_access = 0.15
+	}
+
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:staple_port
+				has_town_rights = town_rights_type:royal_staple_rights
+				has_town_rights = town_rights_type:free_town_charter
+				has_town_rights = town_rights_type:borgo_franco_town_rights
+			}
+		}
+	}
+
+	color = hsv { 0.55 0.65 0.90 }
+}
+
+REPLACE:royal_staple_rights = {
+	location_modifier = {
+		local_marketplace_building_levels = 8
+		local_market_upgrade_building_levels = 8
+		harbor_suitability = 0.3
+		local_maritime_presence = 0.15
+
+		local_burghers_estate_power = 0.75
+	}
+
+	allow = {
+		scope:target = {
+			is_port = yes
+			NOR = {
+				has_town_rights = town_rights_type:market_charter
+				has_town_rights = town_rights_type:royal_market_rights
+				has_town_rights = town_rights_type:free_town_charter
+				has_town_rights = town_rights_type:borgo_franco_town_rights
+			}
+		}
+	}
+
+	color = hsv { 0.58 0.65 0.75 }
+}
+
+REPLACE:staple_port = {
+	upgrades_to = royal_staple_rights
+
+	location_modifier = {
+		local_marketplace_building_levels = 5
+		harbor_suitability = 0.2
+		local_maritime_presence = 0.1
+
+		local_burghers_estate_power = 0.5
+	}
+
+	allow = {
+		scope:target = {
+			is_port = yes
+			NOR = {
+				has_town_rights = town_rights_type:market_charter
+				has_town_rights = town_rights_type:royal_market_rights
+				has_town_rights = town_rights_type:free_town_charter
+				has_town_rights = town_rights_type:borgo_franco_town_rights
+			}
+		}
+	}
+
+	color = map_naples
+}
+
+REPLACE:market_charter = {
+	upgrades_to = royal_market_rights
+
+	location_modifier = {
+		local_marketplace_building_levels = 3
+		local_trades_per_burgher = 0.25
+		local_market_access = 0.1
+	}
+
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:staple_port
+				has_town_rights = town_rights_type:royal_staple_rights
+				has_town_rights = town_rights_type:free_town_charter
+				has_town_rights = town_rights_type:borgo_franco_town_rights
+			}
+		}
+	}
+
+	color = hsv { 0.55 0.45 0.80 }
+}
+
+REPLACE:free_town_charter = {
+	location_modifier = {
+		local_migration_attraction = 0.25
+		local_merchant_capacity_modifier = 0.2
+		local_monthly_prosperity = 0.001
+		local_burghers_estate_power = 0.5
+		local_crown_estate_power = -0.5
+	}
+
+	allow = {
+		scope:target = {
+			NOR = {
+				has_town_rights = town_rights_type:market_charter
+				has_town_rights = town_rights_type:royal_market_rights
+				has_town_rights = town_rights_type:staple_port
+				has_town_rights = town_rights_type:royal_staple_rights
+				has_town_rights = town_rights_type:borgo_franco_town_rights
+			}
+		}
+	}
+
+	color = hsv { 0.13 0.60 0.90 }
+}

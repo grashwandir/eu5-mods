@@ -1,0 +1,56 @@
+﻿namespace = italy_balance_flo
+
+# Florence lays claim to Pistoia while both are at peace, before 1355.
+italy_balance_flo.1 = {
+	type = country_event
+	title = italy_balance_flo.1.title
+	desc = italy_balance_flo.1.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = FLO
+		from = 1337.1.1
+		to = 1355.1.1
+		monthly_chance = 4 # ~2 years on average
+	}
+
+	trigger = {
+		at_war = no
+		country_exists = c:PST
+		c:PST = {
+			at_war = no
+			any_owned_location = {
+				NOT = { is_core_of = root }
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_flo.1.a
+		c:PST = {
+			every_owned_location = {
+				limit = {
+					NOT = { is_core_of = root }
+				}
+				add_core = root
+			}
+		}
+		add_stability = 10
+		add_government_power = government_power_extreme_bonus # +10 legitimacy / republican tradition / ...
+		add_political_influence = 75
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = 24 # ~2 years of income
+		}
+	}
+}

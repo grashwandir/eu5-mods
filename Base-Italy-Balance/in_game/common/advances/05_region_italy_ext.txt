@@ -1,0 +1,12 @@
+﻿italy_mining_city_advance = {
+	age = age_2_renaissance
+	icon = efficient_mining
+
+	potential = {
+		culture = { has_culture_group = culture_group:italian_group }
+	}
+
+	unlock_town_rights = italy_mining_city
+
+	requires = rgo_size_advance_renaissance
+}

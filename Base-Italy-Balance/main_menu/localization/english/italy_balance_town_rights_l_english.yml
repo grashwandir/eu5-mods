@@ -1,0 +1,17 @@
+﻿l_english:
+ italy_studium_theologiae: "Studium Theologiae"
+ italy_studium_theologiae_desc: "This [location|e] hosts a school of theology where the [ShowEstateTypeName('clergy_estate')] trains its own. Learned priests and friars spread from here across the land, though the clergy guard the school jealously."
+ italy_clergy_humanist_learning: "Christian Humanist Learning"
+ italy_clergy_humanist_learning_desc: "The new learning has reached our churches. If the [ShowEstateTypeName('clergy_estate')] may found schools of theology in our cities, they will embrace the study of the ancient texts rather than oppose it."
+ MODIFIER_TYPE_NAME_allow_italy_studium_theologiae_town_rights: "Allows [ShowTownRightsName('italy_studium_theologiae')]"
+ MODIFIER_TYPE_DESC_allow_italy_studium_theologiae_town_rights: "This allows us to grant the [ShowTownRightsName('italy_studium_theologiae')] [town_rights|e] to our [locations|e]."
+
+ italy_mining_city: "Mining City"
+ italy_mining_city_desc: "This [location|e] has been chartered as a mining city. Its mines and quarries may be worked far beyond the usual limits, drawing miners and their families from across the land."
+
+ italy_frontier_city: "Frontier City"
+ italy_frontier_city_desc: "This [location|e] guards a natural stronghold of hills, mountains, plateaus or marshes. Its granaries are stocked against siege and its walls permanently garrisoned, while the [ShowEstateTypeName('nobles_estate')] who command it hold sway over civic life."
+ noble_fortification_management: "Fortification Management"
+ noble_fortification_management_desc: "Rather than let every lord raise a castle at will, the [ShowEstateTypeName('nobles_estate')] are entrusted with the upkeep and command of the realm's strongholds. Fewer forts are built, but those that stand are better maintained, and fortified frontier cities guard the passes."
+ MODIFIER_TYPE_NAME_allow_italy_frontier_city_town_rights: "Allows [ShowTownRightsName('italy_frontier_city')]"
+ MODIFIER_TYPE_DESC_allow_italy_frontier_city_town_rights: "This allows us to grant the [ShowTownRightsName('italy_frontier_city')] [town_rights|e] to our [locations|e]."

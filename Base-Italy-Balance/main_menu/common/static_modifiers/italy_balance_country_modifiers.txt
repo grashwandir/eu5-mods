@@ -1,0 +1,16 @@
+﻿# Custom country modifier. Keep antagonism_received_modifier FIRST:
+# vanilla just_causes only holds that type, so its icon comes from it.
+righteous_claims = {
+	game_data = {
+		category = country
+	}
+	antagonism_received_modifier = -0.4
+	antagonism_monthly_change_modifier = 0.04 # positive = faster decay (bonus)
+}
+
+italian_conquest_momentum = {
+	game_data = {
+		category = country
+	}
+	global_integration_speed_modifier = 0.4
+}

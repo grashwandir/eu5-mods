@@ -1,0 +1,17 @@
+﻿great_council_of_justice_reform = {
+	age = age_3_discovery
+	icon = mlo_council_of_justice
+		
+	potential = {
+		has_or_had_tag = SRP
+	}
+	
+	country_modifier = {
+		monthly_towards_centralization = societal_value_monthly_move
+		government_size = 1
+		government_reform_slots = 1
+		global_estate_target_satisfaction = medium_permanent_target_satisfaction
+	}
+
+	years = 2
+}

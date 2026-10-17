@@ -1,0 +1,66 @@
+﻿italy_loggia_del_consiglio = {
+	audio_tier = 3
+	is_foreign = no
+	pop_type = nobles
+	max_levels = 1
+
+	icon = doges_palace
+
+	category = government_category
+
+	employment_size = normal_noble_employment
+
+	rural_settlement = no
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	expensive = yes
+	build_time = large_capital_build_time
+
+	location_potential = {
+		counts_as_capital = yes
+	}
+
+	allow = {
+		is_capital = yes
+		country_has_no_other_copy_of_building = { type = italy_loggia_del_consiglio }
+	}
+
+	country_potential = {
+		government_type ?= government_type:republic
+		has_advance = pad_the_bo
+	}
+
+	remove_if = {
+		OR = {
+			is_no_longer_capital = yes
+			location.owner ?= { government_type != government_type:republic }
+		}
+	}
+
+	capital_country_modifier = {
+		country_cabinet_efficiency = 0.1
+		monthly_republican_tradition = 0.05
+		parliament_base_support = 0.05
+		global_max_bureaucracy_slots = 1
+	}
+
+	unique_production_methods = {
+		italy_loggia_del_consiglio_maintenance = {
+			icon_type = building_type
+			icon = doges_palace
+			lumber = 0.1
+			tools = 0.1
+			glass = 0.33
+			fine_cloth = 0.5
+			books = 0.1
+			goods_gold = 0.1
+			marble = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = hanseatic_town_hall_construction
+}

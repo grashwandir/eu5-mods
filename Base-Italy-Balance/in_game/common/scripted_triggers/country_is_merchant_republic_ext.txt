@@ -1,0 +1,11 @@
+﻿REPLACE:is_merchant_republic = {
+	OR = {
+		has_reform = government_reform:hanseatic_merchant_federation
+		has_reform = government_reform:diarchy_republic
+		has_reform = government_reform:merchant_republic
+		has_reform = government_reform:signoria_of_venice
+		has_reform = government_reform:council_of_forty
+		# added
+		has_reform = government_reform:italian_merchant_republic
+	}
+}

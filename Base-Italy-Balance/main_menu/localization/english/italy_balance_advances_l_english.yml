@@ -1,0 +1,21 @@
+﻿l_english:
+ italian_orthodox_patriarchate: "Italian $orthodox_ADJ$ Patriarchate"
+ italian_orthodox_patriarchate_desc: "Though most of the peninsula looks to Rome, the old Greek-rite communities of southern Italy never forgot the liturgy of Constantinople. By founding a patriarchate of our own, we gather the $orthodox_ADJ$ faithful of Italy under one see, and keep its authority within our borders, free from the dictates of both Rome and Constantinople."
+ reformation_of_the_italian_patriarchate: "Reformation of the Italian Patriarchate"
+ reformation_of_the_italian_patriarchate_desc: "The learning of the $renaissance$ has reached our clergy. Scholars from the East bring Greek manuscripts and the writings of the Church Fathers, and our Patriarchate has used the moment to reform its seminaries, renew its liturgy and raise its voice among the $orthodox_ADJ$ churches. A reinvigorated Patriarchate gives us far greater weight in the affairs of our faith."
+ italy_mining_city_advance: "$italy_mining_city$"
+ italy_mining_city_advance_desc: "$italy_mining_city_desc$"
+
+ # Sardinia-Piedmont (SRP), adapted from the vanilla PIE and TWS advances
+ srp_ordinanza_piedmontese: "$pie_ordinanza_piedmontese$"
+ srp_ordinanza_piedmontese_desc: "$pie_ordinanza_piedmontese_desc$"
+ srp_ensure_loyal_families: "Loyalty of the Great Families"
+ srp_ensure_loyal_families_desc: "The noble houses and great towns of Sardinia and Piedmont exert much power in our stead. By granting them prestigious yet meaningless roles at court, we will ensure their loyalty and guarantee stable rule over both the island and the mainland."
+ srp_revitalize_the_lands: "Attract new People"
+ srp_revitalize_the_lands_desc: "Previous rulers poured their attention into Piedmont and left Sardinia to languish. If we want to hold both parts of our realm, we will have to invest in each of them fairly. One step towards this goal is attracting settlers to the island's neglected countryside."
+ srp_oversea_ambitions: "Overseas Ambitions"
+ srp_oversea_ambitions_desc: "Expanding our territories within Italy means navigating a treacherous web of alliances and the jealousy of France and the Empire. From the ports of Sardinia, we should instead look across the sea, where the riches of the western Mediterranean await us."
+ srp_capable_vicars: "Capable Viceroys"
+ srp_capable_vicars_desc: "Our realm is divided by the sea. Since our ruler can only reside on one side of it, Sardinia must be governed by a viceroy ruling in our name from Cagliari. We must be sure to appoint only the most capable and trustworthy people to this vital role to prevent corruption."
+ srp_protect_the_coastline: "Increase Maritime Patrols"
+ srp_protect_the_coastline_desc: "The coasts of Sardinia are long and exposed to raids by corsairs hunting for slaves. We need to establish a navy to patrol, protect, and eventually defeat this vile threat to our people."

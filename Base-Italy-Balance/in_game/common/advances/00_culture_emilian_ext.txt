@@ -1,0 +1,133 @@
+﻿REPLACE:birthplace_of_renaissance = {
+	age = age_1_traditions
+	icon = court_cost_advance_renai
+
+	potential = {
+		OR = {
+			culture = culture:tuscan
+			culture = { merged_culture_group_contains_culture = culture:tuscan }
+
+			# added
+			culture = culture:emilian
+			culture = { merged_culture_group_contains_culture = culture:emilian }
+		}
+	}
+
+	research_speed_modifier = 0.05
+	skill_of_new_artists = 0.1
+
+	requires = legalism_advance
+}
+#
+REPLACE:emilian_al_po_doma = {
+	age = age_1_traditions
+	icon = river_trade
+
+	potential = {
+		OR = {
+			culture = culture:emilian
+			culture = { merged_culture_group_contains_culture = culture:emilian }
+		}
+	}
+
+	global_monthly_development = 0.001
+#	trade_land_efficiency = tiny_trade_land_efficiency_bonus
+	
+	# added
+	trade_land_efficiency = small_trade_land_efficiency_bonus
+
+	requires = agriculture_advance
+}
+#
+#emilian_the_via_emilia = {
+#	age = age_2_renaissance
+#	icon = road_building
+#
+#	potential = {
+#		OR = {
+#			culture = culture:emilian
+#			culture = { merged_culture_group_contains_culture = culture:emilian }
+#		}
+#	}
+#
+#	global_merchant_capacity_modifier = 0.1
+#	trade_range = 200
+#
+#	requires = renaissance_thought
+#}
+#
+#emilian_dispenza_emigliana = {
+#	age = age_3_discovery
+#	icon = colonial_tradition
+#
+#	potential = {
+#		OR = {
+#			culture = culture:emilian
+#			culture = { merged_culture_group_contains_culture = culture:emilian }
+#		}
+#	}
+#
+#	diplomatic_reputation = diplomatic_reputation_mild_bonus
+#	monthly_prestige = 0.1
+#
+#	requires = diplomatic_training
+#}
+#
+REPLACE:emilian_the_tera_cruda = {
+	age = age_4_reformation
+	icon = defensive_mentality
+
+	potential = {
+		OR = {
+			culture = culture:emilian
+			culture = { merged_culture_group_contains_culture = culture:emilian }
+		}
+	}
+
+	global_defensive = 0.1
+#	global_fort_build_buildings_efficiency = 0.20
+
+	# added
+	fort_maintenance_efficiency = 0.10
+	global_hostile_attrition = 1
+
+	requires = bastion_advance
+}
+#
+#INJECT:emilian_la_mzura_dal_sol = {
+#	global_crown_estate_power = 0.1
+#}
+#
+#emilian_la_mzura_dal_sol = {
+#	age = age_5_absolutism
+#	icon = efficient_construction_plans
+#
+#	potential = {
+#		OR = {
+#			culture = culture:emilian
+#			culture = { merged_culture_group_contains_culture = culture:emilian }
+#		}
+#	}
+#
+#	tax_income_efficiency = large_tax_income_efficiency_bonus
+#
+#	requires = scientific_revolution_advance
+#}
+#
+#emilian_al_melodram = {
+#	age = age_6_revolutions
+#	icon = cultural_ties
+#
+#	potential = {
+#		OR = {
+#			culture = culture:emilian
+#			culture = { merged_culture_group_contains_culture = culture:emilian }
+#		}
+#	}
+#
+#	cultural_influence_modifier = 0.15
+#	land_morale_modifier = 0.15
+#	ai_weight = { add = 10 }
+#
+#	requires = artists_advance_revolutions
+#}

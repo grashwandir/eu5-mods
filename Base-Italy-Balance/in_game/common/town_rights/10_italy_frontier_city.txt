@@ -1,0 +1,133 @@
+﻿italy_frontier_city = {
+
+	potential = {
+		capital ?= {
+			region ?= region:italy_region
+		}
+		modifier:allow_italy_frontier_city_town_rights = yes
+	}
+
+	allow = {
+		scope:target = {
+			# Defensive topography only (defender > 0), no flatland
+			OR = {
+				topography = hills
+				topography = mountains
+				topography = plateau
+				topography = wetlands
+			}
+			NOT = { has_town_rights = town_rights_type:imperial_breadbasket_rights }
+			NOT = { has_town_rights = town_rights_type:granary_town }
+			NOT = { has_town_rights = town_rights_type:fortress_town }
+		}
+	}
+	
+	location_modifier = {
+		# granary_town
+		
+		local_food_preservation_efficiency_modifier = 0.25
+		local_food_capacity_modifier = 0.5	#WAD, decision by johan
+		
+		# local_migration_attraction = -0.25
+		local_migration_speed_modifier = -0.5
+		
+		# fortress_town
+		
+		local_garrison_size = 0.3
+		local_defensive = 0.25
+		local_manpower_modifier = 0.2
+		local_nobles_estate_power = 0.25
+		local_burghers_estate_power = -0.25
+		local_soldiers_desired_pop = 0.2
+	}
+
+	color = map_TUS
+}
+
+######################################################################
+
+REPLACE:granary_town = {
+
+	allow = {
+		scope:target = {
+			NOT = { has_town_rights = town_rights_type:imperial_breadbasket_rights }
+			# added
+			NOT = { has_town_rights = town_rights_type:italy_frontier_city }
+		}
+	}
+
+	location_modifier = {
+		local_food_preservation_efficiency_modifier = 0.25
+		local_food_capacity_modifier = 0.5	#WAD, decision by johan
+
+		# modified (granary_town has no potential: applies to every country)
+		# local_migration_attraction = -0.25
+		local_migration_speed_modifier = -0.5
+	}
+
+	color = goods_wheat
+}
+
+REPLACE:fortress_town = {
+	
+	# added
+	allow = {
+		scope:target = {
+			NOT = { has_town_rights = town_rights_type:italy_frontier_city }
+		}
+	}
+
+	location_modifier = {
+		local_garrison_size = 0.3
+		local_defensive = 0.25
+		local_manpower_modifier = 0.2
+		local_nobles_estate_power = 0.25
+		local_burghers_estate_power = -0.25
+		local_soldiers_desired_pop = 0.2
+	}
+
+	color = hsv { 0.07 0.45 0.55 }
+}
+
+# Vanilla byzantine_greek_roman.txt (1.4.x) + one has_town_rights line, so the exclusivity is two-way
+REPLACE:imperial_breadbasket_rights = {
+	kept_at_conquest = no
+	potential = {
+		OR = {
+			has_or_had_tag = BYZ
+			has_or_had_tag = ROM
+		}
+	}
+
+	allow = {
+		scope:target = {
+			NOT = { has_town_rights = town_rights_type:granary_town }
+			# added
+			NOT = { has_town_rights = town_rights_type:italy_frontier_city }
+			custom_tooltip = {
+				text = imperial_breadbasket_rights_rank_tt
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+			}
+			custom_tooltip = {
+				text = imperial_breadbasket_rights_granary_tt
+				any_buildings_in_location = {
+					building_type = building_type:granary
+					building_level >= 5
+				}
+			}
+		}
+	}
+
+	location_modifier = {
+		local_food_capacity = 1000
+		local_monthly_prosperity = 0.002
+		local_population_growth = 0.002
+
+		local_pop_food_consumption = 0.2
+	}
+
+	color = goods_coffee
+}

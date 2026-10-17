@@ -1,0 +1,51 @@
+﻿############################
+# age_1_traditions
+############################
+
+############################
+# age_2_renaissance
+############################
+
+italian_river_toll_castle_advance = {
+	age = age_2_renaissance
+
+	potential = {
+		OR = {
+			culture ?= { has_culture_group = culture_group:italian_group }
+		}
+	}
+
+	unlock_building = italian_river_toll_castle
+
+	requires = global_nobles_max_literacy_advance
+}
+
+italian_mountain_toll_castle_advance = {
+	age = age_2_renaissance
+
+	potential = {
+		OR = {
+			culture ?= { has_culture_group = culture_group:italian_group }
+		}
+	}
+
+	unlock_building = italian_mountain_toll_castle
+
+	requires = global_nobles_max_literacy_advance
+}
+
+############################
+# age_3_discovery
+############################
+
+############################
+# age_4_reformation
+############################
+
+############################
+# age_5_absolutism
+############################
+
+############################
+# age_6_revolutions
+############################

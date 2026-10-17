@@ -1,0 +1,190 @@
+﻿italy_mining_city = {
+	is_specialization = yes
+	kept_at_conquest = no
+
+	location_modifier = {
+		local_max_rgo_size_modifier = 1.0
+		local_migration_attraction = 0.1
+
+		local_raw_material_output = 0.05
+
+		local_rgo_build_time = 0.5
+#		local_peasant_enfranchisment = -0.2
+	}
+
+	country_modifier = {
+		expand_rgo_mining_cost_modifier = 0.05
+	}
+
+	allow = {
+		scope:target = {
+			NOT = { has_town_rights = town_rights_type:mining_charter }
+			OR = {
+				raw_material = goods:iron
+				raw_material = goods:copper
+				raw_material = goods:lead
+				raw_material = goods:tin
+				raw_material = goods:alum
+				raw_material = goods:marble
+				raw_material = goods:mercury
+				raw_material = goods:coal
+				raw_material = goods:stone
+				raw_material = goods:saltpeter
+
+				raw_material = goods:silver
+				raw_material = goods:goods_gold
+				raw_material = goods:gems
+			}
+		}
+	}
+
+	color = goods_iron
+}
+
+REPLACE:mining_charter = {
+	location_modifier = {
+		local_max_rgo_size_modifier = 0.35
+		local_peasant_enfranchisment = -0.1
+		local_production_efficiency = town_right_efficiency_penalty
+		local_raw_material_output = 0.1
+	}
+
+	allow = {
+		scope:target = {
+			custom_tooltip = {
+				text = mining_charter_rgo_tt
+				OR = {
+					is_mining_rgo = yes
+					AND = {
+						is_port = no
+						raw_material = goods:salt
+					}
+				}
+			}
+			NOR = {
+				has_town_rights = town_rights_type:scandinavian_bergslag_privileges
+				has_town_rights = town_rights_type:upper_bergregal
+				has_town_rights = town_rights_type:lower_bergregal
+				has_town_rights = town_rights_type:novo_brdo_charter
+				has_town_rights = town_rights_type:italy_mining_city
+			}
+		}
+	}
+
+	color = hsv { 0.35 0.30 0.45 }
+}
+#
+#scandinavian_bergslag_privileges = {
+#	is_specialization = yes
+#	kept_at_conquest = no
+#	location_modifier = {
+#		local_max_rgo_size_modifier = 0.5
+#		local_tools_output_modifier = 0.1
+#		local_peasant_enfranchisment = 0.05
+#
+#		local_rgo_build_time = 0.5
+#	}
+#
+#	country_modifier = {
+#		expand_rgo_mining_cost_modifier = 0.05
+#	}
+#
+#	allow = {
+#		scope:target = {
+#			NOT = { has_town_rights = town_rights_type:royal_tooling_rights }
+#			NOT = { has_town_rights = town_rights_type:mining_charter }
+#			OR = {
+#				raw_material = goods:iron
+#				raw_material = goods:copper
+#				raw_material = goods:silver
+#				raw_material = goods:lead
+#			}
+#		}
+#	}
+#
+#	color = goods_copper
+#}
+#
+##Bergordnung Policy
+#upper_bergregal = {
+#	kept_at_conquest = no
+#
+#	location_modifier = {
+#		local_max_rgo_size_modifier = 1.0
+#		local_migration_attraction = 0.1
+#
+#		local_rgo_build_time = 0.5
+#		local_peasant_enfranchisment = -0.2
+#	}
+#	country_modifier = {
+#		expand_rgo_mining_cost_modifier = 0.1
+#	}
+#
+#	potential = {
+#		has_policy = german_mining_law
+#	}
+#
+#	allow = {
+#		scope:target = {
+#			NOT = { has_town_rights = town_rights_type:mining_charter }
+#			custom_tooltip = {
+#				text = upper_bergregal_raw_material_tt
+#				OR = {
+#					raw_material = goods:silver
+#					raw_material = goods:goods_gold
+#					raw_material = goods:gems
+#					AND = {
+#						is_port = no
+#						raw_material = goods:salt
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	color = goods_silver
+#}
+#
+##Bergordnung Policy
+#lower_bergregal = {
+#	kept_at_conquest = no
+#
+#	location_modifier = {
+#		local_max_rgo_size_modifier = 1.0
+#		local_migration_attraction = 0.1
+#
+#		local_peasant_enfranchisment = -0.2
+#		local_nobles_estate_power =  0.5
+#	}
+#	country_modifier = {
+#		expand_rgo_mining_cost_modifier = 0.05
+#	}
+#
+#	potential = {
+#		has_policy = german_mining_law
+#	}
+#
+#
+#	allow = {
+#		scope:target = {
+#			NOT = { has_town_rights = town_rights_type:mining_charter }
+#			custom_tooltip = {
+#				text = lower_bergregal_raw_material_tt
+#				OR = {
+#					raw_material = goods:iron
+#					raw_material = goods:copper
+#					raw_material = goods:lead
+#					raw_material = goods:tin
+#					raw_material = goods:alum
+#					raw_material = goods:marble
+#					raw_material = goods:mercury
+#					raw_material = goods:coal
+#					raw_material = goods:stone
+#					raw_material = goods:saltpeter
+#				}
+#			}
+#		}
+#	}
+#
+#	color = goods_iron
+#}

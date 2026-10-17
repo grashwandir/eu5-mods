@@ -1,0 +1,15 @@
+﻿# Granted by estate privilege italy_clergy_humanist_learning, checked by town right italy_studium_theologiae
+allow_italy_studium_theologiae_town_rights = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}
+
+# Granted by estate privilege noble_fortification_management, checked by town right italy_frontier_city
+allow_italy_frontier_city_town_rights = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}

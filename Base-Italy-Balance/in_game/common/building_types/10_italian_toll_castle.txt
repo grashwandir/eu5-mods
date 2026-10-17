@@ -1,0 +1,88 @@
+﻿italian_river_toll_castle = {
+	audio_tier = 3
+	is_special = yes
+	is_foreign = no
+	max_levels = 1
+	pop_type = nobles
+	
+	icon = german_river_toll_castle
+	
+	employment_size = minor_noble_employment
+	
+	category = trade_category
+	
+	location_potential = {
+		has_river = yes
+	}
+
+	country_potential = {
+		has_advance = italian_river_toll_castle_advance
+	}
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = trade_post_build_time
+
+	possible_production_methods = {
+		basic_castle_maintenance
+	}
+
+	construction_demand = town_building_construction
+
+	modifier = {
+		local_trade_protection_factor = 0.05
+	}
+	raw_modifier = {
+		local_nobles_desired_pop = 0.01
+	}
+	
+	graphical_tags = { small_military }
+}
+
+italian_mountain_toll_castle = {
+	audio_tier = 3
+	is_special = yes
+	is_foreign = no
+	max_levels = 1
+	pop_type = nobles
+	
+	icon = german_mountain_toll_castle
+	
+	employment_size = minor_noble_employment
+	
+	category = trade_category
+	
+	location_potential = {
+		topography = mountains
+		num_roads > 0
+	}
+
+	country_potential = {
+		has_advance = italian_mountain_toll_castle_advance
+	}
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = trade_post_build_time
+
+	possible_production_methods = {
+		basic_castle_maintenance
+	}
+	
+	construction_demand = town_building_construction
+
+	modifier = {
+		local_merchant_power = 0.05
+	}
+	raw_modifier = {
+		local_nobles_desired_pop = 0.01
+	}
+
+	graphical_tags = { small_military }
+}

@@ -1,0 +1,35 @@
+﻿italian_merchant_republic = {
+	major = yes
+	unique = yes
+	government = republic
+	icon = merchant_republic
+	
+	potential = {
+		capital.region = region:italy_region
+		OR = {
+			court_language = language:north_italian_language
+			court_language = language:south_italian_language
+		}
+	}
+	
+	on_activate = {
+		change_heir_selection = heir_selection:council_selective
+	}
+
+	country_modifier = {
+		global_merchant_capacity_modifier = 0.50
+		trade_income = 0.20
+		global_foreign_build_buildings_efficiency = 1.0
+
+		merchant_maintenance_efficiency = 0.50
+		global_integration_speed_modifier = -0.25
+		court_language_is_market_language_importance_modifier = 15
+		max_trade_subventions = 0.15
+		
+		#Added
+		annexation_speed_modifier = -0.20
+		government_reform_slots = 1
+	}
+
+	years = 2
+}

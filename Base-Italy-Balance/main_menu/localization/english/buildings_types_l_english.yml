@@ -1,0 +1,14 @@
+﻿l_english:
+ italian_river_toll_castle: "River Toll Castle"
+ italian_river_toll_castle_desc: "A small castle placed along the river facilitates control over passing traders, granting our state a vital share of the local trade income."
+
+ italian_mountain_toll_castle: "Mountain Toll Castle"
+ italian_mountain_toll_castle_desc: "A small castle placed on a crucial mountain pass facilitates control over passing traders, granting our state a vital share of the local trade income."
+
+ italy_loggia_del_consiglio: "Loggia del Consiglio"
+ italy_loggia_del_consiglio_desc: "Built to house the city's council, the $italy_loggia_del_consiglio$ gives our magistrates a worthy seat from which to deliberate and administer the affairs of the republic."
+ italy_loggia_del_consiglio_maintenance: "Loggia del Consiglio"
+
+ italy_palazzo_del_bo: "Palazzo del Bo"
+ italy_palazzo_del_bo_desc: "Seat of the University of Padua, the $italy_palazzo_del_bo$ draws scholars from across Christendom. Within its walls stands a permanent anatomical theatre, where physicians learn the workings of the body through dissection and careful observation."
+ italy_palazzo_del_bo_maintenance: "Palazzo del Bo"

@@ -1,0 +1,11 @@
+﻿{
+	"name":	"Base Italy Balance",
+	"id":	"grashwandir.base_italy_balance",
+	"version":	"0.1",
+	"supported_game_version":	"1.4.*",
+	"short_description":	"Italy countries customization.",
+	"tags":	["Advancements", "Balance", "Fixes"],
+	"relationships":	[],
+	"game_custom_data":	{
+	}
+}

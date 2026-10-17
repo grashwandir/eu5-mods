@@ -1,0 +1,28 @@
+﻿# Custom privileges for clergy
+# Unlocks the italy_studium_theologiae town right (see town_rights/10_italy_studium_theologiae.txt)
+
+italy_clergy_humanist_learning = {
+
+	estate = clergy_estate
+	icon = clergy_literacy_rights
+
+	potential = {
+		capital ?= {
+			region ?= region:italy_region
+		}
+	}
+
+	allow = {
+		societal_value:spiritualist_vs_humanist >= 25
+	}
+
+	country_modifier = {
+		allow_italy_studium_theologiae_town_rights = yes
+		clergy_estate_target_satisfaction = small_privilege_target_satisfaction
+		global_clergy_estate_power = 0.25
+		
+		#TODO: add bonus?
+
+		monthly_towards_humanist = societal_value_monthly_move
+	}
+}

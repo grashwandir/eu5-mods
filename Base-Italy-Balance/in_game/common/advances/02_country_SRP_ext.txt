@@ -1,0 +1,189 @@
+﻿#srp_unified_legal_code = {
+#	age = age_1_traditions
+#	icon = scholasticism
+#
+#	potential = {
+#		has_or_had_tag = SRP
+#	}
+#
+#	stability_cost_efficiency = 0.2
+#	
+#	# Added
+#	global_max_bureaucracy_slots = 1
+#
+#	requires = library_advance
+#}
+
+srp_ordinanza_piedmontese = {
+	age = age_1_traditions
+	icon = pie_ordinanza_piedmontese
+
+	potential = {
+		has_or_had_tag = SRP
+		# A former PIE keeps the identical vanilla pie_ordinanza_piedmontese
+		NOT = { has_or_had_tag = PIE }
+	}
+
+	discipline = 0.05
+	land_morale_modifier = 0.05
+
+	requires = feudalism_advance
+}
+
+srp_ensure_loyal_families = {
+	age = age_2_renaissance
+	icon = tws_ensure_loyal_families
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	monthly_devotion = 0.1
+	monthly_legitimacy = 0.1
+	monthly_republican_tradition = 0.1
+	
+	# modified
+	# nobles_estate_satisfaction_recovery = 0.001
+	global_estate_satisfaction_recovery = 0.001
+
+	requires = coastal_fort_advance
+}
+
+srp_revitalize_the_lands = {
+	age = age_3_discovery
+	icon = colonies
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	global_migration_speed_modifier = 0.1
+	global_monthly_prosperity = 0.001
+
+	requires = coastal_trade_routes_advance
+}
+
+srp_oversea_ambitions = {
+	age = age_4_reformation
+	icon = glorious_arms
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	anti_piracy_warfare_modifier = 0.1
+	global_maritime_presence_modifier = 0.25
+
+	requires = naval_morale_advance_3
+}
+
+srp_capable_vicars = {
+	age = age_5_absolutism
+	icon = tws_capable_vicars
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	estate_power_from_cabinet = -0.1
+	set_cabinet_member_cost_modifier = -0.2
+
+	requires = absolute_rulership
+}
+
+srp_protect_the_coastline = {
+	age = age_6_revolutions
+	icon = maritime_advance_age_2
+
+	potential = {
+		has_or_had_tag = SRP
+	}
+
+	navy_tradition_decay = -0.001
+	naval_morale_modifier = 0.10
+
+	requires = modern_bureaucracy
+}
+
+#pie_ordinanza_piedmontese = {
+#	age = age_1_traditions
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	discipline = 0.05
+#	land_morale_modifier = 0.05
+#
+#	requires = feudalism_advance
+#}
+#
+#pie_cavalleria_piemontese = {
+#	age = age_2_renaissance
+#	icon = finest_of_horses
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	land_morale_modifier = 0.1
+#	military_tactics = 0.1
+#	ai_weight = { add = 10 }
+#
+#	requires = banking_advance
+#}
+#
+#pie_via_delle_gallie = {
+#	age = age_3_discovery
+#	icon = road_building
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	diplomatic_capacity = 1
+#	trade_land_efficiency = medium_trade_land_efficiency_bonus
+#
+#	requires = diplomatic_training
+#}
+#
+#pie_citadel_system = {
+#	age = age_4_reformation
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	fort_limit_modifier = 0.10
+#	global_fort_build_buildings_efficiency = 0.2
+#
+#	requires = bastion_advance
+#}
+#
+#pie_enlightened_court = {
+#	age = age_5_absolutism
+#	icon = scholasticism
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	global_max_literacy = 10
+#	research_speed_modifier = 0.10
+#
+#	requires = scientific_revolution_advance
+#}
+#
+#pie_industrial_base = {
+#	age = age_6_revolutions
+#	icon = efficient_construction_plans
+#
+#	potential = {
+#		has_or_had_tag = PIE
+#	}
+#
+#	non_rural_migration_attraction = 0.20
+#	tax_income_efficiency = medium_tax_income_efficiency_bonus
+#
+#	requires = enlightenment_advance
+#}

@@ -1,0 +1,355 @@
+﻿namespace = italy_balance_pad
+
+# Padua owns Treviso (conquered, integrated or core): offer Venice to buy the rest of venice_province.
+italy_balance_pad.1 = {
+	type = country_event
+	title = italy_balance_pad.1.title
+	desc = italy_balance_pad.1.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1837.1.1
+		monthly_chance = 33 # ~3 months on average
+	}
+
+	trigger = {
+		location:treviso = {
+			owner = root
+			OR = {
+				integration_level = conquered
+				integration_level = integrated
+				integration_level = core
+			}
+		}
+		country_exists = c:VEN
+		province_definition:venice_province = {
+			any_location_in_province_definition = {
+				owner ?= c:VEN
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.1.a
+		custom_tooltip = italy_balance_pad.1.a.tt
+		save_scope_as = ibb_padua_buyer
+		c:VEN = {
+			trigger_event_non_silently = italy_balance_pad.2
+		}
+	}
+}
+
+# Venice answers Padua's offer.
+italy_balance_pad.2 = {
+	type = country_event
+	title = italy_balance_pad.2.title
+	desc = italy_balance_pad.2.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+	}
+
+	# Sell every location we own in venice_province to Padua
+	option = {
+		name = italy_balance_pad.2.a
+		trigger = {
+			# We need a location outside venice_province to move the capital to
+			any_owned_location = {
+				NOT = { province_definition = province_definition:venice_province }
+			}
+		}
+		if = {
+			limit = {
+				capital = {
+					province_definition = province_definition:venice_province
+				}
+			}
+			ordered_owned_location = {
+				limit = {
+					NOT = { province_definition = province_definition:venice_province }
+				}
+				order_by = population
+				max = 1
+				check_range_bounds = no
+				save_scope_as = ibb_new_venetian_capital
+			}
+			set_capital = scope:ibb_new_venetian_capital
+		}
+		province_definition:venice_province = {
+			every_location_in_province_definition = {
+				limit = {
+					owner = root
+				}
+				if = {
+					limit = { is_core_of = root }
+					remove_core = root
+				}
+#				if = {
+#					limit = { NOT = { is_core_of = scope:ibb_padua_buyer } }
+#					add_core = scope:ibb_padua_buyer
+#				}
+				change_location_owner = scope:ibb_padua_buyer
+			}
+		}
+		scope:ibb_padua_buyer = {
+			transfer_yearly_gold = {
+				value = 3
+				target = root
+			}
+			trigger_event_non_silently = italy_balance_pad.3
+		}
+		ai_chance = {
+			base = 80
+		}
+	}
+
+	# Refuse
+	option = {
+		name = italy_balance_pad.2.b
+		add_stability = stability_radical_penalty
+		scope:ibb_padua_buyer = {
+			trigger_event_non_silently = italy_balance_pad.4
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+# Feedback for Padua: Venice accepted the deal.
+italy_balance_pad.3 = {
+	type = country_event
+	title = italy_balance_pad.3.title
+	desc = italy_balance_pad.3.desc
+	outcome = positive
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.3.a
+		add_country_modifier = {
+			modifier = italian_conquest_momentum
+			years = 20
+		}
+		# "Claims on Province" CB against Ferrara (CB default duration: 15 years)
+		if = {
+			limit = {
+				location:ferrara = { owner ?= c:FER }
+			}
+			add_casus_belli = {
+				type = casus_belli:cb_conquer_province
+				target = c:FER
+				province = location:ferrara.province
+			}
+		}
+	}
+}
+
+# Feedback for Padua: Venice refused the deal.
+italy_balance_pad.4 = {
+	type = country_event
+	title = italy_balance_pad.4.title
+	desc = italy_balance_pad.4.desc
+	outcome = negative
+
+	illustration_tags = {
+		10 = angry
+		10 = interior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.4.a
+	}
+}
+
+# Padua occupies Ferrara during a war with FER before 1360.
+italy_balance_pad.5 = {
+	type = country_event
+	title = italy_balance_pad.5.title
+	desc = italy_balance_pad.5.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1360.1.1
+		monthly_chance = 17 # ~6 months on average
+	}
+
+	trigger = {
+		is_at_war_with = c:FER
+		location:ferrara = {
+			controller = root
+			NOT = { owner ?= root }
+		}
+	}
+
+	illustration_tags = {
+		10 = armed
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.5.a
+		add_country_modifier = {
+			modifier = righteous_claims
+			years = 20
+		}
+		# "Claims on Province" CB against Bologna (CB default duration: 15 years)
+		if = {
+			limit = {
+				location:bologna = { owner ?= c:BLG }
+			}
+			add_casus_belli = {
+				type = casus_belli:cb_conquer_province
+				target = c:BLG
+				province = location:bologna.province
+			}
+		}
+	}
+}
+
+# Padua holds Bologna as a core before 1360: set its sights on Florence.
+italy_balance_pad.6 = {
+	type = country_event
+	title = italy_balance_pad.6.title
+	desc = italy_balance_pad.6.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1360.1.1
+		monthly_chance = 8 # ~12 months on average
+	}
+
+	trigger = {
+		country_exists = c:FLO
+		location:florence = { owner ?= c:FLO }
+		province_definition:bologna_province = {
+			any_location_in_province_definition = {
+				count = all
+				owner ?= root
+				is_core_of = root
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:burghers_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.6.a
+		# "Claims on Province" CB against FLO for the Florence province (CB default duration: 15 years)
+		add_casus_belli = {
+			type = casus_belli:cb_conquer_province
+			target = c:FLO
+			province = location:florence.province
+		}
+	}
+}
+
+# Padua holds all of florence_province integrated and is at peace: become Tuscan, rule from Florence.
+italy_balance_pad.7 = {
+	type = country_event
+	title = italy_balance_pad.7.title
+	desc = italy_balance_pad.7.desc
+	outcome = positive
+	fire_only_once = yes
+
+	dynamic_historical_event = {
+		tag = PAD
+		from = 1337.1.1
+		to = 1837.1.1
+		monthly_chance = 25
+	}
+
+	trigger = {
+		at_war = no
+		province_definition:florence_province = {
+			any_location_in_province_definition = {
+				count = all
+				owner ?= root
+				OR = {
+					integration_level = integrated
+					integration_level = core
+				}
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = happy
+		10 = exterior
+	}
+
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:burghers_estate background = estate_type:nobles_estate }
+	}
+
+	option = {
+		name = italy_balance_pad.7.a
+		# Events switch culture directly; accepting it first is only required by the player action
+		if = {
+			limit = {
+				NOT = { culture = culture:tuscan }
+			}
+			change_culture = culture:tuscan
+			grant_culture_bonus_advances = culture:tuscan
+		}
+		add_accepted_culture = culture:venetian
+		culture:venetian = {
+			set_cultural_view = { target = culture:tuscan value = kindred }
+		}
+		# Reverse direction, so Tuscans also see Venetians as kindred
+		culture:tuscan = {
+			set_cultural_view = { target = culture:venetian value = kindred }
+		}
+		set_capital = location:florence
+		add_gold = {
+			value = monthly_income_trade_and_tax
+			multiply = 120 # ~10 years of trade and tax income
+		}
+	}
+}
