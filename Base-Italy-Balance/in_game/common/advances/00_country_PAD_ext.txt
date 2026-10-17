@@ -12,6 +12,10 @@
 #	requires = agriculture_advance
 #}
 #
+#INJECT:pad_carraresi_dynasty = {
+#	diplomatic_reputation = 20
+#}
+
 REPLACE:pad_the_bo = {
 	age = age_2_renaissance
 

@@ -216,7 +216,7 @@ italy_balance_pad.5 = {
 		tag = PAD
 		from = 1337.1.1
 		to = 1360.1.1
-		monthly_chance = 17 # ~6 months on average
+		monthly_chance = 25
 	}
 
 	trigger = {
@@ -240,7 +240,7 @@ italy_balance_pad.5 = {
 		name = italy_balance_pad.5.a
 		add_country_modifier = {
 			modifier = righteous_claims
-			years = 20
+			years = 30
 		}
 		# "Claims on Province" CB against Bologna (CB default duration: 15 years)
 		if = {
