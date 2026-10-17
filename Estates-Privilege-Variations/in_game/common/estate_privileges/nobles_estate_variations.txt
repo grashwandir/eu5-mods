@@ -22,7 +22,7 @@ noble_fortification_management = {
 		monthly_towards_defensive = societal_value_monthly_move
 		
 		fort_limit_modifier = -0.1
-		fort_maintenance_efficiency = 0.25
+		fort_maintenance_efficiency = 0.4
 		global_defensive = 0.1
 	}
 }
@@ -54,18 +54,5 @@ REPLACE:noble_fortification_licenses = {
 		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
 		monthly_towards_decentralization = societal_value_monthly_move
 		monthly_towards_land = societal_value_minor_monthly_move
-	}
-}
-
-REPLACE:primacy_of_nobility = {
-	estate = nobles_estate
-	country_modifier = {
-		global_nobles_estate_power = 1.0
-		
-#		nobles_estate_target_satisfaction = small_privilege_target_satisfaction
-		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
-		
-		monthly_towards_aristocracy = societal_value_monthly_move
-		discipline = 0.05
 	}
 }

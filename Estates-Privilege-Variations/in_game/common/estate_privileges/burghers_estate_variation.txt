@@ -13,12 +13,9 @@
 				area ?= area:picardy_area
 				area ?= area:slovenia_area
 				area ?= area:silesia_area
-				
-				# modification
-				region ?= region:italy_region
 			}
 		}
-#		is_member_of_international_organization = international_organization:hre
+		is_member_of_international_organization = international_organization:hre
 	}
 	
 	allow = {
@@ -40,22 +37,9 @@ magdeburg_union = {
 	
 	potential = {
 		capital ?= {
-			OR = {
-				area ?= area:baltic_area
-				region ?= region:north_german_region
-				region ?= region:south_german_region
-				area ?= area:alsace_area
-				area ?= area:franche_comte_area
-				area ?= area:lorraine_area
-				area ?= area:picardy_area
-				area ?= area:slovenia_area
-				area ?= area:silesia_area
-				
-				# modification
-				region ?= region:italy_region
-			}
+			region ?= region:italy_region
 		}
-#		is_member_of_international_organization = international_organization:hre
+#		NOT = { is_member_of_international_organization = international_organization:hre }
 	}
 	
 	allow = {
@@ -68,5 +52,20 @@ magdeburg_union = {
 		burghers_estate_target_satisfaction = medium_privilege_target_satisfaction
 		global_burghers_estate_power = 0.4
 		monthly_towards_mercantilism = societal_value_monthly_move
+	}
+}
+
+REPLACE:land_of_commerce = {
+	estate = burghers_estate
+
+	country_modifier = {
+		allow_apprenticeships_education = yes
+		
+#		global_production_efficiency = small_production_efficiency_bonus
+		global_production_efficiency = 0.015
+		
+		monthly_towards_capital_economy = societal_value_minor_monthly_move
+		burghers_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_burghers_estate_power = 0.33
 	}
 }
