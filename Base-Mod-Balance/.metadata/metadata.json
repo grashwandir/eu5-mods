@@ -1,0 +1,10 @@
+﻿{
+	"name":	"Base Mod Balance",
+	"id":	"grashwandir.base_mod_balance",
+	"version":	"0.2",
+	"supported_game_version": "1.4.*",
+	"short_description": "Balance tweaks for republics, laws, government reforms and buildings",
+	"tags":	["Balance", "Fixes", "Gameplay", "Government and Estates"],
+	"relationships":	[],
+	"game_custom_data":	{}
+}

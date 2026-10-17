@@ -1,0 +1,13 @@
+﻿INJECT:maritime_law = {
+	regulate_trade_routes = {
+	  	country_modifier = {
+			burghers_estate_target_satisfaction = small_permanent_target_satisfaction
+			trade_range_modifier = 0.10
+			monthly_towards_mercantilism = societal_value_minor_monthly_move
+		}
+		estate_preferences = {
+			burghers_estate
+		}
+		years = 2
+	}
+}

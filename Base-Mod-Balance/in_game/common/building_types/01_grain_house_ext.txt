@@ -1,0 +1,36 @@
+﻿REPLACE:grain_house = {
+	audio_tier = 1
+	is_foreign = no
+	max_levels = guild_max_level
+
+	pop_type = laborers
+
+	employment_size = granary_employment
+
+	category = infrastructure_category
+
+	rural_settlement = no
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = government_build_time
+
+	country_potential = {
+		OR = {
+			has_reform = government_reform:everyone_serves_reform
+			has_reform = government_reform:civil_service_reform
+		}
+	}
+
+	possible_production_methods = {
+		granary_maintenance
+	}
+
+	construction_demand = granary_construction
+
+	modifier = {
+		local_food_capacity = 100
+		local_supply_limit_modifier = 0.01
+	}
+}

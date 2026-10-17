@@ -1,0 +1,46 @@
+﻿# Custom privileges for nobles
+mandatory_training = {
+	estate = nobles_estate
+	icon = control_of_the_borderlands
+	
+	potential = {
+		government_type = government_type:republic
+	}
+	
+	allow = {
+		NOT = { has_estate_privilege = estate_privilege:primacy_of_nobility }
+	}
+
+	country_modifier = {
+		global_nobles_estate_power = 1.0
+		
+		# nobles_estate_target_satisfaction = small_privilege_target_satisfaction
+		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
+		
+		monthly_political_influence_gain_modifier = -0.15
+		
+		monthly_towards_quality = societal_value_minor_monthly_move
+		monthly_towards_aristocracy = societal_value_minor_monthly_move
+		discipline = 0.05
+	}
+}
+
+REPLACE:primacy_of_nobility = {
+	estate = nobles_estate
+	
+	allow = {
+		NOT = { has_estate_privilege = estate_privilege:mandatory_training }
+	}
+	
+	country_modifier = {
+		global_nobles_estate_power = 1.0
+		
+		# nobles_estate_target_satisfaction = small_privilege_target_satisfaction
+		nobles_estate_target_satisfaction = medium_privilege_target_satisfaction
+		
+		monthly_political_influence_gain_modifier = -0.15
+		
+		monthly_towards_aristocracy = societal_value_monthly_move
+		discipline = 0.05
+	}
+}

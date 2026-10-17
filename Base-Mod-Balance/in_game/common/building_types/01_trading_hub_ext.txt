@@ -1,0 +1,5 @@
+﻿INJECT:trading_hub = {
+	modifier = {
+		local_pop_assimilation_speed = 0.01
+	}
+}

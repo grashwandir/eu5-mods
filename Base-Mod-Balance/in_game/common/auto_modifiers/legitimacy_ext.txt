@@ -1,0 +1,82 @@
+﻿## Not hardcoded
+# Modifiers in this file will automatically be applied to all countries
+#	- Tooltips will also be generated
+#	- The AI will also understand them
+
+REPLACE:high_legitimacy = {
+	potential_trigger = {
+		uses_government_power = legitimacy
+	}
+	limit = {
+		legitimacy > 50
+	}
+	scales_with = {
+		value = legitimacy
+		multiply = 0.01
+	}
+
+	global_crown_estate_power = 0.10
+	pop_leave_rebels_threshold = -0.05
+	monthly_righteousness = 0.5
+	monthly_doom = -0.1
+	
+	# I don't like this modifier
+	# monthly_towards_absolutism = societal_value_minor_monthly_move
+	
+	# political influence modifier: moved to high_legitimacy_political_influence below
+}
+
+# political influence modifier: 0 at 50 legitimacy, full value at 100 (pattern of vanilla high_righteousness)
+high_legitimacy_political_influence = {
+	potential_trigger = {
+		uses_government_power = legitimacy
+	}
+	limit = {
+		legitimacy > 50
+	}
+	scales_with = {
+		value = legitimacy
+		subtract = 50
+		multiply = 0.02
+	}
+
+	monthly_political_influence = 0.25
+}
+
+REPLACE:low_legitimacy = {
+	potential_trigger = {
+		uses_government_power = legitimacy
+	}
+	limit = {
+		legitimacy < 50
+	}
+	scales_with = {
+		value = legitimacy
+		multiply = -0.01
+		add = 1
+	}
+
+	global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+	monthly_righteousness = -0.25
+	monthly_doom = 0.25
+	global_max_control = -0.2
+	
+	# political influence modifier: moved to low_legitimacy_political_influence below
+}
+
+# political influence modifier: 0 at 50 legitimacy, full value at 0 (pattern of vanilla low_righteousness)
+low_legitimacy_political_influence = {
+	potential_trigger = {
+		uses_government_power = legitimacy
+	}
+	limit = {
+		legitimacy < 50
+	}
+	scales_with = {
+		value = 50
+		subtract = legitimacy
+		multiply = 0.02
+	}
+
+	monthly_political_influence = -0.1
+}

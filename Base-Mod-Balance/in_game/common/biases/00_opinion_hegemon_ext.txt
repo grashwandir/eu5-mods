@@ -1,0 +1,4 @@
+﻿REPLACE:opinion_hegemons = {
+#	value = -20
+	value = -5
+}

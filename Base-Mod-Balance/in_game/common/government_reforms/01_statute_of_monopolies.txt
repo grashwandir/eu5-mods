@@ -1,0 +1,5 @@
+﻿INJECT:statute_of_monopolies = {
+	country_modifier = {
+		monthly_towards_mercantilism = societal_value_monthly_move
+	}
+}

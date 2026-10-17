@@ -1,0 +1,5 @@
+﻿l_english:
+ mandatory_training: "Mandatory Training"
+ mandatory_training_desc: "A family name alone no longer earns a place among the leading houses of our republic. Every scion of the [ShowEstateTypeName('nobles_estate')] must now train at arms and serve as an officer before claiming the honours of their house. They will become the disciplined backbone of our armies, and their voice in the councils of the republic will grow accordingly."
+ clergy_scientific_privilege: "Natural Philosophy"
+ clergy_scientific_privilege_desc: "The learned members of our [ShowEstateTypeName('clergy_estate')] are free to study the workings of nature in their cloisters and colleges, so long as their inquiries stay within the doctrines of the faith. Their discoveries bring prestige to the Church and order to the realm, and new ideas spread from their lecture halls."

@@ -1,0 +1,68 @@
+﻿# zz_ prefix: the obsolete target (vanilla republican_assembly) must be loaded first, so this file has to sort after vanilla capital_buildings.txt
+great_republican_assembly = {
+	audio_tier = 3
+	is_foreign = no
+	pop_type = nobles
+	max_levels = 1
+
+	icon = republican_assembly
+
+	obsolete = republican_assembly
+
+	category = government_category
+
+	employment_size = huge_noble_employment
+	
+	rural_settlement = no
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	expensive = yes
+	build_time = large_capital_build_time
+
+	location_potential = {
+		counts_as_capital = yes
+	}
+
+	allow = {
+		is_capital = yes
+		country_has_no_other_copy_of_building = { type = great_republican_assembly }
+	}
+
+	country_potential = {
+		government_type ?= government_type:republic
+	}
+
+	remove_if = {
+		OR = {
+			is_no_longer_capital = yes
+			location.owner ?= { government_type != government_type:republic }
+		}
+	}
+
+	capital_country_modifier = {
+		monthly_republican_tradition = 0.2
+		country_cabinet_efficiency = 0.1
+	}
+
+	unique_production_methods = {
+		great_republican_assembly_maintenance = {
+			icon_type = building_type
+			icon = republican_assembly
+			furniture = 0.15
+			tools = 0.15
+			glass = 0.75
+			fine_cloth = 0.75
+			books = 0.15
+			goods_gold = 0.15
+			marble = 0.15
+
+			category = building_maintenance
+		}
+	}
+
+	graphical_tags = { palace }
+
+	construction_demand = early_capital_building_construction
+}

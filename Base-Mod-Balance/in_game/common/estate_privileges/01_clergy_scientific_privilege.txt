@@ -1,0 +1,73 @@
+﻿clergy_scientific_privilege = {
+	estate = clergy_estate
+	icon = jewish_physician_exemption
+
+	potential = {
+		has_advance = global_clergy_max_literacy_advance
+	}
+	
+	allow = {
+		NOT = { has_estate_privilege = estate_privilege:clergy_lecture_oaths }
+		NOT = { has_estate_privilege = estate_privilege:clergy_literacy_rights }
+	}
+	
+	can_revoke = {
+	}
+
+	country_modifier = {
+		clergy_estate_target_satisfaction = small_privilege_target_satisfaction
+		global_clergy_estate_power = 0.5
+		
+		stability_decay = -0.00025
+
+		monthly_towards_innovative = societal_value_minor_monthly_move
+	}
+}
+
+REPLACE:clergy_literacy_rights = {
+	estate = clergy_estate
+
+	potential = {
+		has_advance = written_alphabet
+	}
+	allow = {
+		# added
+		NOT = { has_estate_privilege = estate_privilege:clergy_scientific_privilege }
+	}
+	can_revoke = {
+	}
+
+	country_modifier = {
+		allow_clerical_archives = yes
+		clergy_estate_target_satisfaction = medium_privilege_target_satisfaction
+		global_clergy_max_literacy = 5
+		global_clergy_estate_power = 0.25
+
+		monthly_towards_traditionalist = societal_value_monthly_move
+	}
+}
+
+REPLACE:clergy_lecture_oaths = {
+	estate = clergy_estate
+
+	potential = {
+		total_effective_building_levels:university > 0
+	}
+
+	allow = {
+		total_effective_building_levels:university > 0
+		# added
+		NOT = { has_estate_privilege = estate_privilege:clergy_scientific_privilege }
+	}
+	
+	
+	country_modifier = {
+		global_pop_promotion_speed_modifier = -0.1
+		country_cabinet_efficiency = 0.1
+		stability_cost_efficiency = 0.2
+		clergy_estate_target_satisfaction = medium_privilege_target_satisfaction
+		university_construction_blocked = yes
+		global_clergy_estate_power = 0.1
+	}
+	
+}
