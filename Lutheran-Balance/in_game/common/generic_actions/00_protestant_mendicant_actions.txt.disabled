@@ -1,0 +1,352 @@
+﻿protestant_feed_the_poor = {
+	type = religious
+
+	required_calling = protestant_almoners_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_almoners_calling }
+	}
+
+	allow = {
+		scope:actor = { country_has_estate = estate_type:peasants_estate }
+	}
+
+	price = price:feed_the_poor_price
+
+	cooldown = {
+		type = feed_the_poor
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_feed_the_poor"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_feed_the_poor"
+		none_available_msg_key = "protestant_feed_the_poor_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_almoners_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	effect = {
+		scope:actor = {
+			add_estate_satisfaction = {
+				type = estate_type:peasants_estate
+				value = estate_satisfaction_extreme_bonus
+			}
+		}
+		if = {
+			limit = { 
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+			custom_tooltip = every_holding_gains_almoners_almshouses_modifier_for_a_year
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+
+					if = {
+						limit = { owner ?= ROOT }
+						add_location_modifier = {
+							modifier = almoners_almshouses_modifier
+							mode = replace
+							years = modifier_duration_years_very_short
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = -20
+			desc = "BASE_VALUE"
+		}
+		add = {
+			value = 1
+			subtract = "scope:actor.estate_satisfaction:peasants_estate"
+			subtract = estate_satisfaction_extreme_bonus
+			multiply = 20
+			desc = "Peasants Estate Satisfaction"
+		}
+
+		if = {
+			limit = { exists = scope:target }
+			add = {
+				value = scope:target.religious_order_zeal
+				desc = "[target.GetName] [zeal|e]"
+			}
+		}
+
+		add = {
+			value = "scope:actor.num_order_holdings_of_order(scope:target)"
+			multiply = 10
+			desc = "Holdings owned by [target.GetName] in our country"
+		}
+	}
+}
+
+protestant_preach_a_mission = {
+	type = religious
+
+	required_calling = protestant_preachers_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_preachers_calling }
+	}
+
+	allow = {
+		scope:actor = {
+			any_owned_location = {
+				NOT = { dominant_religion = scope:actor.religion }
+			}
+		}
+	}
+
+	price = price:preach_a_mission_price
+
+	cooldown = {
+		type = preach_a_mission
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_preach_a_mission"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_preach_a_mission"
+		none_available_msg_key = "protestant_preach_a_mission_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_preachers_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		source = actor
+		target_flag = target_location
+		name = "choose_location_for_preach_a_mission"
+		none_available_msg_key = "preach_a_mission_no_locations"
+		column = {
+			data = name
+		}
+		visible = {
+			owner ?= scope:actor
+			NOT = { dominant_religion = scope:actor.religion }
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				add_location_modifier = {
+					modifier = preachers_mission_modifier
+					years = 5
+					mode = replace
+				}
+			}
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+		else = {
+			custom_tooltip = selected_order_gains_10_zeal
+			custom_tooltip = selected_location_gains_preachers_mission
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = 1
+			subtract = "scope:target_location.local_religious_unity"
+			multiply = 100
+		}
+		add = {
+			value = "scope:target.religious_order_zeal"
+			subtract = 50	#base
+			subtract = 10	#penalty
+		}
+	}
+}
+
+protestant_absolve_the_court = {
+	type = religious
+
+	required_calling = protestant_confessors_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_confessors_calling }
+		scope:actor = {
+			uses_government_power = legitimacy
+		}
+	}
+
+	price = price:absolve_the_court_price
+
+	cooldown = {
+		type = absolve_the_court
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_absolve_the_court"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_absolve_the_court"
+		none_available_msg_key = "protestant_absolve_the_court_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_confessors_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	effect = {
+		scope:actor = {
+			add_legitimacy = legitimacy_mild_bonus
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		add = {
+			value = 100
+			subtract = scope:actor.legitimacy
+			subtract = legitimacy_mild_bonus
+		}
+		add = {
+			value = "scope:target.religious_order_zeal"
+			subtract = 50	#base
+			subtract = 10	#penalty
+		}
+	}
+}

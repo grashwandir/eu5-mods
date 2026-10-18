@@ -1,0 +1,48 @@
+﻿REPLACE:lutheran = {
+	color = color_lutheran
+	group = christian
+	
+	enable = 9999.1.1 #historically 1522.3.9 Luthers eight sermons cementing the Reformation as a separate religon
+	
+	religious_aspects = 3
+	has_religious_influence = yes
+
+	ai_wants_convert = yes
+	
+	definition_modifier = {
+	
+		clergy_estate_target_satisfaction = medium_permanent_target_satisfaction
+		tax_income_efficiency = medium_tax_income_efficiency_bonus
+
+		monthly_religious_influence = 0.1
+		
+		# addition
+		discipline = 0.025
+
+		maximum_religious_influence = 400
+	}
+	
+	opinions = {
+		calvinist = positive
+		hussite = kindred
+		lollardy = positive
+	}
+
+	unique_names = {
+		name_aaron name_abraham 
+		name_bartholomew name_benjamin 
+		name_cornelius
+		name_elias Ezra
+		name_gabriel 
+		name_isaac 
+		name_james Jason name_jeremiah name_jonas Jonathan name_jordan name_joseph name_joshua Josiah 
+		name_moses 
+		Nathan Nathaniel 
+		name_samuel name_salomon
+		name_timothy
+		name_zechariah	
+	}
+
+	tags = { protestant_gfx western_christian_gfx christian_gfx abrahamic_gfx }
+	custom_tags = { protestant church_aspects }
+}

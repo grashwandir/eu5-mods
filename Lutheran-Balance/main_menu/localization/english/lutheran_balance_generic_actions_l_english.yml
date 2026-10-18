@@ -1,0 +1,15 @@
+﻿l_english:
+ protestant_feed_the_poor: "$feed_the_poor$"
+ protestant_feed_the_poor_desc: "Have a #high $protestant_almoners_calling$#! order open its almshouses to the destitute. Raises #high Peasantry#! satisfaction and stokes the order's [zeal|E]."
+ protestant_feed_the_poor_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_almoners_calling$#! [calling|E] exist in this religion."
+ choose_religious_order_for_protestant_feed_the_poor: "Choose a $protestant_almoners_calling$ order"
+
+ protestant_preach_a_mission: "$preach_a_mission$"
+ protestant_preach_a_mission_desc: "Send the preachers of a #high $protestant_preachers_calling$#! order to preach among the unconverted of one of our [locations|e]. Stokes the order's [zeal|E]."
+ protestant_preach_a_mission_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_preachers_calling$#! [calling|E] exist in this religion."
+ choose_religious_order_for_protestant_preach_a_mission: "Choose a $protestant_preachers_calling$ order"
+
+ protestant_absolve_the_court: "$absolve_the_court$"
+ protestant_absolve_the_court_desc: "Have a #high $protestant_confessors_calling$#! order shrive our court and proclaim the dynasty's sins forgiven. Stokes the order's [zeal|E]."
+ protestant_absolve_the_court_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_confessors_calling$#! [calling|E] exist in this religion."
+ choose_religious_order_for_protestant_absolve_the_court: "Choose a $protestant_confessors_calling$ order"

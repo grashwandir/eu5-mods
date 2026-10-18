@@ -1,0 +1,20 @@
+﻿godly_household = {
+	icon = religious_aspect_folk_pink	#vanilla fertility aspect icon (worship_freya_god, worship_fertility_god)
+	religion = lutheran
+	religion = calvinist
+
+	#Optional malus: married clergy vs monastic celibacy (adoptionism/modalism pattern)
+	#enabled = {
+	#	NOT = { has_religious_aspect = religious_aspect:monasticism }
+	#}
+
+	modifier = {
+		global_population_growth = 0.0002	#theotokos, worship_freya_god, worship_inti_god
+		global_life_expectancy = 2	#vanilla pairing on fertility aspects (worship_inti_god, worship_coatlicue_god)
+		monthly_towards_humanist = societal_value_monthly_move
+	}
+
+	opinions = {
+		godly_household = 10
+	}
+}

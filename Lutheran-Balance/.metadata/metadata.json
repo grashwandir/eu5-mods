@@ -1,0 +1,10 @@
+﻿{
+	"name":	"Lutheran Balance",
+	"id":	"grashwandir.lutheran_balance",
+	"version":	"0.1",
+	"supported_game_version":	"1.4.*",
+	"short_description":	"Keep some of the christian advances from age of Traditions to Discovery, add religious order",
+	"tags":	["Advancements", "Balance", "Religion"],
+	"relationships":	[],
+	"game_custom_data":	{}
+}

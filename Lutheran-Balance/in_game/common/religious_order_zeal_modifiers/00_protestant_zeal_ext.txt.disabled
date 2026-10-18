@@ -1,4 +1,158 @@
-﻿REPLACE:zeal_seat_of_learning = {
+﻿#Valid for any calling
+#zeal_holding_under_heathen_rule = {
+#	location_trigger = {
+#		exists = dominant_religion
+#		NOT = { dominant_religion.group = scope:religious_order.religion.group }
+#	}
+#	value = -5
+#}
+#
+#zeal_holding_under_heretic_rule = {
+#	location_trigger = {
+#		exists = dominant_religion
+#		dominant_religion.group = scope:religious_order.religion.group
+#		NOT = { dominant_religion = scope:religious_order.religion }
+#	}
+#	value = -5
+#}
+#
+#zeal_devout_host = {
+#	country_trigger = {
+#		modifier:tolerance_own > 0
+#	}
+#	country_scale = {
+#		value = modifier:tolerance_own
+#		max = 10
+#	}
+#	value = 1
+#}
+#
+#zeal_leader_employed = {
+#	order_trigger = {
+#		leader ?= {
+#			exists = employer
+#		}
+#	}
+#	value = 5
+#}
+#
+#zeal_endowed_holdings = {
+#	location_trigger = {
+#		OR = {
+#			has_building_with_at_least_one_level = monastery
+#			has_building_with_at_least_one_level = parish_church
+#			has_building_with_at_least_one_level = cathedral
+#		}
+#	}
+#	value = 4
+#}
+#
+#zeal_recent_service = {
+#	location_trigger = {
+#		has_variable = recent_order_service
+#	}
+#	value = 6
+#}
+#
+#zeal_holdings_sprawl = {
+#	order_trigger = {
+#		any_location_in_religious_order = { count > 3 }
+#	}
+#	order_scale = {
+#		value = 0
+#		every_location_in_religious_order = { add = 1 }
+#		subtract = 3
+#		min = 0
+#		max = 20
+#	}
+#	value = -3
+#}
+#
+#zeal_holding_prosperity = {
+#	order_trigger = {
+#		any_location_in_religious_order = { count > 0 }
+#	}
+#	order_scale = {
+#		value = religious_order_average_holding_prosperity
+#		multiply = 20
+#		min = -20
+#		max = 20
+#	}
+#	value = 1
+#}
+#
+#zeal_worldly_host = {
+#	country_trigger = {
+#		societal_value:spiritualist_vs_humanist > 25
+#	}
+#	value = -6
+#}
+
+##############################################################################
+#				Null zeal sources for lutheran
+##############################################################################
+
+#zeal_brothers_at_court = {
+#	country_trigger = {
+#		any_cabinet_character = {
+#			religious_order ?= scope:religious_order
+#		}
+#	}
+#	value = 8
+#}
+#
+#zeal_holy_custodian = {
+#	location_trigger = {
+#		is_location_holy_site_for = scope:religious_order.religion
+#	}
+#	location_scale = {
+#		value = location_holy_site_importance
+#	}
+#	value = 1
+#}
+#
+#zeal_recent_pilgrimage = {
+#	location_trigger = {
+#		has_variable = recent_order_pilgrimage
+#	}
+#	value = 6
+#}
+
+##############################################################################
+#				Fixes
+##############################################################################
+
+REPLACE:zeal_papal_authority_alignment = {
+	order_trigger = {
+		religion = religion:catholic
+		exists = international_organization:catholic_church
+	}
+	order_scale = {
+		value = international_organization:catholic_church.var:papal_authority
+		subtract = 50
+		multiply = 0.4
+	}
+	value = 1
+}
+
+zeal_church_power_alignment = {
+	valid_for_callings = { protestant_preachers_calling protestant_almoners_calling protestant_confessors_calling }
+	country_trigger = {
+		religion = religion:lutheran
+		religious_influence_percentage > 0
+	}
+	country_scale = {
+		value = religious_influence_percentage
+		multiply = 20
+	}
+	value = 1
+}
+
+##############################################################################
+#				Calling specific sources
+##############################################################################
+
+REPLACE:zeal_seat_of_learning = {
 	valid_for_callings = { scholars_calling preachers_calling protestant_preachers_calling }
 	location_trigger = {
 		has_building = building_type:university
@@ -126,23 +280,6 @@ REPLACE:zeal_charitable_realm = {
 #	value = 3
 #}
 #
-#zeal_holding_under_heathen_rule = {
-#	location_trigger = {
-#		exists = dominant_religion
-#		NOT = { dominant_religion.group = scope:religious_order.religion.group }
-#	}
-#	value = -5
-#}
-#
-#zeal_holding_under_heretic_rule = {
-#	location_trigger = {
-#		exists = dominant_religion
-#		dominant_religion.group = scope:religious_order.religion.group
-#		NOT = { dominant_religion = scope:religious_order.religion }
-#	}
-#	value = -5
-#}
-#
 #zeal_host_persecutes_heathens = {
 #	valid_for_callings = { crusaders_calling wardens_calling confidants_calling mariners_calling }
 #	country_trigger = {
@@ -166,26 +303,6 @@ REPLACE:zeal_charitable_realm = {
 #	value = -4
 #}
 #
-#zeal_devout_host = {
-#	country_trigger = {
-#		modifier:tolerance_own > 0
-#	}
-#	country_scale = {
-#		value = modifier:tolerance_own
-#		max = 10
-#	}
-#	value = 1
-#}
-#
-#zeal_brothers_at_court = {
-#	country_trigger = {
-#		any_cabinet_character = {
-#			religious_order ?= scope:religious_order
-#		}
-#	}
-#	value = 8
-#}
-#
 #zeal_brothers_in_command = {
 #	valid_for_callings = { crusaders_calling wardens_calling confidants_calling mariners_calling }
 #	order_trigger = {
@@ -197,62 +314,6 @@ REPLACE:zeal_charitable_realm = {
 #		}
 #	}
 #	value = 8
-#}
-#
-#zeal_holy_custodian = {
-#	location_trigger = {
-#		is_location_holy_site_for = scope:religious_order.religion
-#	}
-#	location_scale = {
-#		value = location_holy_site_importance
-#	}
-#	value = 1
-#}
-#
-#zeal_recent_pilgrimage = {
-#	location_trigger = {
-#		has_variable = recent_order_pilgrimage
-#	}
-#	value = 6
-#}
-#
-#zeal_leader_employed = {
-#	order_trigger = {
-#		leader ?= {
-#			exists = employer
-#		}
-#	}
-#	value = 5
-#}
-#
-#zeal_endowed_holdings = {
-#	location_trigger = {
-#		OR = {
-#			has_building_with_at_least_one_level = monastery
-#			has_building_with_at_least_one_level = parish_church
-#			has_building_with_at_least_one_level = cathedral
-#		}
-#	}
-#	value = 4
-#}
-#
-#zeal_recent_service = {
-#	location_trigger = {
-#		has_variable = recent_order_service
-#	}
-#	value = 6
-#}
-#
-#zeal_papal_authority_alignment = {
-#	order_trigger = {
-#		exists = international_organization:catholic_church
-#	}
-#	order_scale = {
-#		value = international_organization:catholic_church.var:papal_authority
-#		subtract = 50
-#		multiply = 0.4
-#	}
-#	value = 1
 #}
 #
 #zeal_thriving_grange = {
@@ -315,38 +376,4 @@ REPLACE:zeal_charitable_realm = {
 #		max = 10
 #	}
 #	value = 1
-#}
-#
-#zeal_holdings_sprawl = {
-#	order_trigger = {
-#		any_location_in_religious_order = { count > 3 }
-#	}
-#	order_scale = {
-#		value = 0
-#		every_location_in_religious_order = { add = 1 }
-#		subtract = 3
-#		min = 0
-#		max = 20
-#	}
-#	value = -3
-#}
-#
-#zeal_holding_prosperity = {
-#	order_trigger = {
-#		any_location_in_religious_order = { count > 0 }
-#	}
-#	order_scale = {
-#		value = religious_order_average_holding_prosperity
-#		multiply = 20
-#		min = -20
-#		max = 20
-#	}
-#	value = 1
-#}
-#
-#zeal_worldly_host = {
-#	country_trigger = {
-#		societal_value:spiritualist_vs_humanist > 25
-#	}
-#	value = -6
 #}

@@ -1,13 +1,4 @@
 ﻿#Age 1 Traditions
-#res_publica_christiana = {
-#	age = age_1_traditions
-#	
-#	potential = { religion.group = religion_group:christian }
-#	
-#	monthly_diplomats = 0.05
-#	
-#	requires = organized_religion
-#}
 
 REPLACE:roman_orthodoxy = {
 	age = age_1_traditions
@@ -15,7 +6,8 @@ REPLACE:roman_orthodoxy = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -30,7 +22,8 @@ REPLACE:marian_devotion = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -48,7 +41,8 @@ REPLACE:crusading_knights = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -57,30 +51,7 @@ REPLACE:crusading_knights = {
 	requires = res_publica_christiana
 }
 
-#REPLACE:catholic_pilgrimages = {
-#	age = age_1_traditions
-#	 
-#	potential = {
-#		OR = {
-#			religion = religion:catholic
-#			is_protestant = yes
-#		}
-#	}
-#	
-#	monthly_religious_influence = 0.1
-#	
-#	requires = roman_orthodoxy
-#}
-
 ##Age 2 Renaissance
-#inquisition_advance = {
-#	age = age_2_renaissance
-#	
-#	potential = { religion = religion:catholic }
-#	
-#	unlock_law = inquisition_law
-#	requires = global_clergy_max_literacy_advance
-#}
 
 REPLACE:preaching_friars = {
 	age = age_2_renaissance
@@ -88,7 +59,8 @@ REPLACE:preaching_friars = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -103,7 +75,8 @@ REPLACE:devotio_moderna = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -112,23 +85,14 @@ REPLACE:devotio_moderna = {
 	requires = renaissance_subject_opinions_advance
 }
 
-#denounce_heretics = {
-#	age = age_2_renaissance
-#	
-#	potential = { religion = religion:catholic }
-#	
-#	monthly_prestige = 0.05
-#
-#	requires = inquisition_advance
-#}
-
 REPLACE:beguins_and_beghards = {
 	age = age_2_renaissance
 
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -138,19 +102,6 @@ REPLACE:beguins_and_beghards = {
 }
 
 ##Age 3 Discovery
-#conquistador_advance = {
-#	icon = new_world_advance
-#	age = age_3_discovery
-#	
-#	potential = {
-#		religion = religion:catholic
-#		culture = { has_culture_group = culture_group:iberian_group }
-#		capital.region ?= region:iberia_region
-#	}
-#	
-#	allow_conquistadors = yes
-#	requires = colonial_charters
-#}
 
 REPLACE:grand_display_of_faith = {
 	age = age_3_discovery
@@ -158,7 +109,8 @@ REPLACE:grand_display_of_faith = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -173,7 +125,8 @@ REPLACE:monastery_productions = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -188,7 +141,8 @@ REPLACE:reform_church_music = {
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 	
@@ -197,49 +151,19 @@ REPLACE:reform_church_music = {
 	requires = artists_advance_discovery
 }
 
-#frequent_councils = {
-#	age = age_3_discovery
-#	
-#	potential = {
-#		religion = religion:catholic
-#	}
-#	
-#	cardinal_price_cost_modifier = -0.05
-#
-#	requires = regulate_court_procedures
-#}
-
-#REPLACE:mendicant_orders = {
-#	age = age_3_discovery
-#	
-#	potential = {
-#		OR = {
-#			religion = religion:catholic
-#			is_protestant = yes
-#		}
-#	}
-#	
-#	global_monthly_prosperity = 0.001
-#
-#	requires = diplomatic_training
-#}
-
-# 1.4.1
 REPLACE:mendicant_orders = {
 	age = age_3_discovery
 
 	potential = {
 		OR = {
 			religion = religion:catholic
-			is_protestant = yes
+			religion = religion:lutheran
+			religion = religion:calvinist
 		}
 	}
 
 	global_pop_conversion_speed_modifier = 0.1
 	invite_religious_order_price_cost_modifier = -0.05
-	
-	# Added
-	global_monthly_prosperity = 0.001
 
 	requires = diplomatic_training
 }
