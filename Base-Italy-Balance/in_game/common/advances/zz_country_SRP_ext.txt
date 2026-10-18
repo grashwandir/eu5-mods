@@ -43,7 +43,7 @@ srp_ensure_loyal_families = {
 	monthly_republican_tradition = 0.1
 	
 	# modified
-	# nobles_estate_satisfaction_recovery = 0.001
+#	nobles_estate_satisfaction_recovery = 0.001
 	global_estate_satisfaction_recovery = 0.001
 
 	requires = coastal_fort_advance

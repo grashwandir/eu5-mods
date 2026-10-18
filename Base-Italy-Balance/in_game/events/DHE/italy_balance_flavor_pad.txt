@@ -364,6 +364,18 @@ italy_balance_pad.7 = {
 			value = monthly_income_trade_and_tax
 			multiply = 120 # ~10 years of trade and tax income
 		}
+		
+		if = {
+			limit = {
+				country_exists = c:SIE
+				location:siena = { owner ?= c:SIE }
+			}
+			add_casus_belli = {
+				type = casus_belli:cb_conquer_province
+				target = c:SIE
+				province = location:siena.province
+			}
+		}
 	}
 }
 

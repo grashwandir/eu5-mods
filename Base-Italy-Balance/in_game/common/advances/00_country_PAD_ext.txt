@@ -11,10 +11,6 @@
 #
 #	requires = agriculture_advance
 #}
-#
-#INJECT:pad_carraresi_dynasty = {
-#	diplomatic_reputation = 20
-#}
 
 REPLACE:pad_the_bo = {
 	age = age_2_renaissance
@@ -30,7 +26,8 @@ REPLACE:pad_the_bo = {
 
 	# added
 	unlock_building = italy_loggia_del_consiglio
-	unlock_policy_effect = { type = multi_lingual_court }
+#	unlock_policy_effect = { type = multi_lingual_court }
+	unlock_policy = multi_lingual_court
 
 	requires = renaissance_thought
 }
