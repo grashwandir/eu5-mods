@@ -1,0 +1,35 @@
+﻿REPLACE:ITA_f = {
+	level = 4
+	required_locations_fraction = 0.6
+	rule = plausible
+
+	potential = {
+		culture = { has_culture_group = culture_group:italian_group }
+	}
+
+	allow = {
+		OR = {
+			AND = {
+				owns = location:milano
+				owns = location:florence
+				owns = location:naples
+			}
+			custom_tooltip = {
+				text = gag_guelphs_winner_may_form_italy_without_location_requirements_tt
+				has_variable = gag_guelphs_winner_may_form_italy_without_location_requirements
+			}
+		}
+	}
+	
+	name = ITA
+	flag = ITA
+	adjective = ITA_ADJ
+	tag = ITA
+	color = map_ITA
+
+	regions = {
+		italy_region
+	}
+	form_effect = {
+	}
+}

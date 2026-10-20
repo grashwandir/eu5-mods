@@ -40,6 +40,7 @@
 	capital_country_modifier = {
 		research_speed_modifier = 0.05
 		global_disease_resistance = 0.05
+		global_monthly_literacy = 0.01
 	}
 
 	unique_production_methods = {

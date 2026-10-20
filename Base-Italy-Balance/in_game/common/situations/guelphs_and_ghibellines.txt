@@ -296,21 +296,24 @@
 					set_variable = { name = guelphs_progress value = 0 }
 				}
 				set_variable = { name = guelphs_progress_monthly value = 0 }
+				
+				################## CHANGES !!!! ##############
 				change_variable = {
 					name = guelphs_progress
-#					add = local_var:guelphs_total_tax
+					# add = local_var:guelphs_total_tax
 					add = {
 						value = local_var:guelphs_total_tax
-						multiply = 1
+						multiply = 2.0
 					}
 				}
 				change_variable = {
 					name = guelphs_progress_monthly
 					add = {
 						value = local_var:guelphs_total_tax
-						multiply = 1
+						multiply = 2.0
 					}
 				}
+				##############################################
 			}
 			#ghibellines progress
 			international_organization:ghibellines_io ?= {

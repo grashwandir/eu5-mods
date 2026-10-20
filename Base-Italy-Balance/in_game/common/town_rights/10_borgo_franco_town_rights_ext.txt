@@ -3,8 +3,8 @@
 	kept_at_conquest = no
 	
 	location_modifier = {
-		local_trades_per_burgher = 0.2
-		local_peasant_enfranchisment = 0.1
+		local_trades_per_burgher = 0.10
+		local_peasant_enfranchisment = 0.05
 		local_market_access = 0.05
 #		local_merchant_capacity_modifier = 0.25
 

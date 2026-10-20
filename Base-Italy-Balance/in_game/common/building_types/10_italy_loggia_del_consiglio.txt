@@ -41,7 +41,7 @@
 	}
 
 	capital_country_modifier = {
-		country_cabinet_efficiency = 0.1
+		country_cabinet_efficiency = 0.05
 		monthly_republican_tradition = 0.05
 		parliament_base_support = 0.05
 		global_max_bureaucracy_slots = 1
