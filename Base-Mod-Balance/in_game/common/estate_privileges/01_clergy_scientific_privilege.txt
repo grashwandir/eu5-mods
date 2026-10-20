@@ -21,7 +21,8 @@
 		clergy_estate_max_tax = -0.1
 #		monthly_political_influence_gain_modifier = -0.05
 		
-		stability_decay = -0.00025
+		stability_investment = 0.02
+#		stability_decay = -0.00025
 
 		monthly_towards_innovative = societal_value_minor_monthly_move
 	}

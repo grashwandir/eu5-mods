@@ -1,0 +1,38 @@
+﻿## Not hardcoded
+# Modifiers in this file will automatically be applied to all countries
+#	- Tooltips will also be generated
+#	- The AI will also understand them
+
+# political influence modifier: 0 at 50 devotion, full value at 100 (same values as high_legitimacy_political_influence)
+high_devotion_political_influence = {
+	potential_trigger = {
+		uses_government_power = devotion
+	}
+	limit = {
+		devotion > 50
+	}
+	scales_with = {
+		value = devotion
+		subtract = 50
+		multiply = 0.02
+	}
+
+	monthly_political_influence = 0.25
+}
+
+# political influence modifier: 0 at 50 devotion, full value at 0 (same values as low_legitimacy_political_influence)
+low_devotion_political_influence = {
+	potential_trigger = {
+		uses_government_power = devotion
+	}
+	limit = {
+		devotion < 50
+	}
+	scales_with = {
+		value = 50
+		subtract = devotion
+		multiply = 0.02
+	}
+
+	monthly_political_influence = -0.1
+}

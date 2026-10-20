@@ -1,0 +1,125 @@
+﻿REPLACE:expel_order_holding = {
+	type = religious
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 12
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		scope:actor = {
+			has_any_religious_order_presence = yes
+		}
+	}
+
+	price = price:expel_order_holding_price
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_expel_holding"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_to_expel_holding"
+		none_available_msg_key = "expel_order_holding_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		source = actor
+		target_flag = target_location
+		name = "choose_holding_to_expel"
+		none_available_msg_key = "expel_order_holding_no_locations"
+		column = {
+			data = name
+		}
+		visible = {
+			owner ?= scope:actor
+			religious_order ?= scope:target
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				exists = scope:target_location
+			}
+			if = {
+				limit = {
+					scope:target = {
+						any_location_in_religious_order = { count = 1 }
+					}
+				}
+				custom_tooltip = expel_order_holding_last_holding_warning_tt
+			}
+			scope:target_location = {
+				custom_tooltip = {
+					text = expel_order_holding_effect_tt
+					remove_religious_order = scope:target
+				}
+			}
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+		else = {
+			custom_tooltip = selected_holding_leaves_order
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				scope:actor = {
+					"estate_power(estate_type:clergy_estate)" >= 0.35
+				}
+			}
+			add = {
+				value = "scope:actor.estate_power(estate_type:clergy_estate)"
+				subtract = 0.35
+				multiply = 100
+			}
+			add = {
+				value = 50
+				subtract = "scope:target.religious_order_zeal"
+			}
+		}
+		else = {
+			value = 0
+		}
+	}
+}

@@ -2,7 +2,7 @@
 	potential_trigger = { total_population > 0 } # No division by 0
 	scales_with = {
 		value = percentage_pop_type_in_country:soldiers
-		multiply = 2.5
+		multiply = 10
 		max = 1
 	}
 

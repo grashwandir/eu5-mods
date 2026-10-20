@@ -6,10 +6,11 @@
 	
 	icon = local_smelters
 	
+	# double the workforce to penalize the town version
 #	employment_size = rural_peasant_enhance_employment
 	employment_size = construction_employment
 	
-	category = rgo_building_category
+	category = rgo_enhancement_category
 	
 	rural_settlement = no
 	town = yes
@@ -17,11 +18,19 @@
 	megalopolis = yes
 
 	location_potential = {
+		NOT = { has_building = building_type:local_smelters } # no stacking with a rural smelter kept after the town upgrade
 		OR = {
 			raw_material = goods:iron
 			raw_material = goods:copper
 			raw_material = goods:tin
 			raw_material = goods:lead
+		}
+	}
+
+	# no stacking with a rural smelter if the location is downgraded (pattern of vanilla coastal_settlements)
+	remove_if = {
+		location = {
+			location_rank = location_rank:rural_settlement
 		}
 	}
 

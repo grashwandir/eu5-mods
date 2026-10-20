@@ -1,0 +1,13 @@
+﻿REPLACE:polders_advance = {
+	age = age_2_renaissance
+	potential = {
+		OR = {
+			culture = { has_culture_group = culture_group:netherlandish_group }
+			original_capital ?= { continent = continent:europe }
+#			original_capital ?= { sub_continent = sub_continent:western_europe }
+		}
+	}
+	unlock_building = polders
+
+	requires = pop_promotion_speed_age_2
+}

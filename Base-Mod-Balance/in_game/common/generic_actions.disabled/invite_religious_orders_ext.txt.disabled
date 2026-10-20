@@ -1,0 +1,171 @@
+﻿REPLACE:invite_religious_order = {
+	type = religious
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		scope:actor.religion = {
+			has_religious_orders = yes
+		}
+	}
+
+	ai_prerequisite_after_potential = {
+		num_locations >= 10
+		"estate_power(estate_type:clergy_estate)" < 0.25
+		num_order_holdings < ai_invite_order_holdings_cap
+	}
+
+	allow = {
+		scope:actor = {
+			at_war = no
+			any_owned_location = {
+				location_can_host_order_holding_trigger = yes
+			}
+		}
+	}
+
+	price = price:invite_religious_order_price
+
+	cooldown = {
+		type = invite_religious_order
+		
+		# CHANGES
+		# years = 2
+		years = {
+			value = 2
+			if = {
+				limit = { scope:actor ?= { tag = TUS } }
+				value = 0
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_religious_order"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_to_invite"
+		none_available_msg_key = "invite_religious_order_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		enabled = {
+			order_type = { religious_order_type_foundable_by = scope:actor }
+		}
+		show_why_not_enabled = yes
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		source = actor
+		target_flag = target_location
+		name = "choose_location_for_religious_order"
+		none_available_msg_key = "invite_religious_order_no_locations"
+		pre_evaluation_sort_value = {
+			value = local_control
+			multiply = population
+			divide = 10000
+		}
+		pre_evaluation_number_to_evaluate_fully = 8
+		column = {
+			data = name
+		}
+		visible = {
+			owner ?= scope:actor
+			location_can_host_order_holding_trigger = yes
+			location_valid_for_religious_order_type = scope:target.order_type
+			location_valid_for_calling = scope:target.order_calling
+			trigger_if = {
+				limit = {
+					scope:target = {
+						order_type ?= religious_order_type:iberian_military_order_type
+					}
+				}
+				any_neighbor_location = {
+					owner ?= {
+						NOT = { religion.group = scope:actor.religion.group }
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				attach_to_religious_order = scope:target
+			}
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = {
+				scope:actor = {
+					OR = {
+						num_locations < 10
+						"estate_power(estate_type:clergy_estate)" >= 0.25
+						num_order_holdings >= ai_invite_order_holdings_cap
+					}
+				}
+			}
+			value = 0
+		}
+		else = {
+			add = {
+				desc = "Base"
+				value = 10
+			}
+			add = "scope:actor.ai_will_select_calling(scope:target.order_calling|scope:target_location)"
+			if = {
+				limit = {
+					scope:actor = {
+						any_religious_order_in_country = {
+							this = scope:target
+						}
+					}
+				}
+				add = {
+					value = "scope:target.religious_order_zeal"
+					subtract = 50
+					add = 20	# added by the action
+					multiply = -2
+				}
+			}
+			subtract = {
+				value = "scope:target.num_locations_in_religious_order"
+				multiply = 2
+			}
+		}
+	}
+}
