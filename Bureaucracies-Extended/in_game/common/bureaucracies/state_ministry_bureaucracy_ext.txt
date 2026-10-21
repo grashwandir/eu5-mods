@@ -1,5 +1,4 @@
-﻿# Generic bureaucracies for the 1600–1836 era
-# Thematically split: ADM (4), DIP (3), MIL (3)
+﻿# State Ministry: Lutheran-only bureaucracy
 
 #######################
 # ADM
@@ -25,21 +24,20 @@ state_ministry_bureaucracy = {
 		nobles_estate
 	}
 	
-	estates_that_dislike = {
-		burghers_estate
-	}
+#	estates_that_dislike = {
+#		burghers_estate
+#	}
 
 	#neutral
 	neutral_modifier = {
 		government_reform_slots = 1
-#		global_max_control = 0.05
 	}
 
 	#positive
 	positive_modifier = {
 		scale = { value = scope:maintenance }
 		global_crown_estate_power = 0.15
-		monthly_towards_centralization = societal_value_monthly_move
+		monthly_towards_centralization = societal_value_minor_monthly_move
 	}
 
 	#negative
@@ -49,5 +47,7 @@ state_ministry_bureaucracy = {
 			subtract = scope:maintenance
 		}
 		global_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+		monthly_rebel_growth = 0.0025
+		pop_join_rebel_threshold = 0.05
 	}
 }

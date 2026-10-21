@@ -10,7 +10,7 @@
 	}
 
 	potential = {
-		has_or_had_tag = SRP
+		religion.group = religion_group:christian
 	}
 
 	estates_that_like = {
@@ -40,6 +40,7 @@
 			value = 1
 			subtract = scope:maintenance
 		}
-		peasants_estate_target_satisfaction = -0.2
+		peasants_estate_target_satisfaction = medium_permanent_target_satisfaction_penalty
+		global_monthly_prosperity = -0.001
 	}
 }

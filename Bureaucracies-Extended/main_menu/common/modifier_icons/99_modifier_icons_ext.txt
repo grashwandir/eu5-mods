@@ -7,3 +7,7 @@
 state_ministry_bureaucracy_impact_modifier = {
 	positive = "gfx/interface/icons/modifier_types/global_max_bureaucracy_slots.dds"
 }
+
+rural_councils_bureaucracy_impact_modifier = {
+	positive = "gfx/interface/icons/modifier_types/global_max_bureaucracy_slots.dds"
+}

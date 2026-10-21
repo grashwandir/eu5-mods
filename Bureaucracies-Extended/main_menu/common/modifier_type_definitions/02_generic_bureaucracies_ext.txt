@@ -1,4 +1,4 @@
-﻿# Impact modifier type definitions for generic 1600-1836 and Chinese bureaucracies
+﻿# Impact modifier type definitions for the Bureaucracies Extended bureaucracies
 # Format mirrors 01_byz.txt — one entry per bureaucracy type, percent=yes, category=country
 
 # ADM
