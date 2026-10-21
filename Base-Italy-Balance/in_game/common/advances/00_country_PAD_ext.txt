@@ -48,21 +48,21 @@ REPLACE:pad_the_bo = {
 INJECT:pad_medical_school = {
 	unlock_building = italy_palazzo_del_bo
 }
-#
-#pad_paduan_philosophy = {
-#	age = age_4_reformation
-#	icon = abacus_advance
-#
-#	potential = {
-#		has_or_had_tag = PAD
-#	}
-#
-#	antagonism_received_modifier = -0.1
-#	monthly_prestige = 0.10
-#
-#	requires = global_trade_advance
-#}
-#
+
+REPLACE:pad_paduan_philosophy = {
+	age = age_4_reformation
+	icon = abacus_advance
+
+	potential = {
+		has_or_had_tag = PAD
+	}
+
+	antagonism_received_modifier = -0.1
+	monthly_prestige = 0.10
+
+	requires = global_trade_advance
+}
+
 #pad_the_accademia = {
 #	age = age_5_absolutism
 #	icon = artists_advance
@@ -76,7 +76,11 @@ INJECT:pad_medical_school = {
 #
 #	requires = government_size_absolutism
 #}
-#
+
+INJECT:pad_the_accademia = {
+	global_burghers_max_literacy = 5
+}
+
 REPLACE:pad_paduan_commune = {
 	age = age_6_revolutions
 	icon = laws
@@ -91,11 +95,11 @@ REPLACE:pad_paduan_commune = {
 
 	requires = enlightenment_advance
 }
-#
+
 ######################################################################
 #		VENETIAN CULTURE
 ######################################################################
-#
+
 #ven_venetian_palaces = {
 #	content_priority = 300
 #	age = age_1_traditions

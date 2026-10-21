@@ -4,13 +4,10 @@
 	
 	can_start = {
 		NOT = { is_situation_active = situation:guelphs_and_ghibellines }
-		
-#		current_year > 1450
-		current_year > 1438
+		current_year > 1440
 
 		OR = {
-#			current_year > 1495
-			current_year > 1440
+			current_year > 1450
 			any_great_power = {
 				any_enemy_war_leader = { capital.region = region:italy_region }
 			}
@@ -27,15 +24,15 @@
 		immediate = {
 			#Italian Leagues triumphant
 			if = {
-				limit = { international_organization:italian_league_1 ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:italian_league_1 ?= { total_locations_owned >= 179 } }
 				iw_italian_league_triumph_events = { winner_io = italian_league_1 }
 			}
 			if = {
-				limit = { international_organization:italian_league_2 ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:italian_league_2 ?= { total_locations_owned >= 179 } }
 				iw_italian_league_triumph_events = { winner_io = italian_league_2 }
 			}
 			if = {
-				limit = { international_organization:italian_league_3 ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:italian_league_3 ?= { total_locations_owned >= 179 } }
 				iw_italian_league_triumph_events = { winner_io = italian_league_3 }
 			}
 		}
@@ -50,19 +47,19 @@
 		immediate = {
 			#Foreign League Triumph
 			if = {
-				limit = { international_organization:foreign_league_balkan ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:foreign_league_balkan ?= { total_locations_owned >= 179 } }
 				iw_foreign_league_triumph_events = { winner_io = foreign_league_balkan }
 			}
 			if = {
-				limit = { international_organization:foreign_league_france ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:foreign_league_france ?= { total_locations_owned >= 179 } }
 				iw_foreign_league_triumph_events = { winner_io = foreign_league_france }
 			}
 			if = {
-				limit = { international_organization:foreign_league_hre ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:foreign_league_hre ?= { total_locations_owned >= 179 } }
 				iw_foreign_league_triumph_events = { winner_io = foreign_league_hre }
 			}
 			if = {
-				limit = { international_organization:foreign_league_iberia ?= { total_locations_owned >= 200 } }
+				limit = { international_organization:foreign_league_iberia ?= { total_locations_owned >= 179 } }
 				iw_foreign_league_triumph_events = { winner_io = foreign_league_iberia }
 			}
 		}

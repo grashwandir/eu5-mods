@@ -33,7 +33,8 @@ REPLACE:tuscan_uffizi = {
 	}
 
 #	global_porcelain_output_modifier = 0.05
-	global_production_efficiency = small_production_efficiency_bonus
+	# before : global_production_efficiency = small_production_efficiency_bonus
+	global_production_efficiency =  0.05 
 	
 	monthly_prestige = 0.1
 	unlock_building = uffizi
@@ -50,7 +51,8 @@ REPLACE:accademia_cimento = {
 		has_or_had_tag = TUS
 	}
 
-	global_burghers_max_literacy = 10
+	# global_burghers_max_literacy = 10
+	global_burghers_max_literacy = 5
 	
 	# modified
 	# government_reform_slots = 1

@@ -29,6 +29,7 @@
 		#Added
 		annexation_speed_modifier = -0.20
 		government_reform_slots = 1
+		monthly_towards_plutocracy = societal_value_monthly_move
 	}
 
 	years = 2

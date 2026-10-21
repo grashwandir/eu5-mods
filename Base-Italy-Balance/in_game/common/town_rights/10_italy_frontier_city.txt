@@ -32,6 +32,7 @@
 		
 		# local_migration_attraction = -0.25
 		local_migration_speed_modifier = -0.5
+		local_migration_attraction = -0.05
 		
 		# fortress_town
 		
@@ -65,6 +66,7 @@ REPLACE:granary_town = {
 		# modified (granary_town has no potential: applies to every country)
 		# local_migration_attraction = -0.25
 		local_migration_speed_modifier = -0.5
+		local_migration_attraction = -0.05
 	}
 
 	color = goods_wheat
