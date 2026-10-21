@@ -1,0 +1,264 @@
+﻿REPLACE:clergy_estate = {
+	color = pop_clergy
+	tax_per_pop = 25
+	rival = -0.01
+	alliance = 0.01
+	
+	revolt_court_language = liturgical_language
+	characters_have_dynasty = sometimes # new characters may spawn with a dynasty
+	can_generate_mercenary_leaders = no
+	
+	bank = yes 	#can and will loan money
+
+	#multiplied with (satisfaction - LOW_SATISFACTION_THRESHOLD)
+	satisfaction = {
+		research_speed_modifier = 0.5
+		diplomatic_reputation = 2
+		
+		#### CHANGES ####
+		monthly_religious_influence = 0.25
+	}	
+	#multiplied with (relative_power - LOW_POWER_THRESHOLD) if > LOW_POWER_THRESHOLD
+	high_power = {
+		clergy_estate_max_tax = -0.5
+		global_pop_conversion_speed_modifier = 2.0
+		stability_cost_efficiency = 1
+		monthly_towards_spiritualist = societal_value_significant_monthly_move
+		court_language_is_liturgical_language_importance_modifier = 12
+		monthly_legitimacy = high_power_estate_government_power_penalty
+		monthly_republican_tradition = high_power_estate_government_power_penalty
+		monthly_devotion = high_power_estate_government_power_penalty
+		monthly_horde_unity = high_power_estate_government_power_penalty
+		monthly_tribal_cohesion = high_power_estate_government_power_penalty
+		
+		#### CHANGES ####
+		monthly_religious_influence = 0.25
+	}
+
+
+	#multiplied with -(relative_power - LOW_POWER_THRESHOLD) if < LOW_POWER_THRESHOLD
+	low_power = {
+		clergy_estate_max_tax = 0.25
+		court_language_is_liturgical_language_importance_modifier = -6
+	}
+	
+	opinion = {
+		if = {
+			limit = { country_exists = scope:target }
+			add = {
+				desc = "ESTATE_OPINION_BASE"
+				value = "opinion(scope:target)"
+				multiply = 0.05
+			}
+
+			if = {
+				limit = {
+					scope:target = {
+						has_discriminated_culture = root.culture
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_TARGET_DISCRIMINATES_OUR_CULTURE"
+					value = -50
+				}
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= { this = scope:target.religion }
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_TRUE_FAITH"
+					value = 10
+					multiply = modifier:tolerance_own
+				}
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= {
+							this != scope:target.religion
+							group = scope:target.religion.group
+						}
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_HERETIC"
+					value = 10
+					multiply = modifier:tolerance_heretic
+				}
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= { group != scope:target.religion.group }
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_HEATHEN"
+					value = 10
+					multiply = modifier:tolerance_heathen
+				}
+			}
+
+
+			add = {
+				desc = "ESTATE_OPINION_TARGET_C_ESTATE_POWER"
+				value = "scope:target.estate_power(estate_type:clergy_estate)"
+				subtract = 0.15
+				multiply = 6
+			}
+
+
+
+			if = {
+				limit = {
+					scope:target.religious_unity < 0.90
+				}	
+				add = {
+					desc = "ESTATE_OPINION_RELIGIOUS_UNITY"
+					value = 1
+					subtract = scope:target.religious_unity
+					multiply = -10
+				}
+			}
+
+
+			add = {
+				desc = "spiritualist_vs_humanist"
+				value = {
+					value = scope:target.societal_value:spiritualist_vs_humanist
+					subtract = societal_value:spiritualist_vs_humanist
+					multiply = -1
+					divide = 10
+					multiply = "religion.religious_view_impact(scope:target.religion)"
+				}
+			}
+	
+
+	
+	
+			add = {
+				desc = "ESTATE_OPINION_TARGET_ADVANCED"
+				value = num_of_advances_researched
+				subtract = scope:target.num_of_advances_researched
+				multiply = -0.05
+				max = 5
+			}
+		
+
+			if = {
+				limit = {
+					scope:target = { 
+						government_type = government_type:theocracy
+					}
+				}	
+				add = {
+					desc = "ESTATE_OPINION_THEOCRACY"
+					value = 5
+					multiply = "religion.religious_view_impact(scope:target.religion)"
+				}
+			}
+
+
+
+			if = {
+				limit = {
+					scope:target.liturgical_language ?= liturgical_language
+				}	
+				add = {
+					desc = "ESTATE_OPINION_SAME_LITURGICAL"
+					value = 10
+				}
+			}
+
+			if = {
+				limit = {
+					scope:target.court_language ?= liturgical_language
+				}	
+				add = {
+					desc = "ESTATE_OPINION_THEIR_COURT_LITURGICAL"
+					value = 10
+				}
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= { this = scope:target.religion }
+					}
+					scope:target = {
+						has_reform =government_reform:papacy_reform
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_HOLY_SEE"
+					value = 20
+				}
+			}
+
+
+
+			if = {
+				limit = {
+					OR = {
+						has_reform =government_reform:military_order_reform
+						has_estate_privilege = estate_privilege:clergy_military_orders
+					}
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= { this = scope:target.religion }
+					}
+					scope:target = {
+						OR = {
+							has_reform =government_reform:military_order_reform
+							has_estate_privilege = estate_privilege:clergy_military_orders
+						}
+					}
+				}
+				add = {
+					desc = "ESTATE_OPINION_BOTH_MIL_ORDERS"
+					value = 10
+				}
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_culture ?= { this = scope:target.culture }
+					}
+				}
+				add = { desc = "ESTATE_OPINION_SAME_ESTATE_CULTURE" value = 20 }
+			}
+			else_if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						scope:target = { has_accepted_culture = prev.dominant_culture }
+					}
+				}
+				add = { desc = "ESTATE_OPINION_ACCEPTED_ESTATE_CULTURE" value = 10 }
+			}
+			else_if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						scope:target = { has_tolerated_culture = prev.dominant_culture }
+					}
+				}
+				add = { desc = "ESTATE_OPINION_TOLERATED_ESTATE_CULTURE" value = 5 }
+			}
+
+			if = {
+				limit = {
+					"estate(estate_type:clergy_estate)" = {
+						dominant_religion ?= { this = scope:target.religion }
+					}
+				}
+				add = { desc = "ESTATE_OPINION_SAME_ESTATE_RELIGION" value = 20 }
+			}
+
+		}
+	}
+}

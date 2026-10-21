@@ -1,0 +1,13 @@
+﻿INJECT:clergy_estate = {
+
+	satisfaction = {
+		#### ADDED ####
+		monthly_religious_influence = 0.25
+	}
+	
+	#multiplied with (relative_power - LOW_POWER_THRESHOLD) if > LOW_POWER_THRESHOLD
+	high_power = {	
+		#### ADDED ####
+		monthly_religious_influence = 0.25
+	}
+}

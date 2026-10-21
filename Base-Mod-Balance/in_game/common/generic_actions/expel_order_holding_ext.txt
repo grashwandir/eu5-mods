@@ -103,20 +103,47 @@
 
 	ai_will_do = {
 		if = {
+			# clergy power share was 0.35
 			limit = {
-				scope:actor = {
-					"estate_power(estate_type:clergy_estate)" >= 0.35
+				
+				#### CHANGES ####
+				
+				OR = {
+					scope:actor = { "estate_power(estate_type:clergy_estate)" >= 0.3 }
+					scope:target = { religious_order_zeal < 90 }
 				}
 			}
+			
 			add = {
 				value = "scope:actor.estate_power(estate_type:clergy_estate)"
-				subtract = 0.35
+				subtract = 0.3
 				multiply = 100
 			}
+			
 			add = {
-				value = 50
+				value = 90 # from 50
 				subtract = "scope:target.religious_order_zeal"
 			}
+			
+			#################################################
+			# new factor
+#			add = {
+#				min = {
+#					value = 0
+#					add = {
+#						value = "scope:target.any_location_in_religious_order"
+#						subtract = 30
+#					}
+#				}
+#			}
+			add = {
+				scope:target = {
+					every_location_in_religious_order = { add = 1 }
+				}
+				subtract = 30
+				min = 0
+			}
+			#################################################
 		}
 		else = {
 			value = 0

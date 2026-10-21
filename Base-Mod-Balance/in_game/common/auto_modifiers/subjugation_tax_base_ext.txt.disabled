@@ -1,0 +1,8 @@
+﻿subjugation_tax_base = {
+	scales_with = {
+		value = country_tax_base
+		multiply = 0.1   # 1 point per 10 tax base
+#		max = 50         # cap: bonus never exceeds 50
+	}
+	accept_subjugation_reasons = 1
+}

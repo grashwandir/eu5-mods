@@ -34,16 +34,7 @@
 
 	cooldown = {
 		type = invite_religious_order
-		
-		# CHANGES
-		# years = 2
-		years = {
-			value = 2
-			if = {
-				limit = { scope:actor ?= { tag = TUS } }
-				value = 0
-			}
-		}
+		years = 2
 	}
 
 	select_trigger = {

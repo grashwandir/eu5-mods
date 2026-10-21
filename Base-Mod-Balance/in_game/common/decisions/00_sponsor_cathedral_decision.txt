@@ -1,0 +1,107 @@
+﻿#Age of Renaissance
+REPLACE:sponsor_a_cathedral_decision = {
+	decision_category = government_decisions
+
+	potential = {
+		OR = {
+			current_age = age_2_renaissance
+			current_age = age_3_discovery
+		}
+		religion.group = religion_group:christian
+	}
+
+	allow = {
+		OR = {
+			current_age = age_2_renaissance
+			current_age = age_3_discovery
+		}
+		
+		has_ruler = yes
+		has_advance = cathedral_advance
+		custom_tooltip = {
+			text = sponsor_a_cathedral_cooldown_tt
+			NOT = {
+				ruler = { has_variable = sponsor_a_cathedral_cooldown }
+			}
+		}
+		any_owned_location = {
+			NOT = {
+				has_building = building_type:cathedral
+			}
+			OR = {
+				location_rank = location_rank:city
+				location_rank = location_rank:megalopolis
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = -10
+
+		add = {
+			if = {
+				limit = {
+					root.gold >= {
+						value = root.monthly_income_trade_and_tax
+						multiply = 6
+					}
+					
+					#### CHANGES ####
+					political_influence >= 80
+				}
+				add = 50
+			}
+		}
+	}
+
+	illustration_tags = {
+		10 = interior
+		10 = happy
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		random_owned_location = {
+			limit = {
+				NOT = {
+					has_building = building_type:cathedral
+				}
+				OR = {
+					location_rank = location_rank:city
+					location_rank = location_rank:megalopolis
+				}
+			}
+			weight = {
+				base = 1
+				modifier = {
+					add = {
+						value = population
+						multiply = 100
+					}
+				}
+			}
+			save_scope_as = target_location
+		}
+	}
+
+	option = {
+		name = sponsor_a_cathedral_decision.a
+		ai_chance = { value = 100 }
+		effect = {
+			add_political_influence = political_influence_mild_penalty
+			add_religious_influence = religious_influence_severe_penalty
+			scope:target_location = {
+				construct_building = {
+					building_type = building_type:cathedral
+					cost_multiplier = 0.90
+					cost_multiplier_reason = "royal_sponsorship"
+				}
+			}
+			hidden_effect = {
+				ruler = {
+					set_variable = sponsor_a_cathedral_cooldown
+				}
+			}
+		}
+	}
+}
