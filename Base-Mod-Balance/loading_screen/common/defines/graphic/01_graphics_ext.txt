@@ -1,0 +1,5 @@
+﻿NMapColors = {
+	#1.4.3 lowered it to 0.001, which paints every location with a malaria rate, not just endemic ones
+#	DISEASE_MAPMODE_MIN_ENDEMIC_RATE_TO_PAINT = 0.001
+	DISEASE_MAPMODE_MIN_ENDEMIC_RATE_TO_PAINT = 0.07
+}
