@@ -43,6 +43,10 @@
 		local_burghers_estate_power = -0.25
 		local_soldiers_desired_pop = 0.2
 	}
+	
+	country_modifier = {
+		fort_maintenance_efficiency = -0.025
+	}
 
 	color = map_TUS
 }
