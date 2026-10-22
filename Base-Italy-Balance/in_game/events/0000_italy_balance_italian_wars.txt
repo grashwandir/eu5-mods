@@ -1,0 +1,49 @@
+﻿namespace = italian_wars
+
+# Overrides vanilla events/situations/italian_wars.txt (root events load first, first id wins)
+# modified: winning league threshold 200 -> 179 locations
+italian_wars.200 = {
+	hide_portraits = yes
+	type = country_event
+	category = situation_event
+
+	title = italian_wars.100.title
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { capital.region = region:italy_region }
+				desc = italian_wars.200.desc
+			}
+			triggered_desc = { desc = italian_wars.200.desc_foreign }
+		}
+	}
+	outcome = neutral
+	image = "gfx/interface/illustrations/situation/italian_wars.dds"
+	immediate = {
+		save_scope_as = target_country
+		ruler_or_regent ?= {
+			save_scope_as = target_character
+		}
+		random_in_global_list = {
+			variable = iw_italian_leagues_list
+			limit = { total_locations_owned >= 179 }
+			leader_country = { save_scope_as = winning_io_leader }
+		}
+	}
+	option = {
+		name = italian_wars.200.a
+		trigger = { capital.region = region:italy_region }
+		if = {
+			limit = { exists = scope:winning_io_leader }
+			add_trust_equilibrium_mutual_effect = {
+				modifier = iw_shared_defeat_trust
+				target = scope:winning_io_leader
+			}
+		}
+	}
+	option = {
+		name = italian_wars.200.b
+		trigger = { NOT = { capital.region = region:italy_region } }
+		add_prestige = prestige_mild_penalty
+	}
+}

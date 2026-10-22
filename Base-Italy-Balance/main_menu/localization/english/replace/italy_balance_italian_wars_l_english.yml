@@ -1,0 +1,9 @@
+﻿l_english:
+ any_foreign_league_has_at_least_200_locations_in_italy: "Any #italic Foreign League#! [international_organization|e] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ foreign_league_balkan_200_tt: "The [GetUniqueInternationalOrganization('foreign_league_balkan').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ foreign_league_hre_200_tt: "The [GetUniqueInternationalOrganization('foreign_league_hre').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ foreign_league_france_200_tt: "The [GetUniqueInternationalOrganization('foreign_league_france').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ foreign_league_iberia_200_tt: "The [GetUniqueInternationalOrganization('foreign_league_iberia').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ italian_league_1_200_tt: "The [GetUniqueInternationalOrganization('italian_league_1').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ italian_league_2_200_tt: "The [GetUniqueInternationalOrganization('italian_league_2').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
+ italian_league_3_200_tt: "The [GetUniqueInternationalOrganization('italian_league_3').GetName] owns at least #Y 179#! [locations|e] in [ShowRegionName('italy_region')]"
