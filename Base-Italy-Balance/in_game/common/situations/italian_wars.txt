@@ -18,7 +18,7 @@
 		name = "italian_wars_italian_league_triumph"
 		desc = "italian_wars_italian_league_triumph_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 30 }
+			situation:italian_wars = { years_since_situation_start > 35 }
 			has_italian_league_won_the_italian_wars = yes
 		}
 		immediate = {
@@ -41,7 +41,7 @@
 		name = "italian_wars_foreign_league_triumph"
 		desc = "italian_wars_foreign_league_triumph_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 30 }
+			situation:italian_wars = { years_since_situation_start > 35 }
 			has_foreign_league_won_the_italian_wars = yes
 		}
 		immediate = {
@@ -68,7 +68,7 @@
 		name = "italian_wars_exhausted_peninsula"
 		desc = "italian_wars_exhausted_peninsula_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 30 }
+			situation:italian_wars = { years_since_situation_start > 35 }
 		}
 		immediate = {
 			#Stalemate
