@@ -1,10 +1,20 @@
-﻿REPLACE:soldier_percentage_in_country = {
+﻿#REPLACE:soldier_percentage_in_country = {
+#	potential_trigger = { total_population > 0 } # No division by 0
+#	scales_with = {
+#		value = percentage_pop_type_in_country:soldiers
+#		multiply = 5
+#		max = 1
+#	}
+#
+#	monthly_towards_quantity = societal_value_large_monthly_move
+#}
+
+REPLACE:soldier_percentage_in_country = {
 	potential_trigger = { total_population > 0 } # No division by 0
 	scales_with = {
 		value = percentage_pop_type_in_country:soldiers
-		multiply = 5
-		max = 1
+		max = 0.2
 	}
 
-	monthly_towards_quantity = societal_value_large_monthly_move
+	monthly_towards_quantity = 1
 }
