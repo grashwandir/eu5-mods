@@ -136,7 +136,7 @@ REPLACE:zeal_papal_authority_alignment = {
 }
 
 zeal_church_power_alignment = {
-	valid_for_callings = { protestant_preachers_calling protestant_almoners_calling protestant_confessors_calling }
+	valid_for_callings = { protestant_preachers_calling protestant_almoners_calling protestant_confessors_calling protestant_contemplatives_calling protestant_scholars_calling protestant_cultivators_calling }
 	country_trigger = {
 		religion = religion:lutheran
 		religious_influence_percentage > 0
@@ -153,7 +153,7 @@ zeal_church_power_alignment = {
 ##############################################################################
 
 REPLACE:zeal_seat_of_learning = {
-	valid_for_callings = { scholars_calling preachers_calling protestant_preachers_calling }
+	valid_for_callings = { scholars_calling preachers_calling protestant_scholars_calling protestant_preachers_calling }
 	location_trigger = {
 		has_building = building_type:university
 	}
@@ -205,6 +205,55 @@ REPLACE:zeal_charitable_realm = {
 	country_scale = {
 		value = modifier:tolerance_own
 		divide = 2
+	}
+	value = 1
+}
+
+REPLACE:zeal_serene_realm = {
+	valid_for_callings = { contemplatives_calling protestant_contemplatives_calling }
+	country_trigger = {
+		stability > 0
+	}
+	country_scale = {
+		value = stability
+		divide = 10
+	}
+	value = 1
+}
+
+REPLACE:zeal_literate_realm = {
+	valid_for_callings = { scholars_calling protestant_scholars_calling }
+	country_trigger = {
+		average_country_literacy > 0
+	}
+	country_scale = {
+		value = average_country_literacy
+		divide = 12
+	}
+	value = 1
+}
+
+REPLACE:zeal_thriving_grange = {
+	valid_for_callings = { cultivators_calling protestant_cultivators_calling }
+	location_trigger = {
+		prosperity > 0
+	}
+	location_scale = {
+		value = prosperity
+		divide = 20
+	}
+	value = 1
+}
+
+REPLACE:zeal_bountiful_realm = {
+	valid_for_callings = { cultivators_calling protestant_cultivators_calling }
+	country_trigger = {
+		capital = { market = { market_monthly_food_balance > 0 } }
+	}
+	country_scale = {
+		capital.market = { value = market_monthly_food_balance }
+		divide = 5
+		max = 6
 	}
 	value = 1
 }
@@ -314,55 +363,6 @@ REPLACE:zeal_charitable_realm = {
 #		}
 #	}
 #	value = 8
-#}
-#
-#zeal_thriving_grange = {
-#	valid_for_callings = { cultivators_calling }
-#	location_trigger = {
-#		prosperity > 0
-#	}
-#	location_scale = {
-#		value = prosperity
-#		divide = 20
-#	}
-#	value = 1
-#}
-#
-#zeal_bountiful_realm = {
-#	valid_for_callings = { cultivators_calling }
-#	country_trigger = {
-#		capital = { market = { market_monthly_food_balance > 0 } }
-#	}
-#	country_scale = {
-#		capital.market = { value = market_monthly_food_balance }
-#		divide = 5
-#		max = 6
-#	}
-#	value = 1
-#}
-#
-#zeal_literate_realm = {
-#	valid_for_callings = { scholars_calling }
-#	country_trigger = {
-#		average_country_literacy > 0
-#	}
-#	country_scale = {
-#		value = average_country_literacy
-#		divide = 12
-#	}
-#	value = 1
-#}
-#
-#zeal_serene_realm = {
-#	valid_for_callings = { contemplatives_calling }
-#	country_trigger = {
-#		stability > 0
-#	}
-#	country_scale = {
-#		value = stability
-#		divide = 10
-#	}
-#	value = 1
 #}
 #
 #zeal_bold_explorers = {

@@ -1,0 +1,34 @@
+﻿protestant_monastic_order_type = {
+	color = { 70 90 160 }
+	graphical_cultures = { monastic_gfx }
+	location_overlay_loc_key = ORDER_HOLDING
+	can_field_levies = no
+	default_calling = protestant_contemplatives_calling
+	valid_callings = {
+		protestant_contemplatives_calling
+		protestant_scholars_calling
+		protestant_cultivators_calling
+	}
+	founding_name_pattern = ORDER_OF_LOCATION_NAME_PATTERN
+	founding_cost_gold = 75
+	holding_goods_demand = religious_order_holding_demand
+	default_founding_country_allow = {
+		religion = religion:lutheran
+	}
+	default_founding_location_allow = {
+		owner ?= scope:actor
+		has_building_with_at_least_one_level = monastery
+	}
+
+	on_leader_death = {
+		scope:religious_order = {
+			random_pop_in_religious_order_holding_location = {
+				age = { 30 50 }
+				female = no
+				valid_pop_trigger = {
+					religion = scope:religious_order.religion
+				}
+			}
+		}
+	}
+}

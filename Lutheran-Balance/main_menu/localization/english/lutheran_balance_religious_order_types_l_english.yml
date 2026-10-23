@@ -1,0 +1,6 @@
+﻿l_english:
+ protestant_mendicant_order_type: "$mendicant_order_type$"
+ protestant_mendicant_order_type_desc: "Lutheran brethren sworn to poverty who beg their bread rather than hold estates, preaching, teaching and caring for the poor in our towns and cities."
+
+ protestant_monastic_order_type: "$monastic_order_type$"
+ protestant_monastic_order_type_desc: "A contemplative Lutheran brotherhood of monks whose [holdings|E] are given over to prayer, learning and the working of the land."

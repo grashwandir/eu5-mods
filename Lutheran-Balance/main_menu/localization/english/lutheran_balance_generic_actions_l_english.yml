@@ -13,3 +13,18 @@
  protestant_absolve_the_court_desc: "Have a #high $protestant_confessors_calling$#! order shrive our court and proclaim the dynasty's sins forgiven. Stokes the order's [zeal|E]."
  protestant_absolve_the_court_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_confessors_calling$#! [calling|E] exist in this religion."
  choose_religious_order_for_protestant_absolve_the_court: "Choose a $protestant_confessors_calling$ order"
+
+ protestant_pray_for_the_realm: "$pray_for_the_realm$"
+ protestant_pray_for_the_realm_desc: "Have a #high $protestant_contemplatives_calling$#! order chant perpetual intercessions for the realm and its weary people. Stokes the order's [zeal|E]."
+ protestant_pray_for_the_realm_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_contemplatives_calling$#! [calling|E] exist in this religion."
+ choose_religious_order_for_protestant_pray_for_the_realm: "Choose a $protestant_contemplatives_calling$ order"
+
+ protestant_open_the_scriptoria: "$open_the_scriptoria$"
+ protestant_open_the_scriptoria_desc: "Have a #high $protestant_scholars_calling$#! order open its scriptoria and lend its masters to our schools. Stokes the order's [zeal|E]."
+ protestant_open_the_scriptoria_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_scholars_calling$#! [calling|E] exist in this religion."
+ choose_religious_order_for_protestant_open_the_scriptoria: "Choose a $protestant_scholars_calling$ order"
+
+ protestant_break_new_ground: "$break_new_ground$"
+ protestant_break_new_ground_desc: "Have a #high $protestant_cultivators_calling$#! order's lay brothers clear the wastes around one of their granges and put the land under the plow. Stokes the order's [zeal|E]."
+ protestant_break_new_ground_no_orders: "@trigger_no! No [religious_orders|e] of the #high $protestant_cultivators_calling$#! [calling|E] hold any [holdings|E] in our lands."
+ choose_religious_order_for_protestant_break_new_ground: "Choose a $protestant_cultivators_calling$ order"

@@ -1,0 +1,367 @@
+﻿protestant_pray_for_the_realm = {
+	type = religious
+
+	required_calling = protestant_contemplatives_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_contemplatives_calling }
+	}
+
+	allow = {
+		scope:actor = {
+			NOT = { has_country_modifier = contemplatives_intercessions_modifier }
+		}
+	}
+
+	price = price:pray_for_the_realm_price
+
+	cooldown = {
+		type = pray_for_the_realm
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_pray_for_the_realm"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_pray_for_the_realm"
+		none_available_msg_key = "protestant_pray_for_the_realm_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_contemplatives_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	effect = {
+		scope:actor = {
+			add_country_modifier = {
+				modifier = contemplatives_intercessions_modifier
+				months = 12
+				size = {
+					add = {
+						value = 1
+						desc = "BASE_VALUE"
+					}
+					if = {
+						limit = { exists = scope:target }
+						if = {
+							limit = { scope:target = { religious_order_zeal >= 50 } }
+							add = {
+								value = 1
+								desc = "order_zeal_50_desc"
+							}
+						}
+						if = {
+							limit = { scope:target = { religious_order_zeal >= 80 } }
+							add = {
+								value = 1
+								desc = "order_zeal_80_desc"
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		subtract = 5
+		scope:actor = {
+			if = {
+				limit = { at_war = no }
+				subtract = 10000
+			}
+			add = {
+				value = war_exhaustion
+				multiply = 2
+			}
+		}
+	}
+}
+
+protestant_open_the_scriptoria = {
+	type = religious
+
+	required_calling = protestant_scholars_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_scholars_calling }
+	}
+
+	allow = {
+		scope:actor = {
+			NOT = { has_country_modifier = scholars_scriptoria_modifier }
+		}
+	}
+
+	price = price:open_the_scriptoria_price
+
+	cooldown = {
+		type = open_the_scriptoria
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_open_the_scriptoria"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_open_the_scriptoria"
+		none_available_msg_key = "protestant_open_the_scriptoria_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_scholars_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	effect = {
+		scope:actor = {
+			add_country_modifier = {
+				modifier = scholars_scriptoria_modifier
+				months = 24
+				size = {
+					add = {
+						value = 1
+						desc = "BASE_VALUE"
+					}
+					if = {
+						limit = { exists = scope:target }
+						if = {
+							limit = { scope:target = { religious_order_zeal >= 50 } }
+							add = {
+								value = 1
+								desc = "order_zeal_50_desc"
+							}
+						}
+						if = {
+							limit = { scope:target = { religious_order_zeal >= 80 } }
+							add = {
+								value = 1
+								desc = "order_zeal_80_desc"
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = scope:target }
+			}
+			custom_tooltip = selected_order_gains_10_zeal
+		}
+		else = {
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 50	#always good
+	}
+}
+
+protestant_break_new_ground = {
+	type = religious
+
+	required_calling = protestant_cultivators_calling
+
+	sound = UI_action_religion_generic
+
+	ai_tick = monthly
+	ai_tick_frequency = 60
+
+	automation_tick = monthly
+	automation_tick_frequency = 6
+
+	potential = {
+		actor_has_order_of_calling_trigger = { CALLING = protestant_cultivators_calling }
+	}
+
+	price = price:break_new_ground_price
+
+	cooldown = {
+		type = break_new_ground
+		years = 5
+	}
+
+	select_trigger = {
+		looking_for_a = religion
+		source = actor
+		target_flag = recipient
+		name = "choose_religion_for_break_new_ground"
+		column = {
+			data = name
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = religious_order
+		source = recipient
+		target_flag = target
+		name = "choose_religious_order_for_protestant_break_new_ground"
+		none_available_msg_key = "protestant_break_new_ground_no_orders"
+		column = {
+			data = name
+		}
+		column = {
+			data = zeal
+		}
+		interaction_source_list = {
+			scope:recipient = {
+				every_religious_order_in_religion = {
+					add_to_list = source
+				}
+			}
+		}
+		visible = {
+			order_calling ?= calling:protestant_cultivators_calling
+			any_location_in_religious_order = {
+				owner ?= scope:actor
+			}
+		}
+		show_why_not_enabled = yes
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		source = actor
+		target_flag = target_location
+		name = "choose_location_for_break_new_ground"
+		none_available_msg_key = "break_new_ground_no_locations"
+		column = {
+			data = name
+		}
+		visible = {
+			owner ?= scope:actor
+			religious_order ?= scope:target
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				add_location_modifier = {
+					modifier = cultivators_grange_clearing_modifier
+					years = 5
+					mode = replace
+				}
+			}
+			scope:target = {
+				change_religious_order_zeal = 10
+				every_location_in_religious_order = {
+					set_variable = { name = recent_order_service value = yes days = 1825 }
+				}
+			}
+		}
+		else = {
+			custom_tooltip = selected_order_gains_10_zeal
+			custom_tooltip = selected_holding_gains_grange_clearing
+		}
+	}
+
+	ai_will_do = {
+		if = {
+			limit = { exists = scope:location }
+			add = {
+				value = "scope:location.local_control"
+				multiply = "scope:location.food_production"
+				divide = 100
+			}
+		}
+		add = {
+			value = "scope:target.religious_order_zeal"
+			subtract = 50	#base
+			subtract = 10	#penalty
+		}
+	}
+}

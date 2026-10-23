@@ -1,0 +1,14 @@
+﻿l_english:
+ protestant_preachers_calling: "$preachers_calling$"
+ protestant_preachers_calling_desc: "An order of brethren devoted to preaching, the conversion of unbelievers and the defense of doctrine."
+ protestant_almoners_calling: "$almoners_calling$"
+ protestant_almoners_calling_desc: "Brethren sworn to poverty who beg their bread and give it away, tending the poor and the sick."
+ protestant_confessors_calling: "$confessors_calling$"
+ protestant_confessors_calling_desc: "An order of brethren living in community, hearing confession and shepherding souls with a gentle hand."
+
+ protestant_contemplatives_calling: "$contemplatives_calling$"
+ protestant_contemplatives_calling_desc: "A cloistered order given over to prayer, the liturgy and ascetic withdrawal from the world."
+ protestant_scholars_calling: "$scholars_calling$"
+ protestant_scholars_calling_desc: "A teaching order copying manuscripts, schooling clerics and advancing the arts and sciences."
+ protestant_cultivators_calling: "$cultivators_calling$"
+ protestant_cultivators_calling_desc: "A reforming order of monks and lay brothers who clear waste ground and work it through their granges."
