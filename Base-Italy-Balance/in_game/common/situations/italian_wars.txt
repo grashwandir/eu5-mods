@@ -18,7 +18,7 @@
 		name = "italian_wars_italian_league_triumph"
 		desc = "italian_wars_italian_league_triumph_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 35 }
+			situation:italian_wars = { years_since_situation_start > 40 }
 			has_italian_league_won_the_italian_wars = yes
 		}
 		immediate = {
@@ -41,7 +41,7 @@
 		name = "italian_wars_foreign_league_triumph"
 		desc = "italian_wars_foreign_league_triumph_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 35 }
+			situation:italian_wars = { years_since_situation_start > 40 }
 			has_foreign_league_won_the_italian_wars = yes
 		}
 		immediate = {
@@ -68,7 +68,7 @@
 		name = "italian_wars_exhausted_peninsula"
 		desc = "italian_wars_exhausted_peninsula_desc"
 		trigger = {
-			situation:italian_wars = { years_since_situation_start > 35 }
+			situation:italian_wars = { years_since_situation_start > 40 }
 		}
 		immediate = {
 			#Stalemate
@@ -416,7 +416,14 @@
 		reconcile_hre_league_leadership = yes
 
 		# Passive tension drift
-		iw_increase_tension_effect = { value = iw_tension_gain_low }
+		
+		#### CHANGES ####
+		iw_increase_tension_effect = { 
+			value = iw_tension_gain_low
+		#	value = 4
+		}
+		#################
+		
 		# Flat bonus if any foreign league leader is at war (not per-leader, to avoid stacking)
 		if = {
 			limit = {
