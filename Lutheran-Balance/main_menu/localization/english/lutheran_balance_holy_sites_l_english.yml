@@ -1,0 +1,3 @@
+﻿l_english:
+ the_lutheran_vatican: "$the_vatican$"
+ the_lutheran_vatican_desc: "The basilica over the tomb of Saint Peter in [ShowLocationName('rome')] is the ancient heart of Western [ShowReligionGroupName('christian')]. Its rebuilding was paid for with the very indulgences that Martin Luther denounced in his Ninety-Five Theses, and a [ShowReligionAdjective('lutheran')] ruler who holds it claims the apostolic inheritance, freed from papal corruption."

@@ -1,0 +1,3 @@
+﻿l_english:
+ lutheran_holy_site: "Lutheran Holy Site"
+ lutheran_holy_site_desc: "This is a [holy_site|e] important to [ShowReligionName('lutheran')]. A [ShowReligionAdjective('lutheran')] [country|e] that owns it can adopt one more [religious_aspect|e]."
