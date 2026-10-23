@@ -1,0 +1,17 @@
+﻿# Founding a Lutheran religious order (decisions/lutheran_balance_religious_order_decisions.txt, events/lutheran_balance_religious_orders.txt)
+# location_valid_for_calling also checks the order type's default_founding_location_allow, which reads scope:actor:
+# save the founding country as actor first, as vanilla on_action/religious_order_conquest.txt does
+
+# Location scope: can host the first holding of a new $CALLING$ order
+lutheran_balance_order_founding_location_trigger = {
+	owner ?= scope:actor
+	location_can_host_order_holding_trigger = yes
+	location_valid_for_calling = calling:$CALLING$
+}
+
+# Country scope: owns at least one such location
+lutheran_balance_can_found_order_of_calling_trigger = {
+	any_owned_location = {
+		lutheran_balance_order_founding_location_trigger = { CALLING = $CALLING$ }
+	}
+}

@@ -29,6 +29,18 @@
 					religion = scope:religious_order.religion
 				}
 			}
+			#### CHANGES ####
+			# The spawned head has no country (debug flag): move him to the owner of the location he spawned in
+			leader ?= {
+				location ?= {
+					owner ?= { save_scope_as = lutheran_balance_order_head_country }
+				}
+				if = {
+					limit = { exists = scope:lutheran_balance_order_head_country }
+					move_country = scope:lutheran_balance_order_head_country
+				}
+			}
+			#################
 		}
 	}
 }

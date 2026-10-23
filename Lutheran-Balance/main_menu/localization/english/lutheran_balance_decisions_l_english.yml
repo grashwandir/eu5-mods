@@ -1,0 +1,10 @@
+﻿l_english:
+ found_protestant_mendicant_order_decision.title: "Found a $protestant_mendicant_order_type$"
+ found_protestant_mendicant_order_decision.desc: "Gather our [ShowReligionAdjective('lutheran')] brethren into a mendicant order of our own, preaching, teaching and caring for the poor in our towns and cities. A [country|e] can only ever found one [religious_order|e]."
+ found_protestant_mendicant_order_decision.a: "Call the brethren together."
+ found_protestant_mendicant_order_decision_location_tt: "Owns a [town_or_city|e] that is not the [capital|e], has a #Y [ShowReligionAdjective('lutheran')]#! majority and is not already a [holding|e] of a [religious_order|e]"
+
+ found_protestant_monastic_order_decision.title: "Found a $protestant_monastic_order_type$"
+ found_protestant_monastic_order_decision.desc: "Gather our [ShowReligionAdjective('lutheran')] brethren into a monastic order of our own, given over to prayer, learning and the working of the land. A [country|e] can only ever found one [religious_order|e]."
+ found_protestant_monastic_order_decision.a: "Open the cloister to the brethren."
+ found_protestant_monastic_order_decision_location_tt: "Owns a [location|e] that is not the [capital|e], has a #Y [ShowReligionAdjective('lutheran')]#! majority and a #Y $monastery$#!, and is not already a [holding|e] of a [religious_order|e]"

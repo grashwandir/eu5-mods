@@ -1,0 +1,92 @@
+﻿# Found a Lutheran religious order: one decision per order type, the calling is chosen in lutheran_balance.10 / .11
+# Only one order per country (variable lutheran_balance_founded_religious_order), Empire rank, vanilla found price (250 RI)
+
+found_protestant_mendicant_order_decision = {
+	decision_category = religious_decisions
+
+	potential = {
+		religion = religion:lutheran
+		NOT = { has_variable = lutheran_balance_founded_religious_order }
+	}
+
+	allow = {
+		country_rank = country_rank:rank_empire
+		can_pay_price = price:found_religious_order_price
+		save_temporary_scope_as = actor
+		custom_tooltip = {
+			text = found_protestant_mendicant_order_decision_location_tt
+			OR = {
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_preachers_calling }
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_almoners_calling }
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_confessors_calling }
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = found_protestant_mendicant_order_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			show_as_tooltip = { pay_price = price:found_religious_order_price }
+			trigger_event_non_silently = lutheran_balance.10
+		}
+	}
+}
+
+found_protestant_monastic_order_decision = {
+	decision_category = religious_decisions
+
+	potential = {
+		religion = religion:lutheran
+		NOT = { has_variable = lutheran_balance_founded_religious_order }
+	}
+
+	allow = {
+		country_rank = country_rank:rank_empire
+		can_pay_price = price:found_religious_order_price
+		save_temporary_scope_as = actor
+		custom_tooltip = {
+			text = found_protestant_monastic_order_decision_location_tt
+			OR = {
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_contemplatives_calling }
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_scholars_calling }
+				lutheran_balance_can_found_order_of_calling_trigger = { CALLING = protestant_cultivators_calling }
+			}
+		}
+	}
+
+	ai_will_do = {
+		value = 0
+	}
+
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+
+	illustration_scope = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+	}
+
+	option = {
+		name = found_protestant_monastic_order_decision.a
+		ai_chance = { value = 0 }
+		effect = {
+			show_as_tooltip = { pay_price = price:found_religious_order_price }
+			trigger_event_non_silently = lutheran_balance.11
+		}
+	}
+}

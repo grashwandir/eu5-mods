@@ -1,0 +1,31 @@
+﻿# Founding a Lutheran religious order (events/lutheran_balance_religious_orders.txt)
+# Country scope, needs scope:actor (scripted_triggers/lutheran_balance_religious_order_triggers.txt)
+
+# Saves the most populous location that can host a new $CALLING$ order as scope:$SCOPE$
+lutheran_balance_save_order_location_effect = {
+	ordered_owned_location = {
+		order_by = population
+		limit = {
+			lutheran_balance_order_founding_location_trigger = { CALLING = $CALLING$ }
+		}
+		save_scope_as = $SCOPE$
+	}
+}
+
+# Founds the order in scope:$LOCATION$; only one founding per country
+lutheran_balance_found_order_effect = {
+	pay_price = price:found_religious_order_price
+	set_variable = lutheran_balance_founded_religious_order
+	scope:$LOCATION$ = {
+		found_religious_order = {
+			type = religious_order_type:$TYPE$
+			calling = calling:$CALLING$
+			religion = religion:lutheran
+		}
+		# Safety net if the first head is not spawned through the type's on_leader_death: give him the founder's country
+		random_religious_order_in_location = {
+			limit = { order_type ?= religious_order_type:$TYPE$ }
+			leader ?= { move_country = root }
+		}
+	}
+}

@@ -1,0 +1,74 @@
+﻿namespace = lutheran_balance
+
+#Found a Lutheran mendicant order - choose the calling (from found_protestant_mendicant_order_decision)
+#Each option only shows when a valid location exists; the holding goes to the most populous one
+lutheran_balance.10 = {
+	type = country_event
+	title = lutheran_balance.10.title
+	desc = lutheran_balance.10.desc
+	outcome = positive
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		hidden_effect = {
+			save_scope_as = actor
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_preachers_calling SCOPE = lutheran_balance_preachers_location }
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_almoners_calling SCOPE = lutheran_balance_almoners_location }
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_confessors_calling SCOPE = lutheran_balance_confessors_location }
+		}
+	}
+	option = {
+		name = lutheran_balance.10.a
+		trigger = { exists = scope:lutheran_balance_preachers_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_mendicant_order_type CALLING = protestant_preachers_calling LOCATION = lutheran_balance_preachers_location }
+	}
+	option = {
+		name = lutheran_balance.10.b
+		trigger = { exists = scope:lutheran_balance_almoners_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_mendicant_order_type CALLING = protestant_almoners_calling LOCATION = lutheran_balance_almoners_location }
+	}
+	option = {
+		name = lutheran_balance.10.c
+		trigger = { exists = scope:lutheran_balance_confessors_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_mendicant_order_type CALLING = protestant_confessors_calling LOCATION = lutheran_balance_confessors_location }
+	}
+}
+
+#Found a Lutheran monastic order - choose the calling (from found_protestant_monastic_order_decision)
+lutheran_balance.11 = {
+	type = country_event
+	title = lutheran_balance.11.title
+	desc = lutheran_balance.11.desc
+	outcome = positive
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:clergy_estate background = estate_type:clergy_estate }
+		hidden_effect = {
+			save_scope_as = actor
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_contemplatives_calling SCOPE = lutheran_balance_contemplatives_location }
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_scholars_calling SCOPE = lutheran_balance_scholars_location }
+			lutheran_balance_save_order_location_effect = { CALLING = protestant_cultivators_calling SCOPE = lutheran_balance_cultivators_location }
+		}
+	}
+	option = {
+		name = lutheran_balance.11.a
+		trigger = { exists = scope:lutheran_balance_contemplatives_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_monastic_order_type CALLING = protestant_contemplatives_calling LOCATION = lutheran_balance_contemplatives_location }
+	}
+	option = {
+		name = lutheran_balance.11.b
+		trigger = { exists = scope:lutheran_balance_scholars_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_monastic_order_type CALLING = protestant_scholars_calling LOCATION = lutheran_balance_scholars_location }
+	}
+	option = {
+		name = lutheran_balance.11.c
+		trigger = { exists = scope:lutheran_balance_cultivators_location }
+		lutheran_balance_found_order_effect = { TYPE = protestant_monastic_order_type CALLING = protestant_cultivators_calling LOCATION = lutheran_balance_cultivators_location }
+	}
+}
