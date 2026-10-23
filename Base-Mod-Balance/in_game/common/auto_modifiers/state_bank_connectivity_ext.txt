@@ -1,0 +1,11 @@
+﻿# State banks (country_type = building) own no locations, so the engine's
+# subject_territory_connectivity finds no land or sea route and scores them 0.
+# Flat loyalty equal to a fully connected subject (vanilla static modifier
+# subject_territory_connectivity: loyalty_to_overlord = 20)
+state_bank_territory_connectivity = {
+	potential_trigger = {
+		is_subject_type = state_bank
+	}
+
+	loyalty_to_overlord = 20
+}
