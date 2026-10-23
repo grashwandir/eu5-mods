@@ -1,11 +1,12 @@
 ﻿REPLACE:rom_capital_rome = {
 	potential_trigger = {
 		OR = {
-			has_or_had_tag = ROM
-			# added
+			AND = {
+				has_or_had_tag = ROM
+				capital ?= location:rome
+			}
 			has_or_had_tag = ITA
 		}
-		capital ?= location:rome
 	}
 
 	global_max_bureaucracy_slots = 1
