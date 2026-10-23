@@ -18,3 +18,37 @@
 		godly_household = 10
 	}
 }
+
+# can do inject only because 'enabled' block does not exists
+INJECT:monasticism = {
+	enabled = {
+		NOT = { has_religious_aspect = religious_aspect:godly_household }
+	}
+}
+
+#monasticism = {
+#	religion = anglican
+#	religion = bogomilism
+#	religion = calvinist
+#	religion = hussite
+#	religion = lollardy
+#	religion = lutheran
+#	religion = miaphysite
+#	
+#	modifier = {
+#		can_have_monasteries = yes
+#		global_clergy_max_literacy = 5
+#		monthly_towards_spiritualist = societal_value_monthly_move
+#	}
+#
+#	opinions = {
+#		monasticism = 10
+#
+#		aniconism = 5
+#		asceticism = 5
+#		monasticism = 5
+#		rejection_of_sacraments = 5
+#
+#		crown_as_head_of_faith = -10
+#	}
+#}
