@@ -1,0 +1,24 @@
+﻿#Order of the Luther Rose - founded by a lutheran ITA (lutheran_balance.1), offered to every known lutheran country (lutheran_balance.2)
+order_of_the_luther_rose = {
+	potential = {
+		always = no
+	}
+	country_modifier = {
+		tolerance_own = 1
+		global_defensive = 0.1
+	}
+	character_modifier = {
+		adm = 15
+		monthly_prestige = 0.05
+		land_morale_modifier = 0.05
+	}
+	character_eligible = {
+		is_adult = yes
+		religion = religion:lutheran
+		OR = {
+			has_estate = estate_type:nobles_estate
+			has_estate = estate_type:crown_estate
+			is_ruler = yes
+		}
+	}
+}

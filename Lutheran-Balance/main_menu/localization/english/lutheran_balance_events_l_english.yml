@@ -1,0 +1,13 @@
+﻿l_english:
+ lutheran_balance.1.title: "The Order of the Luther Rose"
+ lutheran_balance.1.entry: "$lutheran_balance.1.title$"
+ lutheran_balance.1.desc: "Ever since [founder_of_order_of_the_luther_rose.GetName] embraced the Lutheran confession, our evangelical nobility has had no brotherhood of its own, for the old orders of Italy still answer to Rome. Courtiers now urge [ruler_scope.GetName] to found a new chivalric order under the Reformer's own seal, sworn to defend the Gospel and the evangelical congregations of the peninsula, and open to the Lutheran knights of every land who would stand with us."
+ lutheran_balance.1.a: "Let the Rose bloom in Italy!"
+ lutheran_balance.1.a.replace_tt: "$lutheran_balance.2.a.replace_tt$"
+ lutheran_balance.1.a.tt: "Every known #Y [ShowReligionAdjective('lutheran')]#! [country|e] will be able to join the [ShowChivalricOrderName('order_of_the_luther_rose')]"
+ lutheran_balance.1.b: "Italy needs no new knights."
+ lutheran_balance.2.title: "$lutheran_balance.1.title$"
+ lutheran_balance.2.desc: "[ruler_scope.GetName] of the [founder_of_order_of_the_luther_rose.GetLongName] has invited [our_ruler.GetName] to join the [ShowChivalricOrderName('order_of_the_luther_rose')], a new brotherhood of Lutheran knights sworn to defend the Gospel. Wearing the Rose would bind our nobility to the evangelical cause beyond the Alps, and our court to the Italian crown."
+ lutheran_balance.2.a: "We will wear the Rose."
+ lutheran_balance.2.a.replace_tt: "This replaces our current national [chivalric_order|e]."
+ lutheran_balance.2.b: "Our knights serve our own crown."

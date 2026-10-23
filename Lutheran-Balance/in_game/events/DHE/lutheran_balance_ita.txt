@@ -1,0 +1,105 @@
+﻿namespace = lutheran_balance
+
+#Order of the Luther Rose - a lutheran ITA founds it (same pattern as flavor_hun.410)
+lutheran_balance.1 = {
+	hide_portraits = yes
+	type = country_event
+	title = lutheran_balance.1.title
+	desc = lutheran_balance.1.desc
+	outcome = neutral
+	fire_only_once = yes
+	dynamic_historical_event = {
+		tag = ITA
+		from = 1520.1.1
+		to = 1700.1.1
+		monthly_chance = 5
+	}
+	trigger = {
+		religion = religion:lutheran
+		at_war = no
+		exists = ruler
+		has_regent = no
+	}
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		save_scope_as = founder_of_order_of_the_luther_rose
+		ruler = { save_scope_as = ruler_scope }
+	}
+	option = {
+		name = lutheran_balance.1.a
+		ai_chance = {
+			base = 90
+		}
+		if = {
+			limit = { has_chivalric_order = yes }
+			custom_tooltip = lutheran_balance.1.a.replace_tt
+		}
+		set_active_chivalric_order = chivalric_order:order_of_the_luther_rose
+		ruler ?= { join_chivalric_order = chivalric_order:order_of_the_luther_rose }
+		change_gold_effect = { scale = -6 }
+		add_prestige = prestige_mild_bonus
+		custom_tooltip = lutheran_balance.1.a.tt
+		hidden_effect = {
+			every_known_country = {
+				limit = {
+					this != root
+					religion = religion:lutheran
+				}
+				trigger_event_silently = { id = lutheran_balance.2 }
+			}
+		}
+	}
+	option = {
+		name = lutheran_balance.1.b
+		ai_chance = {
+			base = 10
+		}
+		add_prestige = prestige_weak_penalty
+	}
+}
+
+#Order of the Luther Rose - known lutheran countries are invited (same pattern as flavor_hun.411)
+lutheran_balance.2 = {
+	type = country_event
+	title = lutheran_balance.2.title
+	desc = lutheran_balance.2.desc
+	outcome = neutral
+	illustration_tags = {
+		10 = regular
+		10 = interior
+	}
+	immediate = {
+		event_illustration_estate_effect = { foreground = estate_type:nobles_estate background = estate_type:nobles_estate }
+		hidden_effect = {
+			ruler_or_regent ?= { save_scope_as = our_ruler }
+		}
+	}
+	option = {
+		name = lutheran_balance.2.a
+		ai_chance = {
+			base = 50
+			modifier = {	#AI keeps its own order
+				factor = 0
+				has_chivalric_order = yes
+			}
+		}
+		if = {
+			limit = { has_chivalric_order = yes }
+			custom_tooltip = lutheran_balance.2.a.replace_tt
+		}
+		set_active_chivalric_order = chivalric_order:order_of_the_luther_rose
+		ruler_or_regent ?= { join_chivalric_order = chivalric_order:order_of_the_luther_rose }
+		add_prestige = prestige_mild_bonus
+	}
+	option = {
+		name = lutheran_balance.2.b
+		ai_chance = {
+			base = 50
+		}
+		add_government_power = government_power_severe_bonus
+	}
+}
