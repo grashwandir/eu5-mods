@@ -1,0 +1,14 @@
+﻿# Aspect slots a country may fill. Lutheran has 4 (religions/christian_lutheran_ext.txt),
+# the 4th only while the country holds a Lutheran holy site
+# (extra_religious_aspect_slot, from holy_site_types/00_lutheran_holy_site_type_ext.txt).
+# Read by REPLACE:add_religious_aspect / REPLACE:change_religious_aspect and on_action/lutheran_aspect_slots_ext.txt
+religious_aspect_slots = {
+	value = religion.max_religious_aspects
+	if = {
+		limit = {
+			religion = religion:lutheran
+			NOT = { modifier:extra_religious_aspect_slot = yes }
+		}
+		subtract = 1
+	}
+}

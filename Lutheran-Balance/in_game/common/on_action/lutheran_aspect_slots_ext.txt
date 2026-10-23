@@ -1,0 +1,15 @@
+﻿monthly_country_pulse = {
+	on_actions = { lutheran_aspect_slot_check }
+}
+
+# Holy site lost: drop a random aspect, as vanilla crisis_of_faith.101 does
+lutheran_aspect_slot_check = {
+	trigger = {
+		religion = religion:lutheran
+		num_of_religious_aspects > religious_aspect_slots
+	}
+	effect = {
+		random_religious_aspect = { save_scope_as = lutheran_dropped_aspect }
+		remove_religious_aspect = scope:lutheran_dropped_aspect
+	}
+}

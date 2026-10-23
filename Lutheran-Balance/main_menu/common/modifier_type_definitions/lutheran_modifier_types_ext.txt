@@ -1,0 +1,8 @@
+﻿# Set by the lutheran_holy_site country_modifier, read by the religious_aspect_slots script value
+# (script_values/lutheran_aspect_slots_ext.txt)
+extra_religious_aspect_slot = {
+	boolean = yes
+	game_data = {
+		category = country
+	}
+}
