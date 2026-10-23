@@ -1,0 +1,6 @@
+﻿the_lutheran_vatican = {
+    location = rome
+    type = lutheran_holy_site
+    importance = 5
+	religions = { lutheran }
+}

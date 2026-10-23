@@ -4,9 +4,9 @@
 	religion = calvinist
 
 	#Optional malus: married clergy vs monastic celibacy (adoptionism/modalism pattern)
-	#enabled = {
-	#	NOT = { has_religious_aspect = religious_aspect:monasticism }
-	#}
+	enabled = {
+		NOT = { has_religious_aspect = religious_aspect:monasticism }
+	}
 
 	modifier = {
 		global_population_growth = 0.0002	#theotokos, worship_freya_god, worship_inti_god
