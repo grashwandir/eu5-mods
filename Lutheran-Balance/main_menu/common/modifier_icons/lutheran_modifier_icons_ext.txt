@@ -1,0 +1,4 @@
+﻿# Icon for the boolean from main_menu/common/modifier_type_definitions/lutheran_modifier_types_ext.txt (vanilla add-aspect cost icon)
+extra_religious_aspect_slot = {
+	positive = "gfx/interface/icons/modifier_types/add_religious_aspect_christian_cost_modifier.dds"
+}

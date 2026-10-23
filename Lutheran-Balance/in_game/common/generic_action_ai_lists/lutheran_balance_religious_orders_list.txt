@@ -1,0 +1,18 @@
+﻿# AI list for the protestant religious order actions (generic_actions/00_protestant_*_actions.txt),
+# same potential as vanilla religious_orders_list, restricted to Lutheran
+lutheran_balance_religious_orders_list = {
+	potential = {
+		religion = religion:lutheran
+		religion = {
+			has_religious_orders = yes
+		}
+	}
+	actions = {
+		protestant_feed_the_poor
+		protestant_preach_a_mission
+		protestant_absolve_the_court
+		protestant_pray_for_the_realm
+		protestant_open_the_scriptoria
+		protestant_break_new_ground
+	}
+}

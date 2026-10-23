@@ -1,0 +1,62 @@
+﻿# Messages for the protestant religious order actions (generic_actions/00_protestant_*_actions.txt),
+# same settings as their vanilla counterparts in gui/messagetypes/00_messagetypes.txt
+
+PERFORM_protestant_feed_the_poor_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
+
+PERFORM_protestant_preach_a_mission_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
+
+PERFORM_protestant_absolve_the_court_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
+
+PERFORM_protestant_pray_for_the_realm_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
+
+PERFORM_protestant_open_the_scriptoria_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
+
+PERFORM_protestant_break_new_ground_ACTION={
+log=yes
+onmap=no
+popup=yes
+idle=no
+option=yes
+pausepopup=no
+message_category = society
+}
